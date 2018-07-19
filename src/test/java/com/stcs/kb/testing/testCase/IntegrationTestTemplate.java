@@ -6,22 +6,30 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.awaitility.Awaitility;
+import org.killbill.billing.client.KillBillClientException;
+import org.skife.jdbi.v2.DBI;
+import org.skife.jdbi.v2.Handle;
 
+import com.stcs.kb.config.Constants;
+import com.stcs.kb.service.impl.BillingServiceKBImpl;
 import com.stcs.kb.testing.component.AbstractComponent;
 import com.stcs.kb.testing.component.Component;
 import com.stcs.kb.testing.component.impl.KillBillDBComponent;
+import com.stcs.kb.testing.component.impl.KillBillServer;
 import com.stcs.kb.testing.component.impl.RabbitComponent;
 
 import junit.framework.TestCase;
 
 public class IntegrationTestTemplate extends TestCase {
-	List<AbstractComponent> testEnviroment ; 
+	List<Component> testEnviroment ; 
 	
 	public IntegrationTestTemplate() {
-		AbstractComponent rabbit = new RabbitComponent() ;
-		AbstractComponent db     = new KillBillDBComponent() ;
+		Component rabbit = new RabbitComponent() ;
 		
-		testEnviroment  =new ArrayList<AbstractComponent>(); 
+		Component db     = new KillBillDBComponent() ;
+		db.getDepndantComponent().add(new KillBillServer()) ; 
+		
+		testEnviroment  =new ArrayList<Component>(); 
 		testEnviroment.add(rabbit) ;
 		testEnviroment.add(db) ;
 	}
@@ -71,7 +79,15 @@ public class IntegrationTestTemplate extends TestCase {
 		   });
 	}
 	
+	public static void main(String...args) throws KillBillClientException {
+//		DBI	 dbi = new DBI("jdbc:postgresql://localhost:5432/killbill_plugins_db", "killbill" , "killbill" ) ;
+//		Handle handle = dbi.open() ;
+		
+		  BillingServiceKBImpl cartwheelKB    = 
+					 new BillingServiceKBImpl(Constants.KB_CARTWHEEL_KEY, Constants.KB_CARTWHEEL_SECRET , 1000) ;
+		  cartwheelKB.cleanCache();
+		  System.out.println( cartwheelKB.getEffectiveDate() ); 
+	}
 	
 	
-       	
 }

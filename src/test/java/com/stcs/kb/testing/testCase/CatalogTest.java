@@ -8,6 +8,8 @@ import org.joda.time.DateTime;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.skife.jdbi.v2.DBI;
+import org.skife.jdbi.v2.Handle;
 
 import com.stcs.kb.config.Constants;
 import com.stcs.kb.model.Response;

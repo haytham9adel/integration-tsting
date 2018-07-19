@@ -34,11 +34,24 @@ public class BillingServiceKBImpl {
 		 killBillHttpClient = new KillBillHttpClient ( Constants.KB_URL, Constants.KB_USERNAME , Constants.KB_PASSWORD , tenantKey ,tenantSecret
 				 ,  null,
                  null,
-                 6000000,
+                 6000,
                  6000000,
                  6000000,
                  false,
                  null );
+		 killBillClient   = new KillBillClient(killBillHttpClient);
+	}
+
+	public BillingServiceKBImpl( String tenantKey , String tenantSecret , Integer timeout ) {
+		 killBillHttpClient = new KillBillHttpClient ( Constants.KB_URL, Constants.KB_USERNAME ,
+				 Constants.KB_PASSWORD , tenantKey ,tenantSecret,
+				null,
+                null,
+                timeout,
+                timeout,
+                timeout,
+                false,
+                null );
 		 killBillClient   = new KillBillClient(killBillHttpClient);
 	}
 	
