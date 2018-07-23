@@ -20,7 +20,7 @@ public class RabbitComponent extends AbstractDockerComponent  {
 	
 	public RabbitComponent() {
 		this. dockerImage = "rabbit-integration1"; 
-		this. name = "rabbit mq node" ;
+		this. name = "brokernode" ;
 		this. port = 5672 ;
 		this. managmentPort = 15672 ;	
 	}

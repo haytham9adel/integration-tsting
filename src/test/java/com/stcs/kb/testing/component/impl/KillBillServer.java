@@ -6,7 +6,7 @@ import com.stcs.kb.testing.component.AbstractComponent;
 
 public class KillBillServer extends AbstractComponent {
 
-	private String name  = "killbill server " ;
+	private String name  = "kbnode " ;
  	private String path = "/Users/haythamzamek/Documents/STC/billing/development/kb-18-tomcat/apache-tomcat-8.0.33/bin" ;
 	private String startCommand = "/startup.sh" ;
 	private String closeCommand = "/shutdown.sh" ;

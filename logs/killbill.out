@@ -1,0 +1,752 @@
+2018-07-19T09:30:45,998+0000 lvl='INFO', log='', th='localhost-startStop-1', xff='', rId='', aId='', tId='', jruby 9.1.14.0 (2.3.3) 2017-11-08 2176f24 Java HotSpot(TM) 64-Bit Server VM 25.161-b12 on 1.8.0_161-b12 +jit [darwin-x86_64]
+2018-07-19T09:30:46,002+0000 lvl='INFO', log='', th='localhost-startStop-1', xff='', rId='', aId='', tId='', using a shared (threadsafe!) runtime
+2018-07-19T09:31:23,796+0000 lvl='INFO', log='', th='http-nio-8080-exec-2', xff='', rId='', aId='', tId='', I, [2018-07-19T11:31:23.783011 #89586]  INFO -- : Started GET "/kaui/home" for 127.0.0.1 at 2018-07-19 11:31:23 +0200
+
+2018-07-19T09:31:23,797+0000 lvl='INFO', log='', th='http-nio-8080-exec-1', xff='', rId='', aId='', tId='', I, [2018-07-19T11:31:23.783011 #89586]  INFO -- : Started GET "/kaui/home" for 127.0.0.1 at 2018-07-19 11:31:23 +0200
+
+2018-07-19T09:31:24,042+0000 lvl='INFO', log='', th='http-nio-8080-exec-2', xff='', rId='', aId='', tId='', I, [2018-07-19T11:31:24.041945 #89586]  INFO -- : Processing by Kaui::HomeController#index as HTML
+
+2018-07-19T09:31:24,042+0000 lvl='INFO', log='', th='http-nio-8080-exec-1', xff='', rId='', aId='', tId='', I, [2018-07-19T11:31:24.041945 #89586]  INFO -- : Processing by Kaui::HomeController#index as HTML
+
+2018-07-19T09:31:24,285+0000 lvl='INFO', log='home#index', th='http-nio-8080-exec-1', xff='', rId='df8cefdd-277b-4d24-8d6c-f9477d83011b', aId='', tId='617a1c37-aef8-41dc-8053-654c858ebcf9', I, [2018-07-19T11:31:24.285434 #89586]  INFO -- KillBillClient: Request method='GET', uri='http://127.0.0.1:8080/1.0/kb/security/subject'
+
+2018-07-19T09:31:24,286+0000 lvl='INFO', log='home#index', th='http-nio-8080-exec-2', xff='', rId='40d9d720-118a-4a2e-8c80-c5d5228030b7', aId='', tId='617a1c37-aef8-41dc-8053-654c858ebcf9', I, [2018-07-19T11:31:24.285433 #89586]  INFO -- KillBillClient: Request method='GET', uri='http://127.0.0.1:8080/1.0/kb/security/subject'
+
+2018-07-19T09:31:24,794+0000 lvl='INFO', log='home#index', th='http-nio-8080-exec-1', xff='', rId='df8cefdd-277b-4d24-8d6c-f9477d83011b', aId='', tId='617a1c37-aef8-41dc-8053-654c858ebcf9', F, [2018-07-19T11:31:24.793865 #89586] FATAL -- KillBillClient: Response code='500', reason='Internal Server Error', latency='506.6'
+
+2018-07-19T09:31:24,794+0000 lvl='INFO', log='home#index', th='http-nio-8080-exec-2', xff='', rId='40d9d720-118a-4a2e-8c80-c5d5228030b7', aId='', tId='617a1c37-aef8-41dc-8053-654c858ebcf9', E, [2018-07-19T11:31:24.793865 #89586] ERROR -- KillBillClient: Response code='401', reason='Unauthorized', latency='506.8'
+
+2018-07-19T09:31:24,805+0000 lvl='INFO', log='home#index', th='http-nio-8080-exec-2', xff='', rId='40d9d720-118a-4a2e-8c80-c5d5228030b7', aId='', tId='617a1c37-aef8-41dc-8053-654c858ebcf9', I, [2018-07-19T11:31:24.805027 #89586]  INFO -- : Completed 401 Unauthorized in 760ms (ActiveRecord: 34.3ms)
+
+2018-07-19T09:31:24,844+0000 lvl='INFO', log='home#index', th='http-nio-8080-exec-1', xff='', rId='df8cefdd-277b-4d24-8d6c-f9477d83011b', aId='', tId='617a1c37-aef8-41dc-8053-654c858ebcf9', I, [2018-07-19T11:31:24.844399 #89586]  INFO -- : Redirected to http://127.0.0.1:8080/kaui/home
+
+2018-07-19T09:31:24,846+0000 lvl='INFO', log='home#index', th='http-nio-8080-exec-1', xff='', rId='df8cefdd-277b-4d24-8d6c-f9477d83011b', aId='', tId='617a1c37-aef8-41dc-8053-654c858ebcf9', I, [2018-07-19T11:31:24.845984 #89586]  INFO -- : Completed 302 Found in 802ms (ActiveRecord: 23.9ms)
+
+2018-07-19T09:31:24,896+0000 lvl='INFO', log='', th='http-nio-8080-exec-6', xff='', rId='', aId='', tId='', I, [2018-07-19T11:31:24.896405 #89586]  INFO -- : Started GET "/kaui/home" for 127.0.0.1 at 2018-07-19 11:31:24 +0200
+
+2018-07-19T09:31:24,905+0000 lvl='INFO', log='', th='http-nio-8080-exec-6', xff='', rId='', aId='', tId='', I, [2018-07-19T11:31:24.905098 #89586]  INFO -- : Processing by Kaui::HomeController#index as HTML
+
+2018-07-19T09:31:24,946+0000 lvl='INFO', log='home#index', th='http-nio-8080-exec-6', xff='', rId='af8ceeb3-fe49-4163-9dce-61db6c461be8', aId='', tId='617a1c37-aef8-41dc-8053-654c858ebcf9', I, [2018-07-19T11:31:24.946109 #89586]  INFO -- KillBillClient: Request method='GET', uri='http://127.0.0.1:8080/1.0/kb/security/subject'
+
+2018-07-19T09:31:24,958+0000 lvl='INFO', log='home#index', th='http-nio-8080-exec-6', xff='', rId='af8ceeb3-fe49-4163-9dce-61db6c461be8', aId='', tId='617a1c37-aef8-41dc-8053-654c858ebcf9', E, [2018-07-19T11:31:24.958046 #89586] ERROR -- KillBillClient: Response code='401', reason='Unauthorized', latency='10.2'
+
+2018-07-19T09:31:24,965+0000 lvl='INFO', log='home#index', th='http-nio-8080-exec-6', xff='', rId='af8ceeb3-fe49-4163-9dce-61db6c461be8', aId='', tId='617a1c37-aef8-41dc-8053-654c858ebcf9', I, [2018-07-19T11:31:24.964694 #89586]  INFO -- : Completed 401 Unauthorized in 58ms (ActiveRecord: 4.3ms)
+
+2018-07-19T09:31:25,017+0000 lvl='INFO', log='', th='http-nio-8080-exec-10', xff='', rId='', aId='', tId='', I, [2018-07-19T11:31:25.017319 #89586]  INFO -- : Started GET "/kaui/users/sign_in" for 127.0.0.1 at 2018-07-19 11:31:25 +0200
+
+2018-07-19T09:31:25,033+0000 lvl='INFO', log='', th='http-nio-8080-exec-10', xff='', rId='', aId='', tId='', I, [2018-07-19T11:31:25.033072 #89586]  INFO -- : Processing by Kaui::SessionsController#new as HTML
+
+2018-07-19T09:31:25,097+0000 lvl='INFO', log='sessions#new', th='http-nio-8080-exec-10', xff='', rId='5350a289-7163-44db-8668-4e81aec809e8', aId='', tId='617a1c37-aef8-41dc-8053-654c858ebcf9', I, [2018-07-19T11:31:25.096718 #89586]  INFO -- :   Rendering gems/gems/kaui-0.16.2/app/views/kaui/sessions/new.html.erb within kaui/layouts/kaui_application
+
+2018-07-19T09:31:25,197+0000 lvl='INFO', log='sessions#new', th='http-nio-8080-exec-10', xff='', rId='5350a289-7163-44db-8668-4e81aec809e8', aId='', tId='617a1c37-aef8-41dc-8053-654c858ebcf9', I, [2018-07-19T11:31:25.196627 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/sessions/_form.html.erb (78.8ms)
+
+2018-07-19T09:31:25,199+0000 lvl='INFO', log='sessions#new', th='http-nio-8080-exec-10', xff='', rId='5350a289-7163-44db-8668-4e81aec809e8', aId='', tId='617a1c37-aef8-41dc-8053-654c858ebcf9', I, [2018-07-19T11:31:25.198703 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/sessions/new.html.erb within kaui/layouts/kaui_application (100.0ms)
+
+2018-07-19T09:31:25,214+0000 lvl='INFO', log='sessions#new', th='http-nio-8080-exec-10', xff='', rId='5350a289-7163-44db-8668-4e81aec809e8', aId='', tId='617a1c37-aef8-41dc-8053-654c858ebcf9', I, [2018-07-19T11:31:25.214347 #89586]  INFO -- :   Rendering gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_header.html.erb
+
+2018-07-19T09:31:27,482+0000 lvl='INFO', log='sessions#new', th='http-nio-8080-exec-10', xff='', rId='5350a289-7163-44db-8668-4e81aec809e8', aId='', tId='617a1c37-aef8-41dc-8053-654c858ebcf9', I, [2018-07-19T11:31:27.482077 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_header.html.erb (2266.4ms)
+
+2018-07-19T09:31:27,487+0000 lvl='INFO', log='sessions#new', th='http-nio-8080-exec-10', xff='', rId='5350a289-7163-44db-8668-4e81aec809e8', aId='', tId='617a1c37-aef8-41dc-8053-654c858ebcf9', I, [2018-07-19T11:31:27.487437 #89586]  INFO -- :   Rendering gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_navbar.html.erb
+
+2018-07-19T09:31:27,514+0000 lvl='INFO', log='sessions#new', th='http-nio-8080-exec-10', xff='', rId='5350a289-7163-44db-8668-4e81aec809e8', aId='', tId='617a1c37-aef8-41dc-8053-654c858ebcf9', I, [2018-07-19T11:31:27.514498 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_navbar.html.erb (24.3ms)
+
+2018-07-19T09:31:27,518+0000 lvl='INFO', log='sessions#new', th='http-nio-8080-exec-10', xff='', rId='5350a289-7163-44db-8668-4e81aec809e8', aId='', tId='617a1c37-aef8-41dc-8053-654c858ebcf9', I, [2018-07-19T11:31:27.518600 #89586]  INFO -- :   Rendering gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_flash.html.erb
+
+2018-07-19T09:31:27,528+0000 lvl='INFO', log='sessions#new', th='http-nio-8080-exec-10', xff='', rId='5350a289-7163-44db-8668-4e81aec809e8', aId='', tId='617a1c37-aef8-41dc-8053-654c858ebcf9', I, [2018-07-19T11:31:27.527431 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_flash.html.erb (7.8ms)
+
+2018-07-19T09:31:27,533+0000 lvl='INFO', log='sessions#new', th='http-nio-8080-exec-10', xff='', rId='5350a289-7163-44db-8668-4e81aec809e8', aId='', tId='617a1c37-aef8-41dc-8053-654c858ebcf9', I, [2018-07-19T11:31:27.532825 #89586]  INFO -- :   Rendering gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_footer.html.erb
+
+2018-07-19T09:31:27,536+0000 lvl='INFO', log='sessions#new', th='http-nio-8080-exec-10', xff='', rId='5350a289-7163-44db-8668-4e81aec809e8', aId='', tId='617a1c37-aef8-41dc-8053-654c858ebcf9', I, [2018-07-19T11:31:27.536481 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_footer.html.erb (2.8ms)
+
+2018-07-19T09:31:27,540+0000 lvl='INFO', log='', th='http-nio-8080-exec-10', xff='', rId='', aId='', tId='', I, [2018-07-19T11:31:27.540664 #89586]  INFO -- : Completed 200 OK in 2506ms (Views: 2476.3ms | ActiveRecord: 0.0ms)
+
+2018-07-19T09:31:27,567+0000 lvl='INFO', log='', th='http-nio-8080-exec-4', xff='', rId='', aId='', tId='', I, [2018-07-19T11:31:27.566889 #89586]  INFO -- : Started GET "/kaui/assets/application-208e698e9ed7c9821fb06db409a233e9120ab6e54f84645339b2d6a38e8e949e.js" for 127.0.0.1 at 2018-07-19 11:31:27 +0200
+
+2018-07-19T09:31:27,735+0000 lvl='INFO', log='', th='http-nio-8080-exec-5', xff='', rId='', aId='', tId='', I, [2018-07-19T11:31:27.734816 #89586]  INFO -- : Started GET "/kaui/main/available_engines.json" for 127.0.0.1 at 2018-07-19 11:31:27 +0200
+
+2018-07-19T09:31:27,759+0000 lvl='INFO', log='', th='http-nio-8080-exec-5', xff='', rId='', aId='', tId='', I, [2018-07-19T11:31:27.758592 #89586]  INFO -- : Processing by MainController#available_engines as JSON
+
+2018-07-19T09:31:27,759+0000 lvl='INFO', log='', th='http-nio-8080-exec-5', xff='', rId='', aId='', tId='', I, [2018-07-19T11:31:27.759575 #89586]  INFO -- :   Parameters: {"main"=>{}}
+
+2018-07-19T09:31:27,772+0000 lvl='INFO', log='main#available_engines', th='http-nio-8080-exec-5', xff='', rId='67cf8593-0b49-449b-a429-8e04465d57cd', aId='', tId='617a1c37-aef8-41dc-8053-654c858ebcf9', I, [2018-07-19T11:31:27.771994 #89586]  INFO -- : Completed 401 Unauthorized in 11ms (ActiveRecord: 0.0ms)
+
+2018-07-19T09:31:39,424+0000 lvl='INFO', log='', th='http-nio-8080-exec-3', xff='', rId='', aId='', tId='', I, [2018-07-19T11:31:39.423709 #89586]  INFO -- : Started GET "/kaui/users/sign_in" for 127.0.0.1 at 2018-07-19 11:31:39 +0200
+
+2018-07-19T09:31:39,435+0000 lvl='INFO', log='', th='http-nio-8080-exec-3', xff='', rId='', aId='', tId='', I, [2018-07-19T11:31:39.435128 #89586]  INFO -- : Processing by Kaui::SessionsController#new as HTML
+
+2018-07-19T09:31:39,451+0000 lvl='INFO', log='sessions#new', th='http-nio-8080-exec-3', xff='', rId='7dae8839-0d90-41d8-8f03-435f10c2699d', aId='', tId='617a1c37-aef8-41dc-8053-654c858ebcf9', I, [2018-07-19T11:31:39.451193 #89586]  INFO -- :   Rendering gems/gems/kaui-0.16.2/app/views/kaui/sessions/new.html.erb within kaui/layouts/kaui_application
+
+2018-07-19T09:31:39,488+0000 lvl='INFO', log='sessions#new', th='http-nio-8080-exec-3', xff='', rId='7dae8839-0d90-41d8-8f03-435f10c2699d', aId='', tId='617a1c37-aef8-41dc-8053-654c858ebcf9', I, [2018-07-19T11:31:39.488106 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/sessions/_form.html.erb (33.9ms)
+
+2018-07-19T09:31:39,489+0000 lvl='INFO', log='sessions#new', th='http-nio-8080-exec-3', xff='', rId='7dae8839-0d90-41d8-8f03-435f10c2699d', aId='', tId='617a1c37-aef8-41dc-8053-654c858ebcf9', I, [2018-07-19T11:31:39.489237 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/sessions/new.html.erb within kaui/layouts/kaui_application (36.9ms)
+
+2018-07-19T09:31:39,491+0000 lvl='INFO', log='sessions#new', th='http-nio-8080-exec-3', xff='', rId='7dae8839-0d90-41d8-8f03-435f10c2699d', aId='', tId='617a1c37-aef8-41dc-8053-654c858ebcf9', I, [2018-07-19T11:31:39.491004 #89586]  INFO -- :   Rendering gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_header.html.erb
+
+2018-07-19T09:31:39,508+0000 lvl='INFO', log='sessions#new', th='http-nio-8080-exec-3', xff='', rId='7dae8839-0d90-41d8-8f03-435f10c2699d', aId='', tId='617a1c37-aef8-41dc-8053-654c858ebcf9', I, [2018-07-19T11:31:39.508380 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_header.html.erb (14.8ms)
+
+2018-07-19T09:31:39,510+0000 lvl='INFO', log='sessions#new', th='http-nio-8080-exec-3', xff='', rId='7dae8839-0d90-41d8-8f03-435f10c2699d', aId='', tId='617a1c37-aef8-41dc-8053-654c858ebcf9', I, [2018-07-19T11:31:39.510482 #89586]  INFO -- :   Rendering gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_navbar.html.erb
+
+2018-07-19T09:31:39,533+0000 lvl='INFO', log='sessions#new', th='http-nio-8080-exec-3', xff='', rId='7dae8839-0d90-41d8-8f03-435f10c2699d', aId='', tId='617a1c37-aef8-41dc-8053-654c858ebcf9', I, [2018-07-19T11:31:39.533129 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_navbar.html.erb (21.4ms)
+
+2018-07-19T09:31:39,536+0000 lvl='INFO', log='sessions#new', th='http-nio-8080-exec-3', xff='', rId='7dae8839-0d90-41d8-8f03-435f10c2699d', aId='', tId='617a1c37-aef8-41dc-8053-654c858ebcf9', I, [2018-07-19T11:31:39.535888 #89586]  INFO -- :   Rendering gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_flash.html.erb
+
+2018-07-19T09:31:39,538+0000 lvl='INFO', log='sessions#new', th='http-nio-8080-exec-3', xff='', rId='7dae8839-0d90-41d8-8f03-435f10c2699d', aId='', tId='617a1c37-aef8-41dc-8053-654c858ebcf9', I, [2018-07-19T11:31:39.537723 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_flash.html.erb (0.9ms)
+
+2018-07-19T09:31:39,539+0000 lvl='INFO', log='sessions#new', th='http-nio-8080-exec-3', xff='', rId='7dae8839-0d90-41d8-8f03-435f10c2699d', aId='', tId='617a1c37-aef8-41dc-8053-654c858ebcf9', I, [2018-07-19T11:31:39.539638 #89586]  INFO -- :   Rendering gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_footer.html.erb
+
+2018-07-19T09:31:39,542+0000 lvl='INFO', log='sessions#new', th='http-nio-8080-exec-3', xff='', rId='7dae8839-0d90-41d8-8f03-435f10c2699d', aId='', tId='617a1c37-aef8-41dc-8053-654c858ebcf9', I, [2018-07-19T11:31:39.541922 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_footer.html.erb (1.3ms)
+
+2018-07-19T09:31:39,546+0000 lvl='INFO', log='', th='http-nio-8080-exec-3', xff='', rId='', aId='', tId='', I, [2018-07-19T11:31:39.545973 #89586]  INFO -- : Completed 200 OK in 110ms (Views: 95.5ms | ActiveRecord: 0.0ms)
+
+2018-07-19T09:31:39,673+0000 lvl='INFO', log='home#index', th='http-nio-8080-exec-1', xff='', rId='df8cefdd-277b-4d24-8d6c-f9477d83011b', aId='', tId='617a1c37-aef8-41dc-8053-654c858ebcf9', I, [2018-07-19T11:31:39.672688 #89586]  INFO -- : Started GET "/kaui/main/available_engines.json" for 127.0.0.1 at 2018-07-19 11:31:39 +0200
+
+2018-07-19T09:31:39,686+0000 lvl='INFO', log='home#index', th='http-nio-8080-exec-1', xff='', rId='df8cefdd-277b-4d24-8d6c-f9477d83011b', aId='', tId='617a1c37-aef8-41dc-8053-654c858ebcf9', I, [2018-07-19T11:31:39.683943 #89586]  INFO -- : Processing by MainController#available_engines as JSON
+
+2018-07-19T09:31:39,687+0000 lvl='INFO', log='home#index', th='http-nio-8080-exec-1', xff='', rId='df8cefdd-277b-4d24-8d6c-f9477d83011b', aId='', tId='617a1c37-aef8-41dc-8053-654c858ebcf9', I, [2018-07-19T11:31:39.687020 #89586]  INFO -- :   Parameters: {"main"=>{}}
+
+2018-07-19T09:31:39,707+0000 lvl='INFO', log='main#available_engines', th='http-nio-8080-exec-1', xff='', rId='21a86378-f089-435d-8451-bef7bdd24e20', aId='', tId='617a1c37-aef8-41dc-8053-654c858ebcf9', I, [2018-07-19T11:31:39.702769 #89586]  INFO -- : Completed 401 Unauthorized in 13ms (ActiveRecord: 0.0ms)
+
+2018-07-19T09:31:43,054+0000 lvl='INFO', log='', th='http-nio-8080-exec-7', xff='', rId='', aId='', tId='', I, [2018-07-19T11:31:43.050877 #89586]  INFO -- : Started POST "/kaui/users/sign_in" for 127.0.0.1 at 2018-07-19 11:31:43 +0200
+
+2018-07-19T09:31:43,071+0000 lvl='INFO', log='', th='http-nio-8080-exec-7', xff='', rId='', aId='', tId='', I, [2018-07-19T11:31:43.070995 #89586]  INFO -- : Processing by Kaui::SessionsController#create as HTML
+
+2018-07-19T09:31:43,076+0000 lvl='INFO', log='', th='http-nio-8080-exec-7', xff='', rId='', aId='', tId='', I, [2018-07-19T11:31:43.075999 #89586]  INFO -- :   Parameters: {"utf8"=>"✓", "authenticity_token"=>"g+EZhtY3KE5XCJLtAUxFQi78MWD63CeMnvZq0i65bM1UTm2sCxl0tVuOEp/n5Bi0iRJx25Hn0kF3TYIZCExXfg==", "user"=>{"kb_username"=>"admin", "password"=>"[FILTERED]"}, "commit"=>"Sign in"}
+
+2018-07-19T09:31:43,118+0000 lvl='INFO', log='sessions#create', th='http-nio-8080-exec-7', xff='', rId='a7c4ed88-a122-4e47-ad2c-58dfb63b78b8', aId='', tId='617a1c37-aef8-41dc-8053-654c858ebcf9', I, [2018-07-19T11:31:43.118402 #89586]  INFO -- KillBillClient: Request method='GET', uri='http://127.0.0.1:8080/1.0/kb/security/permissions'
+
+2018-07-19T09:31:43,259+0000 lvl='INFO', log='sessions#create', th='http-nio-8080-exec-7', xff='', rId='a7c4ed88-a122-4e47-ad2c-58dfb63b78b8', aId='', tId='617a1c37-aef8-41dc-8053-654c858ebcf9', I, [2018-07-19T11:31:43.259105 #89586]  INFO -- KillBillClient: Response code='200', reason='OK', latency='138.8'
+
+2018-07-19T09:31:43,345+0000 lvl='INFO', log='sessions#create', th='http-nio-8080-exec-7', xff='', rId='a7c4ed88-a122-4e47-ad2c-58dfb63b78b8', aId='', tId='617a1c37-aef8-41dc-8053-654c858ebcf9', I, [2018-07-19T11:31:43.345429 #89586]  INFO -- KillBillClient: Request method='GET', uri='http://127.0.0.1:8080/1.0/kb/security/subject'
+
+2018-07-19T09:31:43,395+0000 lvl='INFO', log='sessions#create', th='http-nio-8080-exec-7', xff='', rId='a7c4ed88-a122-4e47-ad2c-58dfb63b78b8', aId='', tId='617a1c37-aef8-41dc-8053-654c858ebcf9', I, [2018-07-19T11:31:43.395276 #89586]  INFO -- KillBillClient: Response code='200', reason='OK', latency='47.8'
+
+2018-07-19T09:31:43,442+0000 lvl='INFO', log='sessions#create', th='http-nio-8080-exec-7', xff='', rId='a7c4ed88-a122-4e47-ad2c-58dfb63b78b8', aId='', tId='617a1c37-aef8-41dc-8053-654c858ebcf9', I, [2018-07-19T11:31:43.442012 #89586]  INFO -- : Redirected to http://127.0.0.1:8080/kaui/home
+
+2018-07-19T09:31:43,443+0000 lvl='INFO', log='', th='http-nio-8080-exec-7', xff='', rId='', aId='', tId='', I, [2018-07-19T11:31:43.443378 #89586]  INFO -- : Completed 302 Found in 366ms (ActiveRecord: 33.8ms)
+
+2018-07-19T09:31:43,459+0000 lvl='INFO', log='', th='http-nio-8080-exec-10', xff='', rId='', aId='', tId='', I, [2018-07-19T11:31:43.458983 #89586]  INFO -- : Started GET "/kaui/home" for 127.0.0.1 at 2018-07-19 11:31:43 +0200
+
+2018-07-19T09:31:43,463+0000 lvl='INFO', log='', th='http-nio-8080-exec-10', xff='', rId='', aId='', tId='', I, [2018-07-19T11:31:43.463664 #89586]  INFO -- : Processing by Kaui::HomeController#index as HTML
+
+2018-07-19T09:31:43,487+0000 lvl='INFO', log='home#index', th='http-nio-8080-exec-10', xff='', rId='303b752e-9823-4399-8dc3-16a4672de467', aId='', tId='', I, [2018-07-19T11:31:43.487099 #89586]  INFO -- KillBillClient: Request method='GET', uri='http://127.0.0.1:8080/1.0/kb/security/subject'
+
+2018-07-19T09:31:43,501+0000 lvl='INFO', log='home#index', th='http-nio-8080-exec-10', xff='', rId='303b752e-9823-4399-8dc3-16a4672de467', aId='', tId='', I, [2018-07-19T11:31:43.501328 #89586]  INFO -- KillBillClient: Response code='200', reason='OK', latency='12.7'
+
+2018-07-19T09:31:43,511+0000 lvl='INFO', log='home#index', th='http-nio-8080-exec-10', xff='', rId='303b752e-9823-4399-8dc3-16a4672de467', aId='', tId='', I, [2018-07-19T11:31:43.511208 #89586]  INFO -- : Redirected to http://127.0.0.1:8080/kaui/tenants
+
+2018-07-19T09:31:43,513+0000 lvl='INFO', log='home#index', th='http-nio-8080-exec-10', xff='', rId='303b752e-9823-4399-8dc3-16a4672de467', aId='', tId='', I, [2018-07-19T11:31:43.513493 #89586]  INFO -- : Filter chain halted as :check_for_redirect_to_tenant_screen rendered or redirected
+
+2018-07-19T09:31:43,517+0000 lvl='INFO', log='home#index', th='http-nio-8080-exec-10', xff='', rId='303b752e-9823-4399-8dc3-16a4672de467', aId='', tId='', I, [2018-07-19T11:31:43.517053 #89586]  INFO -- : Completed 302 Found in 50ms (ActiveRecord: 2.2ms)
+
+2018-07-19T09:31:43,532+0000 lvl='INFO', log='', th='http-nio-8080-exec-3', xff='', rId='', aId='', tId='', I, [2018-07-19T11:31:43.532467 #89586]  INFO -- : Started GET "/kaui/tenants" for 127.0.0.1 at 2018-07-19 11:31:43 +0200
+
+2018-07-19T09:31:43,544+0000 lvl='INFO', log='', th='http-nio-8080-exec-3', xff='', rId='', aId='', tId='', I, [2018-07-19T11:31:43.543880 #89586]  INFO -- : Processing by Kaui::TenantsController#index as HTML
+
+2018-07-19T09:31:43,564+0000 lvl='INFO', log='tenants#index', th='http-nio-8080-exec-3', xff='', rId='d7b46467-9ad1-4a63-a852-2943803470f9', aId='', tId='', I, [2018-07-19T11:31:43.564324 #89586]  INFO -- KillBillClient: Request method='GET', uri='http://127.0.0.1:8080/1.0/kb/security/subject'
+
+2018-07-19T09:31:43,580+0000 lvl='INFO', log='tenants#index', th='http-nio-8080-exec-3', xff='', rId='d7b46467-9ad1-4a63-a852-2943803470f9', aId='', tId='', I, [2018-07-19T11:31:43.580583 #89586]  INFO -- KillBillClient: Response code='200', reason='OK', latency='15.0'
+
+2018-07-19T09:31:43,721+0000 lvl='INFO', log='tenants#index', th='http-nio-8080-exec-3', xff='', rId='d7b46467-9ad1-4a63-a852-2943803470f9', aId='', tId='', I, [2018-07-19T11:31:43.720880 #89586]  INFO -- :   Rendering gems/gems/kaui-0.16.2/app/views/kaui/tenants/index.html.erb within kaui/layouts/kaui_application
+
+2018-07-19T09:31:43,767+0000 lvl='INFO', log='tenants#index', th='http-nio-8080-exec-3', xff='', rId='d7b46467-9ad1-4a63-a852-2943803470f9', aId='', tId='', I, [2018-07-19T11:31:43.766836 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/tenants/_form.html.erb (39.7ms)
+
+2018-07-19T09:31:43,767+0000 lvl='INFO', log='tenants#index', th='http-nio-8080-exec-3', xff='', rId='d7b46467-9ad1-4a63-a852-2943803470f9', aId='', tId='', I, [2018-07-19T11:31:43.767503 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/tenants/index.html.erb within kaui/layouts/kaui_application (45.9ms)
+
+2018-07-19T09:31:43,768+0000 lvl='INFO', log='tenants#index', th='http-nio-8080-exec-3', xff='', rId='d7b46467-9ad1-4a63-a852-2943803470f9', aId='', tId='', I, [2018-07-19T11:31:43.768710 #89586]  INFO -- :   Rendering gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_header.html.erb
+
+2018-07-19T09:31:43,778+0000 lvl='INFO', log='tenants#index', th='http-nio-8080-exec-3', xff='', rId='d7b46467-9ad1-4a63-a852-2943803470f9', aId='', tId='', I, [2018-07-19T11:31:43.778105 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_header.html.erb (7.2ms)
+
+2018-07-19T09:31:43,781+0000 lvl='INFO', log='tenants#index', th='http-nio-8080-exec-3', xff='', rId='d7b46467-9ad1-4a63-a852-2943803470f9', aId='', tId='', I, [2018-07-19T11:31:43.781228 #89586]  INFO -- :   Rendering gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_navbar.html.erb
+
+2018-07-19T09:31:43,793+0000 lvl='INFO', log='tenants#index', th='http-nio-8080-exec-3', xff='', rId='d7b46467-9ad1-4a63-a852-2943803470f9', aId='', tId='', I, [2018-07-19T11:31:43.793037 #89586]  INFO -- KillBillClient: Request method='GET', uri='http://127.0.0.1:8080/1.0/kb/security/permissions'
+
+2018-07-19T09:31:43,811+0000 lvl='INFO', log='tenants#index', th='http-nio-8080-exec-3', xff='', rId='d7b46467-9ad1-4a63-a852-2943803470f9', aId='', tId='', I, [2018-07-19T11:31:43.810841 #89586]  INFO -- KillBillClient: Response code='200', reason='OK', latency='16.4'
+
+2018-07-19T09:31:43,842+0000 lvl='INFO', log='tenants#index', th='http-nio-8080-exec-3', xff='', rId='d7b46467-9ad1-4a63-a852-2943803470f9', aId='', tId='', I, [2018-07-19T11:31:43.842537 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_navbar.html.erb (60.1ms)
+
+2018-07-19T09:31:43,845+0000 lvl='INFO', log='tenants#index', th='http-nio-8080-exec-3', xff='', rId='d7b46467-9ad1-4a63-a852-2943803470f9', aId='', tId='', I, [2018-07-19T11:31:43.845598 #89586]  INFO -- :   Rendering gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_flash.html.erb
+
+2018-07-19T09:31:43,848+0000 lvl='INFO', log='tenants#index', th='http-nio-8080-exec-3', xff='', rId='d7b46467-9ad1-4a63-a852-2943803470f9', aId='', tId='', I, [2018-07-19T11:31:43.847908 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_flash.html.erb (1.5ms)
+
+2018-07-19T09:31:43,849+0000 lvl='INFO', log='tenants#index', th='http-nio-8080-exec-3', xff='', rId='d7b46467-9ad1-4a63-a852-2943803470f9', aId='', tId='', I, [2018-07-19T11:31:43.849537 #89586]  INFO -- :   Rendering gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_footer.html.erb
+
+2018-07-19T09:31:43,850+0000 lvl='INFO', log='tenants#index', th='http-nio-8080-exec-3', xff='', rId='d7b46467-9ad1-4a63-a852-2943803470f9', aId='', tId='', I, [2018-07-19T11:31:43.850452 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_footer.html.erb (0.3ms)
+
+2018-07-19T09:31:43,853+0000 lvl='INFO', log='', th='http-nio-8080-exec-3', xff='', rId='', aId='', tId='', I, [2018-07-19T11:31:43.852883 #89586]  INFO -- : Completed 200 OK in 308ms (Views: 129.9ms | ActiveRecord: 31.8ms)
+
+2018-07-19T09:31:43,961+0000 lvl='INFO', log='home#index', th='http-nio-8080-exec-6', xff='', rId='af8ceeb3-fe49-4163-9dce-61db6c461be8', aId='', tId='617a1c37-aef8-41dc-8053-654c858ebcf9', I, [2018-07-19T11:31:43.961254 #89586]  INFO -- : Started GET "/kaui/main/available_engines.json" for 127.0.0.1 at 2018-07-19 11:31:43 +0200
+
+2018-07-19T09:31:43,968+0000 lvl='INFO', log='home#index', th='http-nio-8080-exec-6', xff='', rId='af8ceeb3-fe49-4163-9dce-61db6c461be8', aId='', tId='617a1c37-aef8-41dc-8053-654c858ebcf9', I, [2018-07-19T11:31:43.968166 #89586]  INFO -- : Processing by MainController#available_engines as JSON
+
+2018-07-19T09:31:43,968+0000 lvl='INFO', log='home#index', th='http-nio-8080-exec-6', xff='', rId='af8ceeb3-fe49-4163-9dce-61db6c461be8', aId='', tId='617a1c37-aef8-41dc-8053-654c858ebcf9', I, [2018-07-19T11:31:43.968629 #89586]  INFO -- :   Parameters: {"main"=>{}}
+
+2018-07-19T09:31:43,985+0000 lvl='INFO', log='main#available_engines', th='http-nio-8080-exec-6', xff='', rId='415ee5df-68a2-4533-9422-26084acc5f01', aId='', tId='', I, [2018-07-19T11:31:43.985473 #89586]  INFO -- KillBillClient: Request method='GET', uri='http://127.0.0.1:8080/1.0/kb/security/subject'
+
+2018-07-19T09:31:43,998+0000 lvl='INFO', log='main#available_engines', th='http-nio-8080-exec-6', xff='', rId='415ee5df-68a2-4533-9422-26084acc5f01', aId='', tId='', I, [2018-07-19T11:31:43.998191 #89586]  INFO -- KillBillClient: Response code='200', reason='OK', latency='11.3'
+
+2018-07-19T09:31:44,006+0000 lvl='INFO', log='main#available_engines', th='http-nio-8080-exec-6', xff='', rId='415ee5df-68a2-4533-9422-26084acc5f01', aId='', tId='', I, [2018-07-19T11:31:44.006269 #89586]  INFO -- : Redirected to http://127.0.0.1:8080/kaui/tenants
+
+2018-07-19T09:31:44,007+0000 lvl='INFO', log='main#available_engines', th='http-nio-8080-exec-6', xff='', rId='415ee5df-68a2-4533-9422-26084acc5f01', aId='', tId='', I, [2018-07-19T11:31:44.007127 #89586]  INFO -- : Filter chain halted as :check_for_redirect_to_tenant_screen rendered or redirected
+
+2018-07-19T09:31:44,008+0000 lvl='INFO', log='main#available_engines', th='http-nio-8080-exec-6', xff='', rId='415ee5df-68a2-4533-9422-26084acc5f01', aId='', tId='', I, [2018-07-19T11:31:44.008292 #89586]  INFO -- : Completed 302 Found in 39ms (ActiveRecord: 2.3ms)
+
+2018-07-19T09:31:44,047+0000 lvl='INFO', log='main#available_engines', th='http-nio-8080-exec-5', xff='', rId='67cf8593-0b49-449b-a429-8e04465d57cd', aId='', tId='617a1c37-aef8-41dc-8053-654c858ebcf9', I, [2018-07-19T11:31:44.046908 #89586]  INFO -- : Started GET "/kaui/tenants" for 127.0.0.1 at 2018-07-19 11:31:44 +0200
+
+2018-07-19T09:31:44,060+0000 lvl='INFO', log='main#available_engines', th='http-nio-8080-exec-5', xff='', rId='67cf8593-0b49-449b-a429-8e04465d57cd', aId='', tId='617a1c37-aef8-41dc-8053-654c858ebcf9', I, [2018-07-19T11:31:44.059774 #89586]  INFO -- : Processing by Kaui::TenantsController#index as JSON
+
+2018-07-19T09:31:44,060+0000 lvl='INFO', log='main#available_engines', th='http-nio-8080-exec-5', xff='', rId='67cf8593-0b49-449b-a429-8e04465d57cd', aId='', tId='617a1c37-aef8-41dc-8053-654c858ebcf9', I, [2018-07-19T11:31:44.060654 #89586]  INFO -- :   Parameters: {"tenant"=>{}}
+
+2018-07-19T09:31:44,074+0000 lvl='INFO', log='tenants#index', th='http-nio-8080-exec-5', xff='', rId='7de2dad1-77e3-46f2-88c5-744f35f77ce5', aId='', tId='', I, [2018-07-19T11:31:44.074260 #89586]  INFO -- KillBillClient: Request method='GET', uri='http://127.0.0.1:8080/1.0/kb/security/subject'
+
+2018-07-19T09:31:44,085+0000 lvl='INFO', log='tenants#index', th='http-nio-8080-exec-5', xff='', rId='7de2dad1-77e3-46f2-88c5-744f35f77ce5', aId='', tId='', I, [2018-07-19T11:31:44.085349 #89586]  INFO -- KillBillClient: Response code='200', reason='OK', latency='9.9'
+
+2018-07-19T09:31:44,118+0000 lvl='INFO', log='tenants#index', th='http-nio-8080-exec-5', xff='', rId='7de2dad1-77e3-46f2-88c5-744f35f77ce5', aId='', tId='', I, [2018-07-19T11:31:44.118238 #89586]  INFO -- :   Rendering gems/gems/kaui-0.16.2/app/views/kaui/tenants/index.html.erb within kaui/layouts/kaui_application
+
+2018-07-19T09:31:44,155+0000 lvl='INFO', log='tenants#index', th='http-nio-8080-exec-5', xff='', rId='7de2dad1-77e3-46f2-88c5-744f35f77ce5', aId='', tId='', I, [2018-07-19T11:31:44.154815 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/tenants/_form.html.erb (27.4ms)
+
+2018-07-19T09:31:44,155+0000 lvl='INFO', log='tenants#index', th='http-nio-8080-exec-5', xff='', rId='7de2dad1-77e3-46f2-88c5-744f35f77ce5', aId='', tId='', I, [2018-07-19T11:31:44.155753 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/tenants/index.html.erb within kaui/layouts/kaui_application (36.8ms)
+
+2018-07-19T09:31:44,165+0000 lvl='INFO', log='tenants#index', th='http-nio-8080-exec-5', xff='', rId='7de2dad1-77e3-46f2-88c5-744f35f77ce5', aId='', tId='', I, [2018-07-19T11:31:44.164818 #89586]  INFO -- :   Rendering gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_header.html.erb
+
+2018-07-19T09:31:44,177+0000 lvl='INFO', log='tenants#index', th='http-nio-8080-exec-5', xff='', rId='7de2dad1-77e3-46f2-88c5-744f35f77ce5', aId='', tId='', I, [2018-07-19T11:31:44.176900 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_header.html.erb (11.4ms)
+
+2018-07-19T09:31:44,184+0000 lvl='INFO', log='tenants#index', th='http-nio-8080-exec-5', xff='', rId='7de2dad1-77e3-46f2-88c5-744f35f77ce5', aId='', tId='', I, [2018-07-19T11:31:44.183844 #89586]  INFO -- :   Rendering gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_navbar.html.erb
+
+2018-07-19T09:31:44,203+0000 lvl='INFO', log='tenants#index', th='http-nio-8080-exec-5', xff='', rId='7de2dad1-77e3-46f2-88c5-744f35f77ce5', aId='', tId='', I, [2018-07-19T11:31:44.203411 #89586]  INFO -- KillBillClient: Request method='GET', uri='http://127.0.0.1:8080/1.0/kb/security/permissions'
+
+2018-07-19T09:31:44,218+0000 lvl='INFO', log='tenants#index', th='http-nio-8080-exec-5', xff='', rId='7de2dad1-77e3-46f2-88c5-744f35f77ce5', aId='', tId='', I, [2018-07-19T11:31:44.218316 #89586]  INFO -- KillBillClient: Response code='200', reason='OK', latency='12.7'
+
+2018-07-19T09:31:44,250+0000 lvl='INFO', log='tenants#index', th='http-nio-8080-exec-5', xff='', rId='7de2dad1-77e3-46f2-88c5-744f35f77ce5', aId='', tId='', I, [2018-07-19T11:31:44.250389 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_navbar.html.erb (65.7ms)
+
+2018-07-19T09:31:44,260+0000 lvl='INFO', log='tenants#index', th='http-nio-8080-exec-5', xff='', rId='7de2dad1-77e3-46f2-88c5-744f35f77ce5', aId='', tId='', I, [2018-07-19T11:31:44.260257 #89586]  INFO -- :   Rendering gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_flash.html.erb
+
+2018-07-19T09:31:44,267+0000 lvl='INFO', log='tenants#index', th='http-nio-8080-exec-5', xff='', rId='7de2dad1-77e3-46f2-88c5-744f35f77ce5', aId='', tId='', I, [2018-07-19T11:31:44.267484 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_flash.html.erb (6.5ms)
+
+2018-07-19T09:31:44,275+0000 lvl='INFO', log='tenants#index', th='http-nio-8080-exec-5', xff='', rId='7de2dad1-77e3-46f2-88c5-744f35f77ce5', aId='', tId='', I, [2018-07-19T11:31:44.275099 #89586]  INFO -- :   Rendering gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_footer.html.erb
+
+2018-07-19T09:31:44,278+0000 lvl='INFO', log='tenants#index', th='http-nio-8080-exec-5', xff='', rId='7de2dad1-77e3-46f2-88c5-744f35f77ce5', aId='', tId='', I, [2018-07-19T11:31:44.277683 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_footer.html.erb (1.9ms)
+
+2018-07-19T09:31:44,280+0000 lvl='INFO', log='', th='http-nio-8080-exec-5', xff='', rId='', aId='', tId='', I, [2018-07-19T11:31:44.280025 #89586]  INFO -- : Completed 200 OK in 219ms (Views: 160.8ms | ActiveRecord: 7.1ms)
+
+2018-07-19T09:31:48,122+0000 lvl='INFO', log='home#index', th='http-nio-8080-exec-2', xff='', rId='40d9d720-118a-4a2e-8c80-c5d5228030b7', aId='', tId='617a1c37-aef8-41dc-8053-654c858ebcf9', I, [2018-07-19T11:31:48.122239 #89586]  INFO -- : Started POST "/kaui/tenants/select_tenant" for 127.0.0.1 at 2018-07-19 11:31:48 +0200
+
+2018-07-19T09:31:48,129+0000 lvl='INFO', log='home#index', th='http-nio-8080-exec-2', xff='', rId='40d9d720-118a-4a2e-8c80-c5d5228030b7', aId='', tId='617a1c37-aef8-41dc-8053-654c858ebcf9', I, [2018-07-19T11:31:48.129781 #89586]  INFO -- : Processing by Kaui::TenantsController#select_tenant as HTML
+
+2018-07-19T09:31:48,130+0000 lvl='INFO', log='home#index', th='http-nio-8080-exec-2', xff='', rId='40d9d720-118a-4a2e-8c80-c5d5228030b7', aId='', tId='617a1c37-aef8-41dc-8053-654c858ebcf9', I, [2018-07-19T11:31:48.130292 #89586]  INFO -- :   Parameters: {"utf8"=>"✓", "authenticity_token"=>"554FOjtYe0SQxMCdD9tfOthwKL6tKRVOAk5L/sJIm4Cyq67Tz1I3vKjxp3+ikXYLc8tfZMAfMJZV8j6t5BAsPg==", "kb_tenant_id"=>"028f23b7-b900-4d93-aa47-5fc2817be4f3", "commit"=>"Save"}
+
+2018-07-19T09:31:48,151+0000 lvl='INFO', log='tenants#select_tenant', th='http-nio-8080-exec-2', xff='', rId='f4d721b7-0022-488c-a51b-1d18738cb256', aId='', tId='', I, [2018-07-19T11:31:48.151152 #89586]  INFO -- KillBillClient: Request method='GET', uri='http://127.0.0.1:8080/1.0/kb/security/subject'
+
+2018-07-19T09:31:48,169+0000 lvl='INFO', log='tenants#select_tenant', th='http-nio-8080-exec-2', xff='', rId='f4d721b7-0022-488c-a51b-1d18738cb256', aId='', tId='', I, [2018-07-19T11:31:48.168904 #89586]  INFO -- KillBillClient: Response code='200', reason='OK', latency='16.3'
+
+2018-07-19T09:31:48,185+0000 lvl='INFO', log='tenants#select_tenant', th='http-nio-8080-exec-2', xff='', rId='f4d721b7-0022-488c-a51b-1d18738cb256', aId='', tId='', I, [2018-07-19T11:31:48.184996 #89586]  INFO -- : Redirected to http://127.0.0.1:8080/kaui/home
+
+2018-07-19T09:31:48,186+0000 lvl='INFO', log='', th='http-nio-8080-exec-2', xff='', rId='', aId='', tId='', I, [2018-07-19T11:31:48.186354 #89586]  INFO -- : Completed 302 Found in 55ms (ActiveRecord: 2.6ms)
+
+2018-07-19T09:31:48,200+0000 lvl='INFO', log='', th='http-nio-8080-exec-4', xff='', rId='', aId='', tId='', I, [2018-07-19T11:31:48.200193 #89586]  INFO -- : Started GET "/kaui/home" for 127.0.0.1 at 2018-07-19 11:31:48 +0200
+
+2018-07-19T09:31:48,209+0000 lvl='INFO', log='', th='http-nio-8080-exec-4', xff='', rId='', aId='', tId='', I, [2018-07-19T11:31:48.209673 #89586]  INFO -- : Processing by Kaui::HomeController#index as HTML
+
+2018-07-19T09:31:48,226+0000 lvl='INFO', log='home#index', th='http-nio-8080-exec-4', xff='', rId='7c7a09c9-2a34-4a36-b9fc-64a4779f3e72', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:31:48.226664 #89586]  INFO -- KillBillClient: Request method='GET', uri='http://127.0.0.1:8080/1.0/kb/security/subject'
+
+2018-07-19T09:31:48,241+0000 lvl='INFO', log='home#index', th='http-nio-8080-exec-4', xff='', rId='7c7a09c9-2a34-4a36-b9fc-64a4779f3e72', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:31:48.240851 #89586]  INFO -- KillBillClient: Response code='200', reason='OK', latency='12.7'
+
+2018-07-19T09:31:48,287+0000 lvl='INFO', log='home#index', th='http-nio-8080-exec-4', xff='', rId='7c7a09c9-2a34-4a36-b9fc-64a4779f3e72', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:31:48.287728 #89586]  INFO -- :   Rendering gems/gems/kaui-0.16.2/app/views/kaui/home/index.html.erb within kaui/layouts/kaui_application
+
+2018-07-19T09:31:48,311+0000 lvl='INFO', log='home#index', th='http-nio-8080-exec-4', xff='', rId='7c7a09c9-2a34-4a36-b9fc-64a4779f3e72', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:31:48.310746 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/home/index.html.erb within kaui/layouts/kaui_application (22.1ms)
+
+2018-07-19T09:31:48,312+0000 lvl='INFO', log='home#index', th='http-nio-8080-exec-4', xff='', rId='7c7a09c9-2a34-4a36-b9fc-64a4779f3e72', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:31:48.312623 #89586]  INFO -- :   Rendering gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_header.html.erb
+
+2018-07-19T09:31:48,324+0000 lvl='INFO', log='home#index', th='http-nio-8080-exec-4', xff='', rId='7c7a09c9-2a34-4a36-b9fc-64a4779f3e72', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:31:48.324054 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_header.html.erb (10.6ms)
+
+2018-07-19T09:31:48,326+0000 lvl='INFO', log='home#index', th='http-nio-8080-exec-4', xff='', rId='7c7a09c9-2a34-4a36-b9fc-64a4779f3e72', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:31:48.325880 #89586]  INFO -- :   Rendering gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_navbar.html.erb
+
+2018-07-19T09:31:48,354+0000 lvl='INFO', log='home#index', th='http-nio-8080-exec-4', xff='', rId='7c7a09c9-2a34-4a36-b9fc-64a4779f3e72', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:31:48.353914 #89586]  INFO -- KillBillClient: Request method='GET', uri='http://127.0.0.1:8080/1.0/kb/security/permissions'
+
+2018-07-19T09:31:48,370+0000 lvl='INFO', log='home#index', th='http-nio-8080-exec-4', xff='', rId='7c7a09c9-2a34-4a36-b9fc-64a4779f3e72', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:31:48.370612 #89586]  INFO -- KillBillClient: Response code='200', reason='OK', latency='14.3'
+
+2018-07-19T09:31:48,424+0000 lvl='INFO', log='home#index', th='http-nio-8080-exec-4', xff='', rId='7c7a09c9-2a34-4a36-b9fc-64a4779f3e72', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:31:48.424376 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_navbar.html.erb (97.7ms)
+
+2018-07-19T09:31:48,425+0000 lvl='INFO', log='home#index', th='http-nio-8080-exec-4', xff='', rId='7c7a09c9-2a34-4a36-b9fc-64a4779f3e72', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:31:48.425649 #89586]  INFO -- :   Rendering gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_flash.html.erb
+
+2018-07-19T09:31:48,426+0000 lvl='INFO', log='home#index', th='http-nio-8080-exec-4', xff='', rId='7c7a09c9-2a34-4a36-b9fc-64a4779f3e72', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:31:48.426738 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_flash.html.erb (0.5ms)
+
+2018-07-19T09:31:48,428+0000 lvl='INFO', log='home#index', th='http-nio-8080-exec-4', xff='', rId='7c7a09c9-2a34-4a36-b9fc-64a4779f3e72', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:31:48.428289 #89586]  INFO -- :   Rendering gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_footer.html.erb
+
+2018-07-19T09:31:48,429+0000 lvl='INFO', log='home#index', th='http-nio-8080-exec-4', xff='', rId='7c7a09c9-2a34-4a36-b9fc-64a4779f3e72', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:31:48.429578 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_footer.html.erb (0.3ms)
+
+2018-07-19T09:31:48,432+0000 lvl='INFO', log='', th='http-nio-8080-exec-4', xff='', rId='', aId='', tId='', I, [2018-07-19T11:31:48.432156 #89586]  INFO -- : Completed 200 OK in 221ms (Views: 151.1ms | ActiveRecord: 7.5ms)
+
+2018-07-19T09:31:48,486+0000 lvl='INFO', log='', th='http-nio-8080-exec-9', xff='', rId='', aId='', tId='', I, [2018-07-19T11:31:48.486049 #89586]  INFO -- : Started GET "/kaui/main/available_engines.json" for 127.0.0.1 at 2018-07-19 11:31:48 +0200
+
+2018-07-19T09:31:48,492+0000 lvl='INFO', log='', th='http-nio-8080-exec-9', xff='', rId='', aId='', tId='', I, [2018-07-19T11:31:48.492093 #89586]  INFO -- : Processing by MainController#available_engines as JSON
+
+2018-07-19T09:31:48,492+0000 lvl='INFO', log='', th='http-nio-8080-exec-9', xff='', rId='', aId='', tId='', I, [2018-07-19T11:31:48.492659 #89586]  INFO -- :   Parameters: {"main"=>{}}
+
+2018-07-19T09:31:48,520+0000 lvl='INFO', log='main#available_engines', th='http-nio-8080-exec-9', xff='', rId='74350bd1-5b70-4f49-b844-6069eaf9dc2d', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:31:48.520651 #89586]  INFO -- KillBillClient: Request method='GET', uri='http://127.0.0.1:8080/1.0/kb/security/subject'
+
+2018-07-19T09:31:48,532+0000 lvl='INFO', log='main#available_engines', th='http-nio-8080-exec-9', xff='', rId='74350bd1-5b70-4f49-b844-6069eaf9dc2d', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:31:48.532393 #89586]  INFO -- KillBillClient: Response code='200', reason='OK', latency='10.2'
+
+2018-07-19T09:31:48,609+0000 lvl='INFO', log='main#available_engines', th='http-nio-8080-exec-9', xff='', rId='74350bd1-5b70-4f49-b844-6069eaf9dc2d', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:31:48.608952 #89586]  INFO -- KillBillClient: Request method='GET', uri='http://127.0.0.1:8080/1.0/kb/nodesInfo'
+
+2018-07-19T09:31:48,710+0000 lvl='INFO', log='main#available_engines', th='http-nio-8080-exec-9', xff='', rId='74350bd1-5b70-4f49-b844-6069eaf9dc2d', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:31:48.709933 #89586]  INFO -- KillBillClient: Response code='200', reason='OK', latency='99.7'
+
+2018-07-19T09:31:48,721+0000 lvl='INFO', log='', th='http-nio-8080-exec-9', xff='', rId='', aId='', tId='', I, [2018-07-19T11:31:48.721532 #89586]  INFO -- : Completed 200 OK in 228ms (Views: 2.3ms | ActiveRecord: 8.3ms)
+
+2018-07-19T09:31:50,065+0000 lvl='INFO', log='main#available_engines', th='http-nio-8080-exec-6', xff='', rId='415ee5df-68a2-4533-9422-26084acc5f01', aId='', tId='', I, [2018-07-19T11:31:50.065640 #89586]  INFO -- : Started GET "/kaui/admin_tenants/4" for 127.0.0.1 at 2018-07-19 11:31:50 +0200
+
+2018-07-19T09:31:50,079+0000 lvl='INFO', log='main#available_engines', th='http-nio-8080-exec-6', xff='', rId='415ee5df-68a2-4533-9422-26084acc5f01', aId='', tId='', I, [2018-07-19T11:31:50.079484 #89586]  INFO -- : Processing by Kaui::AdminTenantsController#show as HTML
+
+2018-07-19T09:31:50,080+0000 lvl='INFO', log='main#available_engines', th='http-nio-8080-exec-6', xff='', rId='415ee5df-68a2-4533-9422-26084acc5f01', aId='', tId='', I, [2018-07-19T11:31:50.079900 #89586]  INFO -- :   Parameters: {"id"=>"4"}
+
+2018-07-19T09:31:50,100+0000 lvl='INFO', log='admin_tenants#show', th='http-nio-8080-exec-6', xff='', rId='9fa54932-a0df-4345-b74b-7b508da2b469', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:31:50.100597 #89586]  INFO -- KillBillClient: Request method='GET', uri='http://127.0.0.1:8080/1.0/kb/security/subject'
+
+2018-07-19T09:31:50,115+0000 lvl='INFO', log='admin_tenants#show', th='http-nio-8080-exec-6', xff='', rId='9fa54932-a0df-4345-b74b-7b508da2b469', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:31:50.114812 #89586]  INFO -- KillBillClient: Response code='200', reason='OK', latency='12.7'
+
+2018-07-19T09:31:50,276+0000 lvl='INFO', log='', th='pool-2-thread-1', xff='', rId='', aId='', tId='', I, [2018-07-19T11:31:50.276132 #89586]  INFO -- KillBillClient: Request method='GET', uri='http://127.0.0.1:8080/1.0/kb/catalog'
+
+2018-07-19T09:31:50,277+0000 lvl='INFO', log='', th='pool-2-thread-3', xff='', rId='', aId='', tId='', I, [2018-07-19T11:31:50.277087 #89586]  INFO -- KillBillClient: Request method='GET', uri='http://127.0.0.1:8080/1.0/kb/overdue'
+
+2018-07-19T09:31:50,277+0000 lvl='INFO', log='', th='pool-2-thread-4', xff='', rId='', aId='', tId='', I, [2018-07-19T11:31:50.277571 #89586]  INFO -- KillBillClient: Request method='GET', uri='http://127.0.0.1:8080/1.0/kb/overdue'
+
+2018-07-19T09:31:50,277+0000 lvl='INFO', log='', th='pool-2-thread-2', xff='', rId='', aId='', tId='', I, [2018-07-19T11:31:50.277573 #89586]  INFO -- KillBillClient: Request method='GET', uri='http://127.0.0.1:8080/1.0/kb/catalog'
+
+2018-07-19T09:31:50,302+0000 lvl='INFO', log='', th='pool-2-thread-3', xff='', rId='', aId='', tId='', E, [2018-07-19T11:31:50.301912 #89586] ERROR -- KillBillClient: Response code='401', reason='Unauthorized', latency='22.5'
+
+2018-07-19T09:31:50,316+0000 lvl='INFO', log='', th='pool-2-thread-2', xff='', rId='', aId='', tId='', E, [2018-07-19T11:31:50.316058 #89586] ERROR -- KillBillClient: Response code='401', reason='Unauthorized', latency='32.9'
+
+2018-07-19T09:31:50,316+0000 lvl='INFO', log='', th='pool-2-thread-1', xff='', rId='', aId='', tId='', E, [2018-07-19T11:31:50.316716 #89586] ERROR -- KillBillClient: Response code='401', reason='Unauthorized', latency='37.0'
+
+2018-07-19T09:31:50,326+0000 lvl='INFO', log='', th='pool-2-thread-4', xff='', rId='', aId='', tId='', E, [2018-07-19T11:31:50.324255 #89586] ERROR -- KillBillClient: Response code='401', reason='Unauthorized', latency='44.5'
+
+2018-07-19T09:31:51,378+0000 lvl='INFO', log='', th='pool-2-thread-6', xff='', rId='', aId='', tId='', I, [2018-07-19T11:31:51.378563 #89586]  INFO -- KillBillClient: Request method='GET', uri='http://127.0.0.1:8080/1.0/kb/tenants/uploadPerTenantConfig/PLUGIN_CONFIG_/search'
+
+2018-07-19T09:31:51,398+0000 lvl='INFO', log='', th='pool-2-thread-6', xff='', rId='', aId='', tId='', E, [2018-07-19T11:31:51.398361 #89586] ERROR -- KillBillClient: Response code='401', reason='Unauthorized', latency='16.2'
+
+2018-07-19T09:31:51,411+0000 lvl='INFO', log='admin_tenants#show', th='http-nio-8080-exec-6', xff='', rId='9fa54932-a0df-4345-b74b-7b508da2b469', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:31:51.410879 #89586]  INFO -- :   Rendering gems/gems/kaui-0.16.2/app/views/kaui/admin_tenants/show.html.erb within kaui/layouts/kaui_application
+
+2018-07-19T09:31:51,423+0000 lvl='INFO', log='admin_tenants#show', th='http-nio-8080-exec-6', xff='', rId='9fa54932-a0df-4345-b74b-7b508da2b469', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:31:51.423240 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/admin_tenants/_tenant_details.html.erb (3.9ms)
+
+2018-07-19T09:31:51,451+0000 lvl='INFO', log='admin_tenants#show', th='http-nio-8080-exec-6', xff='', rId='9fa54932-a0df-4345-b74b-7b508da2b469', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:31:51.451470 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/admin_tenants/_useful_links.html.erb (24.4ms)
+
+2018-07-19T09:31:51,491+0000 lvl='INFO', log='admin_tenants#show', th='http-nio-8080-exec-6', xff='', rId='9fa54932-a0df-4345-b74b-7b508da2b469', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:31:51.491768 #89586]  INFO -- KillBillClient: Request method='GET', uri='http://127.0.0.1:8080/1.0/kb/security/permissions'
+
+2018-07-19T09:31:51,505+0000 lvl='INFO', log='admin_tenants#show', th='http-nio-8080-exec-6', xff='', rId='9fa54932-a0df-4345-b74b-7b508da2b469', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:31:51.504965 #89586]  INFO -- KillBillClient: Response code='200', reason='OK', latency='11.9'
+
+2018-07-19T09:31:51,519+0000 lvl='INFO', log='admin_tenants#show', th='http-nio-8080-exec-6', xff='', rId='9fa54932-a0df-4345-b74b-7b508da2b469', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:31:51.519719 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/admin_tenants/_show_catalog_simple.erb (37.9ms)
+
+2018-07-19T09:31:51,527+0000 lvl='INFO', log='admin_tenants#show', th='http-nio-8080-exec-6', xff='', rId='9fa54932-a0df-4345-b74b-7b508da2b469', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:31:51.527762 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/admin_tenants/_show_catalog_xml.erb (4.6ms)
+
+2018-07-19T09:31:51,529+0000 lvl='INFO', log='admin_tenants#show', th='http-nio-8080-exec-6', xff='', rId='9fa54932-a0df-4345-b74b-7b508da2b469', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:31:51.529514 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/admin_tenants/_show_catalog.erb (54.2ms)
+
+2018-07-19T09:31:51,549+0000 lvl='INFO', log='admin_tenants#show', th='http-nio-8080-exec-6', xff='', rId='9fa54932-a0df-4345-b74b-7b508da2b469', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:31:51.549174 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/admin_tenants/_show_overdue.erb (16.9ms)
+
+2018-07-19T09:31:51,566+0000 lvl='INFO', log='admin_tenants#show', th='http-nio-8080-exec-6', xff='', rId='9fa54932-a0df-4345-b74b-7b508da2b469', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:31:51.566462 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/admin_tenants/_form_invoice_template.erb (14.0ms)
+
+2018-07-19T09:31:51,580+0000 lvl='INFO', log='admin_tenants#show', th='http-nio-8080-exec-6', xff='', rId='9fa54932-a0df-4345-b74b-7b508da2b469', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:31:51.580029 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/admin_tenants/_form_invoice_translation.erb (9.5ms)
+
+2018-07-19T09:31:51,591+0000 lvl='INFO', log='admin_tenants#show', th='http-nio-8080-exec-6', xff='', rId='9fa54932-a0df-4345-b74b-7b508da2b469', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:31:51.591702 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/admin_tenants/_form_catalog_translation.erb (8.3ms)
+
+2018-07-19T09:31:51,606+0000 lvl='INFO', log='admin_tenants#show', th='http-nio-8080-exec-6', xff='', rId='9fa54932-a0df-4345-b74b-7b508da2b469', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:31:51.606439 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/admin_tenants/_form_plugin_config.erb (10.4ms)
+
+2018-07-19T09:31:51,609+0000 lvl='INFO', log='admin_tenants#show', th='http-nio-8080-exec-6', xff='', rId='9fa54932-a0df-4345-b74b-7b508da2b469', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:31:51.609334 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/admin_tenants/show.html.erb within kaui/layouts/kaui_application (197.7ms)
+
+2018-07-19T09:31:51,615+0000 lvl='INFO', log='admin_tenants#show', th='http-nio-8080-exec-6', xff='', rId='9fa54932-a0df-4345-b74b-7b508da2b469', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:31:51.615208 #89586]  INFO -- :   Rendering gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_header.html.erb
+
+2018-07-19T09:31:51,629+0000 lvl='INFO', log='admin_tenants#show', th='http-nio-8080-exec-6', xff='', rId='9fa54932-a0df-4345-b74b-7b508da2b469', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:31:51.629740 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_header.html.erb (13.7ms)
+
+2018-07-19T09:31:51,631+0000 lvl='INFO', log='admin_tenants#show', th='http-nio-8080-exec-6', xff='', rId='9fa54932-a0df-4345-b74b-7b508da2b469', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:31:51.631376 #89586]  INFO -- :   Rendering gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_navbar.html.erb
+
+2018-07-19T09:31:51,674+0000 lvl='INFO', log='admin_tenants#show', th='http-nio-8080-exec-6', xff='', rId='9fa54932-a0df-4345-b74b-7b508da2b469', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:31:51.673807 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_navbar.html.erb (41.7ms)
+
+2018-07-19T09:31:51,676+0000 lvl='INFO', log='admin_tenants#show', th='http-nio-8080-exec-6', xff='', rId='9fa54932-a0df-4345-b74b-7b508da2b469', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:31:51.676038 #89586]  INFO -- :   Rendering gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_flash.html.erb
+
+2018-07-19T09:31:51,678+0000 lvl='INFO', log='admin_tenants#show', th='http-nio-8080-exec-6', xff='', rId='9fa54932-a0df-4345-b74b-7b508da2b469', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:31:51.677555 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_flash.html.erb (0.5ms)
+
+2018-07-19T09:31:51,681+0000 lvl='INFO', log='admin_tenants#show', th='http-nio-8080-exec-6', xff='', rId='9fa54932-a0df-4345-b74b-7b508da2b469', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:31:51.680979 #89586]  INFO -- :   Rendering gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_footer.html.erb
+
+2018-07-19T09:31:51,682+0000 lvl='INFO', log='admin_tenants#show', th='http-nio-8080-exec-6', xff='', rId='9fa54932-a0df-4345-b74b-7b508da2b469', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:31:51.682497 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_footer.html.erb (0.7ms)
+
+2018-07-19T09:31:51,685+0000 lvl='INFO', log='', th='http-nio-8080-exec-6', xff='', rId='', aId='', tId='', I, [2018-07-19T11:31:51.684791 #89586]  INFO -- : Completed 200 OK in 1604ms (Views: 276.9ms | ActiveRecord: 13.8ms)
+
+2018-07-19T09:31:51,747+0000 lvl='INFO', log='', th='http-nio-8080-exec-3', xff='', rId='', aId='', tId='', I, [2018-07-19T11:31:51.747589 #89586]  INFO -- : Started GET "/kaui/main/available_engines.json" for 127.0.0.1 at 2018-07-19 11:31:51 +0200
+
+2018-07-19T09:31:51,760+0000 lvl='INFO', log='', th='http-nio-8080-exec-3', xff='', rId='', aId='', tId='', I, [2018-07-19T11:31:51.759889 #89586]  INFO -- : Processing by MainController#available_engines as JSON
+
+2018-07-19T09:31:51,760+0000 lvl='INFO', log='', th='http-nio-8080-exec-3', xff='', rId='', aId='', tId='', I, [2018-07-19T11:31:51.760482 #89586]  INFO -- :   Parameters: {"main"=>{}}
+
+2018-07-19T09:31:51,790+0000 lvl='INFO', log='main#available_engines', th='http-nio-8080-exec-3', xff='', rId='f29558e3-2882-4c39-b331-b99f3d56b08f', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:31:51.790325 #89586]  INFO -- KillBillClient: Request method='GET', uri='http://127.0.0.1:8080/1.0/kb/security/subject'
+
+2018-07-19T09:31:51,806+0000 lvl='INFO', log='main#available_engines', th='http-nio-8080-exec-3', xff='', rId='f29558e3-2882-4c39-b331-b99f3d56b08f', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:31:51.805723 #89586]  INFO -- KillBillClient: Response code='200', reason='OK', latency='14.0'
+
+2018-07-19T09:31:51,866+0000 lvl='INFO', log='main#available_engines', th='http-nio-8080-exec-3', xff='', rId='f29558e3-2882-4c39-b331-b99f3d56b08f', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:31:51.865933 #89586]  INFO -- KillBillClient: Request method='GET', uri='http://127.0.0.1:8080/1.0/kb/nodesInfo'
+
+2018-07-19T09:31:51,890+0000 lvl='INFO', log='main#available_engines', th='http-nio-8080-exec-3', xff='', rId='f29558e3-2882-4c39-b331-b99f3d56b08f', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:31:51.890653 #89586]  INFO -- KillBillClient: Response code='200', reason='OK', latency='23.1'
+
+2018-07-19T09:31:51,902+0000 lvl='INFO', log='', th='http-nio-8080-exec-3', xff='', rId='', aId='', tId='', I, [2018-07-19T11:31:51.902399 #89586]  INFO -- : Completed 200 OK in 141ms (Views: 2.8ms | ActiveRecord: 8.5ms)
+
+2018-07-19T09:32:54,972+0000 lvl='INFO', log='', th='http-nio-8080-exec-8', xff='', rId='', aId='', tId='', I, [2018-07-19T11:32:54.972268 #89586]  INFO -- : Started GET "/kaui/admin_tenants" for 127.0.0.1 at 2018-07-19 11:32:54 +0200
+
+2018-07-19T09:32:54,973+0000 lvl='INFO', log='', th='http-nio-8080-exec-7', xff='', rId='', aId='', tId='', I, [2018-07-19T11:32:54.972241 #89586]  INFO -- : Started GET "/kaui/main/available_engines.json" for 127.0.0.1 at 2018-07-19 11:32:54 +0200
+
+2018-07-19T09:32:54,981+0000 lvl='INFO', log='', th='http-nio-8080-exec-8', xff='', rId='', aId='', tId='', I, [2018-07-19T11:32:54.981523 #89586]  INFO -- : Processing by Kaui::AdminTenantsController#index as HTML
+
+2018-07-19T09:32:54,982+0000 lvl='INFO', log='', th='http-nio-8080-exec-7', xff='', rId='', aId='', tId='', I, [2018-07-19T11:32:54.981528 #89586]  INFO -- : Processing by MainController#available_engines as JSON
+
+2018-07-19T09:32:54,982+0000 lvl='INFO', log='', th='http-nio-8080-exec-7', xff='', rId='', aId='', tId='', I, [2018-07-19T11:32:54.982255 #89586]  INFO -- :   Parameters: {"main"=>{}}
+
+2018-07-19T09:32:55,013+0000 lvl='INFO', log='admin_tenants#index', th='http-nio-8080-exec-8', xff='', rId='a29b1ef4-0830-4564-a586-33c72550d50a', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:32:55.013488 #89586]  INFO -- KillBillClient: Request method='GET', uri='http://127.0.0.1:8080/1.0/kb/security/subject'
+
+2018-07-19T09:32:55,014+0000 lvl='INFO', log='main#available_engines', th='http-nio-8080-exec-7', xff='', rId='8649b299-b4fe-4830-b25a-d39c4d6f84f5', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:32:55.013653 #89586]  INFO -- KillBillClient: Request method='GET', uri='http://127.0.0.1:8080/1.0/kb/security/subject'
+
+2018-07-19T09:32:55,041+0000 lvl='INFO', log='admin_tenants#index', th='http-nio-8080-exec-8', xff='', rId='a29b1ef4-0830-4564-a586-33c72550d50a', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:32:55.041412 #89586]  INFO -- KillBillClient: Response code='200', reason='OK', latency='26.9'
+
+2018-07-19T09:32:55,042+0000 lvl='INFO', log='main#available_engines', th='http-nio-8080-exec-7', xff='', rId='8649b299-b4fe-4830-b25a-d39c4d6f84f5', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:32:55.041568 #89586]  INFO -- KillBillClient: Response code='200', reason='OK', latency='27.1'
+
+2018-07-19T09:32:55,075+0000 lvl='INFO', log='admin_tenants#index', th='http-nio-8080-exec-8', xff='', rId='a29b1ef4-0830-4564-a586-33c72550d50a', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:32:55.075035 #89586]  INFO -- :   Rendering gems/gems/kaui-0.16.2/app/views/kaui/admin_tenants/index.html.erb within kaui/layouts/kaui_application
+
+2018-07-19T09:32:55,092+0000 lvl='INFO', log='main#available_engines', th='http-nio-8080-exec-7', xff='', rId='8649b299-b4fe-4830-b25a-d39c4d6f84f5', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:32:55.091807 #89586]  INFO -- KillBillClient: Request method='GET', uri='http://127.0.0.1:8080/1.0/kb/nodesInfo'
+
+2018-07-19T09:32:55,092+0000 lvl='INFO', log='admin_tenants#index', th='http-nio-8080-exec-8', xff='', rId='a29b1ef4-0830-4564-a586-33c72550d50a', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:32:55.091988 #89586]  INFO -- KillBillClient: Request method='GET', uri='http://127.0.0.1:8080/1.0/kb/security/permissions'
+
+2018-07-19T09:32:55,110+0000 lvl='INFO', log='admin_tenants#index', th='http-nio-8080-exec-8', xff='', rId='a29b1ef4-0830-4564-a586-33c72550d50a', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:32:55.110354 #89586]  INFO -- KillBillClient: Response code='200', reason='OK', latency='17.0'
+
+2018-07-19T09:32:55,120+0000 lvl='INFO', log='main#available_engines', th='http-nio-8080-exec-7', xff='', rId='8649b299-b4fe-4830-b25a-d39c4d6f84f5', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:32:55.120258 #89586]  INFO -- KillBillClient: Response code='200', reason='OK', latency='26.9'
+
+2018-07-19T09:32:55,128+0000 lvl='INFO', log='', th='http-nio-8080-exec-7', xff='', rId='', aId='', tId='', I, [2018-07-19T11:32:55.128258 #89586]  INFO -- : Completed 200 OK in 145ms (Views: 1.6ms | ActiveRecord: 8.3ms)
+
+2018-07-19T09:32:55,169+0000 lvl='INFO', log='admin_tenants#index', th='http-nio-8080-exec-8', xff='', rId='a29b1ef4-0830-4564-a586-33c72550d50a', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:32:55.169235 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/admin_tenants/_tenants_table.html.erb (43.6ms)
+
+2018-07-19T09:32:55,170+0000 lvl='INFO', log='admin_tenants#index', th='http-nio-8080-exec-8', xff='', rId='a29b1ef4-0830-4564-a586-33c72550d50a', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:32:55.169989 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/admin_tenants/index.html.erb within kaui/layouts/kaui_application (94.1ms)
+
+2018-07-19T09:32:55,171+0000 lvl='INFO', log='admin_tenants#index', th='http-nio-8080-exec-8', xff='', rId='a29b1ef4-0830-4564-a586-33c72550d50a', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:32:55.171645 #89586]  INFO -- :   Rendering gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_header.html.erb
+
+2018-07-19T09:32:55,179+0000 lvl='INFO', log='admin_tenants#index', th='http-nio-8080-exec-8', xff='', rId='a29b1ef4-0830-4564-a586-33c72550d50a', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:32:55.179679 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_header.html.erb (7.4ms)
+
+2018-07-19T09:32:55,180+0000 lvl='INFO', log='admin_tenants#index', th='http-nio-8080-exec-8', xff='', rId='a29b1ef4-0830-4564-a586-33c72550d50a', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:32:55.180676 #89586]  INFO -- :   Rendering gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_navbar.html.erb
+
+2018-07-19T09:32:55,214+0000 lvl='INFO', log='admin_tenants#index', th='http-nio-8080-exec-8', xff='', rId='a29b1ef4-0830-4564-a586-33c72550d50a', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:32:55.214725 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_navbar.html.erb (33.4ms)
+
+2018-07-19T09:32:55,217+0000 lvl='INFO', log='admin_tenants#index', th='http-nio-8080-exec-8', xff='', rId='a29b1ef4-0830-4564-a586-33c72550d50a', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:32:55.217109 #89586]  INFO -- :   Rendering gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_flash.html.erb
+
+2018-07-19T09:32:55,218+0000 lvl='INFO', log='admin_tenants#index', th='http-nio-8080-exec-8', xff='', rId='a29b1ef4-0830-4564-a586-33c72550d50a', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:32:55.218215 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_flash.html.erb (0.5ms)
+
+2018-07-19T09:32:55,220+0000 lvl='INFO', log='admin_tenants#index', th='http-nio-8080-exec-8', xff='', rId='a29b1ef4-0830-4564-a586-33c72550d50a', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:32:55.219975 #89586]  INFO -- :   Rendering gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_footer.html.erb
+
+2018-07-19T09:32:55,221+0000 lvl='INFO', log='admin_tenants#index', th='http-nio-8080-exec-8', xff='', rId='a29b1ef4-0830-4564-a586-33c72550d50a', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:32:55.221057 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_footer.html.erb (0.4ms)
+
+2018-07-19T09:32:55,223+0000 lvl='INFO', log='', th='http-nio-8080-exec-8', xff='', rId='', aId='', tId='', I, [2018-07-19T11:32:55.223379 #89586]  INFO -- : Completed 200 OK in 241ms (Views: 151.5ms | ActiveRecord: 3.3ms)
+
+2018-07-19T09:32:55,267+0000 lvl='INFO', log='', th='http-nio-8080-exec-5', xff='', rId='', aId='', tId='', I, [2018-07-19T11:32:55.267503 #89586]  INFO -- : Started GET "/kaui/main/available_engines.json" for 127.0.0.1 at 2018-07-19 11:32:55 +0200
+
+2018-07-19T09:32:55,281+0000 lvl='INFO', log='', th='http-nio-8080-exec-5', xff='', rId='', aId='', tId='', I, [2018-07-19T11:32:55.281321 #89586]  INFO -- : Processing by MainController#available_engines as JSON
+
+2018-07-19T09:32:55,282+0000 lvl='INFO', log='', th='http-nio-8080-exec-5', xff='', rId='', aId='', tId='', I, [2018-07-19T11:32:55.282102 #89586]  INFO -- :   Parameters: {"main"=>{}}
+
+2018-07-19T09:32:55,307+0000 lvl='INFO', log='main#available_engines', th='http-nio-8080-exec-5', xff='', rId='3c4f9254-c5ab-4d61-a9aa-6c9253edb6b7', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:32:55.306775 #89586]  INFO -- KillBillClient: Request method='GET', uri='http://127.0.0.1:8080/1.0/kb/security/subject'
+
+2018-07-19T09:32:55,321+0000 lvl='INFO', log='main#available_engines', th='http-nio-8080-exec-5', xff='', rId='3c4f9254-c5ab-4d61-a9aa-6c9253edb6b7', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:32:55.321625 #89586]  INFO -- KillBillClient: Response code='200', reason='OK', latency='13.4'
+
+2018-07-19T09:32:55,347+0000 lvl='INFO', log='main#available_engines', th='http-nio-8080-exec-5', xff='', rId='3c4f9254-c5ab-4d61-a9aa-6c9253edb6b7', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:32:55.346920 #89586]  INFO -- KillBillClient: Request method='GET', uri='http://127.0.0.1:8080/1.0/kb/nodesInfo'
+
+2018-07-19T09:32:55,362+0000 lvl='INFO', log='main#available_engines', th='http-nio-8080-exec-5', xff='', rId='3c4f9254-c5ab-4d61-a9aa-6c9253edb6b7', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:32:55.362325 #89586]  INFO -- KillBillClient: Response code='200', reason='OK', latency='14.3'
+
+2018-07-19T09:32:55,369+0000 lvl='INFO', log='', th='http-nio-8080-exec-5', xff='', rId='', aId='', tId='', I, [2018-07-19T11:32:55.369265 #89586]  INFO -- : Completed 200 OK in 86ms (Views: 1.3ms | ActiveRecord: 6.0ms)
+
+2018-07-19T09:33:37,674+0000 lvl='INFO', log='', th='http-nio-8080-exec-3', xff='', rId='', aId='', tId='', I, [2018-07-19T11:33:37.674676 #89586]  INFO -- : Started GET "/kaui/admin_tenants" for 127.0.0.1 at 2018-07-19 11:33:37 +0200
+
+2018-07-19T09:33:37,686+0000 lvl='INFO', log='', th='http-nio-8080-exec-3', xff='', rId='', aId='', tId='', I, [2018-07-19T11:33:37.686146 #89586]  INFO -- : Processing by Kaui::AdminTenantsController#index as HTML
+
+2018-07-19T09:33:37,707+0000 lvl='INFO', log='admin_tenants#index', th='http-nio-8080-exec-3', xff='', rId='c7b8eb96-bd2a-411e-a862-aa93eac5d9c6', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:33:37.707271 #89586]  INFO -- KillBillClient: Request method='GET', uri='http://127.0.0.1:8080/1.0/kb/security/subject'
+
+2018-07-19T09:33:37,719+0000 lvl='INFO', log='admin_tenants#index', th='http-nio-8080-exec-3', xff='', rId='c7b8eb96-bd2a-411e-a862-aa93eac5d9c6', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:33:37.719140 #89586]  INFO -- KillBillClient: Response code='200', reason='OK', latency='10.5'
+
+2018-07-19T09:33:37,742+0000 lvl='INFO', log='admin_tenants#index', th='http-nio-8080-exec-3', xff='', rId='c7b8eb96-bd2a-411e-a862-aa93eac5d9c6', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:33:37.742041 #89586]  INFO -- :   Rendering gems/gems/kaui-0.16.2/app/views/kaui/admin_tenants/index.html.erb within kaui/layouts/kaui_application
+
+2018-07-19T09:33:37,747+0000 lvl='INFO', log='admin_tenants#index', th='http-nio-8080-exec-3', xff='', rId='c7b8eb96-bd2a-411e-a862-aa93eac5d9c6', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:33:37.747022 #89586]  INFO -- KillBillClient: Request method='GET', uri='http://127.0.0.1:8080/1.0/kb/security/permissions'
+
+2018-07-19T09:33:37,764+0000 lvl='INFO', log='admin_tenants#index', th='http-nio-8080-exec-3', xff='', rId='c7b8eb96-bd2a-411e-a862-aa93eac5d9c6', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:33:37.763858 #89586]  INFO -- KillBillClient: Response code='200', reason='OK', latency='15.0'
+
+2018-07-19T09:33:37,807+0000 lvl='INFO', log='admin_tenants#index', th='http-nio-8080-exec-3', xff='', rId='c7b8eb96-bd2a-411e-a862-aa93eac5d9c6', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:33:37.806911 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/admin_tenants/_tenants_table.html.erb (26.6ms)
+
+2018-07-19T09:33:37,808+0000 lvl='INFO', log='admin_tenants#index', th='http-nio-8080-exec-3', xff='', rId='c7b8eb96-bd2a-411e-a862-aa93eac5d9c6', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:33:37.807916 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/admin_tenants/index.html.erb within kaui/layouts/kaui_application (65.1ms)
+
+2018-07-19T09:33:37,809+0000 lvl='INFO', log='admin_tenants#index', th='http-nio-8080-exec-3', xff='', rId='c7b8eb96-bd2a-411e-a862-aa93eac5d9c6', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:33:37.809723 #89586]  INFO -- :   Rendering gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_header.html.erb
+
+2018-07-19T09:33:37,819+0000 lvl='INFO', log='admin_tenants#index', th='http-nio-8080-exec-3', xff='', rId='c7b8eb96-bd2a-411e-a862-aa93eac5d9c6', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:33:37.818891 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_header.html.erb (8.4ms)
+
+2018-07-19T09:33:37,820+0000 lvl='INFO', log='admin_tenants#index', th='http-nio-8080-exec-3', xff='', rId='c7b8eb96-bd2a-411e-a862-aa93eac5d9c6', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:33:37.820640 #89586]  INFO -- :   Rendering gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_navbar.html.erb
+
+2018-07-19T09:33:37,863+0000 lvl='INFO', log='admin_tenants#index', th='http-nio-8080-exec-3', xff='', rId='c7b8eb96-bd2a-411e-a862-aa93eac5d9c6', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:33:37.863326 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_navbar.html.erb (41.5ms)
+
+2018-07-19T09:33:37,866+0000 lvl='INFO', log='admin_tenants#index', th='http-nio-8080-exec-3', xff='', rId='c7b8eb96-bd2a-411e-a862-aa93eac5d9c6', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:33:37.865736 #89586]  INFO -- :   Rendering gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_flash.html.erb
+
+2018-07-19T09:33:37,869+0000 lvl='INFO', log='admin_tenants#index', th='http-nio-8080-exec-3', xff='', rId='c7b8eb96-bd2a-411e-a862-aa93eac5d9c6', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:33:37.868890 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_flash.html.erb (2.4ms)
+
+2018-07-19T09:33:37,870+0000 lvl='INFO', log='admin_tenants#index', th='http-nio-8080-exec-3', xff='', rId='c7b8eb96-bd2a-411e-a862-aa93eac5d9c6', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:33:37.870716 #89586]  INFO -- :   Rendering gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_footer.html.erb
+
+2018-07-19T09:33:37,871+0000 lvl='INFO', log='admin_tenants#index', th='http-nio-8080-exec-3', xff='', rId='c7b8eb96-bd2a-411e-a862-aa93eac5d9c6', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:33:37.871641 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_footer.html.erb (0.3ms)
+
+2018-07-19T09:33:37,874+0000 lvl='INFO', log='', th='http-nio-8080-exec-3', xff='', rId='', aId='', tId='', I, [2018-07-19T11:33:37.873973 #89586]  INFO -- : Completed 200 OK in 187ms (Views: 136.0ms | ActiveRecord: 3.2ms)
+
+2018-07-19T09:33:37,923+0000 lvl='INFO', log='', th='http-nio-8080-exec-6', xff='', rId='', aId='', tId='', I, [2018-07-19T11:33:37.923125 #89586]  INFO -- : Started GET "/kaui/main/available_engines.json" for 127.0.0.1 at 2018-07-19 11:33:37 +0200
+
+2018-07-19T09:33:37,937+0000 lvl='INFO', log='', th='http-nio-8080-exec-6', xff='', rId='', aId='', tId='', I, [2018-07-19T11:33:37.937652 #89586]  INFO -- : Processing by MainController#available_engines as JSON
+
+2018-07-19T09:33:37,938+0000 lvl='INFO', log='', th='http-nio-8080-exec-6', xff='', rId='', aId='', tId='', I, [2018-07-19T11:33:37.938233 #89586]  INFO -- :   Parameters: {"main"=>{}}
+
+2018-07-19T09:33:37,960+0000 lvl='INFO', log='main#available_engines', th='http-nio-8080-exec-6', xff='', rId='d460c74c-4885-464a-a596-77c752890c50', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:33:37.959742 #89586]  INFO -- KillBillClient: Request method='GET', uri='http://127.0.0.1:8080/1.0/kb/security/subject'
+
+2018-07-19T09:33:37,974+0000 lvl='INFO', log='main#available_engines', th='http-nio-8080-exec-6', xff='', rId='d460c74c-4885-464a-a596-77c752890c50', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:33:37.974615 #89586]  INFO -- KillBillClient: Response code='200', reason='OK', latency='12.8'
+
+2018-07-19T09:33:38,010+0000 lvl='INFO', log='main#available_engines', th='http-nio-8080-exec-6', xff='', rId='d460c74c-4885-464a-a596-77c752890c50', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:33:38.010362 #89586]  INFO -- : Redirected to http://127.0.0.1:8080/kaui/tenants
+
+2018-07-19T09:33:38,011+0000 lvl='INFO', log='main#available_engines', th='http-nio-8080-exec-6', xff='', rId='d460c74c-4885-464a-a596-77c752890c50', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:33:38.011616 #89586]  INFO -- : Filter chain halted as :check_for_redirect_to_tenant_screen rendered or redirected
+
+2018-07-19T09:33:38,013+0000 lvl='INFO', log='main#available_engines', th='http-nio-8080-exec-6', xff='', rId='d460c74c-4885-464a-a596-77c752890c50', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:33:38.013090 #89586]  INFO -- : Completed 302 Found in 74ms (ActiveRecord: 4.9ms)
+
+2018-07-19T09:33:38,027+0000 lvl='INFO', log='', th='http-nio-8080-exec-2', xff='', rId='', aId='', tId='', I, [2018-07-19T11:33:38.026846 #89586]  INFO -- : Started GET "/kaui/tenants" for 127.0.0.1 at 2018-07-19 11:33:38 +0200
+
+2018-07-19T09:33:38,038+0000 lvl='INFO', log='', th='http-nio-8080-exec-2', xff='', rId='', aId='', tId='', I, [2018-07-19T11:33:38.037780 #89586]  INFO -- : Processing by Kaui::TenantsController#index as JSON
+
+2018-07-19T09:33:38,038+0000 lvl='INFO', log='', th='http-nio-8080-exec-2', xff='', rId='', aId='', tId='', I, [2018-07-19T11:33:38.038510 #89586]  INFO -- :   Parameters: {"tenant"=>{}}
+
+2018-07-19T09:33:38,057+0000 lvl='INFO', log='tenants#index', th='http-nio-8080-exec-2', xff='', rId='efffe713-f1fe-4922-87fb-39eddd911ce1', aId='', tId='', I, [2018-07-19T11:33:38.057479 #89586]  INFO -- KillBillClient: Request method='GET', uri='http://127.0.0.1:8080/1.0/kb/security/subject'
+
+2018-07-19T09:33:38,073+0000 lvl='INFO', log='tenants#index', th='http-nio-8080-exec-2', xff='', rId='efffe713-f1fe-4922-87fb-39eddd911ce1', aId='', tId='', I, [2018-07-19T11:33:38.073468 #89586]  INFO -- KillBillClient: Response code='200', reason='OK', latency='14.6'
+
+2018-07-19T09:33:38,107+0000 lvl='INFO', log='tenants#index', th='http-nio-8080-exec-2', xff='', rId='efffe713-f1fe-4922-87fb-39eddd911ce1', aId='', tId='', I, [2018-07-19T11:33:38.106840 #89586]  INFO -- :   Rendering gems/gems/kaui-0.16.2/app/views/kaui/tenants/index.html.erb within kaui/layouts/kaui_application
+
+2018-07-19T09:33:38,133+0000 lvl='INFO', log='tenants#index', th='http-nio-8080-exec-2', xff='', rId='efffe713-f1fe-4922-87fb-39eddd911ce1', aId='', tId='', I, [2018-07-19T11:33:38.133222 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/tenants/_form.html.erb (24.3ms)
+
+2018-07-19T09:33:38,134+0000 lvl='INFO', log='tenants#index', th='http-nio-8080-exec-2', xff='', rId='efffe713-f1fe-4922-87fb-39eddd911ce1', aId='', tId='', I, [2018-07-19T11:33:38.133929 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/tenants/index.html.erb within kaui/layouts/kaui_application (26.5ms)
+
+2018-07-19T09:33:38,137+0000 lvl='INFO', log='tenants#index', th='http-nio-8080-exec-2', xff='', rId='efffe713-f1fe-4922-87fb-39eddd911ce1', aId='', tId='', I, [2018-07-19T11:33:38.136900 #89586]  INFO -- :   Rendering gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_header.html.erb
+
+2018-07-19T09:33:38,145+0000 lvl='INFO', log='tenants#index', th='http-nio-8080-exec-2', xff='', rId='efffe713-f1fe-4922-87fb-39eddd911ce1', aId='', tId='', I, [2018-07-19T11:33:38.145093 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_header.html.erb (7.5ms)
+
+2018-07-19T09:33:38,146+0000 lvl='INFO', log='tenants#index', th='http-nio-8080-exec-2', xff='', rId='efffe713-f1fe-4922-87fb-39eddd911ce1', aId='', tId='', I, [2018-07-19T11:33:38.146532 #89586]  INFO -- :   Rendering gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_navbar.html.erb
+
+2018-07-19T09:33:38,157+0000 lvl='INFO', log='tenants#index', th='http-nio-8080-exec-2', xff='', rId='efffe713-f1fe-4922-87fb-39eddd911ce1', aId='', tId='', I, [2018-07-19T11:33:38.157133 #89586]  INFO -- KillBillClient: Request method='GET', uri='http://127.0.0.1:8080/1.0/kb/security/permissions'
+
+2018-07-19T09:33:38,171+0000 lvl='INFO', log='tenants#index', th='http-nio-8080-exec-2', xff='', rId='efffe713-f1fe-4922-87fb-39eddd911ce1', aId='', tId='', I, [2018-07-19T11:33:38.171582 #89586]  INFO -- KillBillClient: Response code='200', reason='OK', latency='13.0'
+
+2018-07-19T09:33:38,192+0000 lvl='INFO', log='tenants#index', th='http-nio-8080-exec-2', xff='', rId='efffe713-f1fe-4922-87fb-39eddd911ce1', aId='', tId='', I, [2018-07-19T11:33:38.192050 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_navbar.html.erb (44.3ms)
+
+2018-07-19T09:33:38,195+0000 lvl='INFO', log='tenants#index', th='http-nio-8080-exec-2', xff='', rId='efffe713-f1fe-4922-87fb-39eddd911ce1', aId='', tId='', I, [2018-07-19T11:33:38.195033 #89586]  INFO -- :   Rendering gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_flash.html.erb
+
+2018-07-19T09:33:38,196+0000 lvl='INFO', log='tenants#index', th='http-nio-8080-exec-2', xff='', rId='efffe713-f1fe-4922-87fb-39eddd911ce1', aId='', tId='', I, [2018-07-19T11:33:38.196700 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_flash.html.erb (0.9ms)
+
+2018-07-19T09:33:38,198+0000 lvl='INFO', log='tenants#index', th='http-nio-8080-exec-2', xff='', rId='efffe713-f1fe-4922-87fb-39eddd911ce1', aId='', tId='', I, [2018-07-19T11:33:38.198282 #89586]  INFO -- :   Rendering gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_footer.html.erb
+
+2018-07-19T09:33:38,199+0000 lvl='INFO', log='tenants#index', th='http-nio-8080-exec-2', xff='', rId='efffe713-f1fe-4922-87fb-39eddd911ce1', aId='', tId='', I, [2018-07-19T11:33:38.199254 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_footer.html.erb (0.3ms)
+
+2018-07-19T09:33:38,200+0000 lvl='INFO', log='', th='http-nio-8080-exec-2', xff='', rId='', aId='', tId='', I, [2018-07-19T11:33:38.200661 #89586]  INFO -- : Completed 200 OK in 161ms (Views: 93.5ms | ActiveRecord: 6.3ms)
+
+2018-07-19T09:33:40,599+0000 lvl='INFO', log='', th='http-nio-8080-exec-3', xff='', rId='', aId='', tId='', I, [2018-07-19T11:33:40.599308 #89586]  INFO -- : Started GET "/kaui/admin_tenants/new" for 127.0.0.1 at 2018-07-19 11:33:40 +0200
+
+2018-07-19T09:33:40,611+0000 lvl='INFO', log='', th='http-nio-8080-exec-3', xff='', rId='', aId='', tId='', I, [2018-07-19T11:33:40.611172 #89586]  INFO -- : Processing by Kaui::AdminTenantsController#new as HTML
+
+2018-07-19T09:33:40,626+0000 lvl='INFO', log='admin_tenants#new', th='http-nio-8080-exec-3', xff='', rId='02b869af-1b71-41e9-ba54-b6f3dbf7b497', aId='', tId='', I, [2018-07-19T11:33:40.625792 #89586]  INFO -- KillBillClient: Request method='GET', uri='http://127.0.0.1:8080/1.0/kb/security/subject'
+
+2018-07-19T09:33:40,639+0000 lvl='INFO', log='admin_tenants#new', th='http-nio-8080-exec-3', xff='', rId='02b869af-1b71-41e9-ba54-b6f3dbf7b497', aId='', tId='', I, [2018-07-19T11:33:40.639089 #89586]  INFO -- KillBillClient: Response code='200', reason='OK', latency='12.5'
+
+2018-07-19T09:33:40,648+0000 lvl='INFO', log='admin_tenants#new', th='http-nio-8080-exec-3', xff='', rId='02b869af-1b71-41e9-ba54-b6f3dbf7b497', aId='', tId='', I, [2018-07-19T11:33:40.648524 #89586]  INFO -- :   Rendering gems/gems/kaui-0.16.2/app/views/kaui/admin_tenants/new.html.erb within kaui/layouts/kaui_application
+
+2018-07-19T09:33:40,657+0000 lvl='INFO', log='admin_tenants#new', th='http-nio-8080-exec-3', xff='', rId='02b869af-1b71-41e9-ba54-b6f3dbf7b497', aId='', tId='', I, [2018-07-19T11:33:40.657444 #89586]  INFO -- KillBillClient: Request method='GET', uri='http://127.0.0.1:8080/1.0/kb/security/permissions'
+
+2018-07-19T09:33:40,672+0000 lvl='INFO', log='admin_tenants#new', th='http-nio-8080-exec-3', xff='', rId='02b869af-1b71-41e9-ba54-b6f3dbf7b497', aId='', tId='', I, [2018-07-19T11:33:40.672504 #89586]  INFO -- KillBillClient: Response code='200', reason='OK', latency='13.1'
+
+2018-07-19T09:33:40,696+0000 lvl='INFO', log='admin_tenants#new', th='http-nio-8080-exec-3', xff='', rId='02b869af-1b71-41e9-ba54-b6f3dbf7b497', aId='', tId='', I, [2018-07-19T11:33:40.696767 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/admin_tenants/_form.html.erb (14.4ms)
+
+2018-07-19T09:33:40,697+0000 lvl='INFO', log='admin_tenants#new', th='http-nio-8080-exec-3', xff='', rId='02b869af-1b71-41e9-ba54-b6f3dbf7b497', aId='', tId='', I, [2018-07-19T11:33:40.697418 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/admin_tenants/new.html.erb within kaui/layouts/kaui_application (48.3ms)
+
+2018-07-19T09:33:40,699+0000 lvl='INFO', log='admin_tenants#new', th='http-nio-8080-exec-3', xff='', rId='02b869af-1b71-41e9-ba54-b6f3dbf7b497', aId='', tId='', I, [2018-07-19T11:33:40.698776 #89586]  INFO -- :   Rendering gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_header.html.erb
+
+2018-07-19T09:33:40,706+0000 lvl='INFO', log='admin_tenants#new', th='http-nio-8080-exec-3', xff='', rId='02b869af-1b71-41e9-ba54-b6f3dbf7b497', aId='', tId='', I, [2018-07-19T11:33:40.705840 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_header.html.erb (6.4ms)
+
+2018-07-19T09:33:40,707+0000 lvl='INFO', log='admin_tenants#new', th='http-nio-8080-exec-3', xff='', rId='02b869af-1b71-41e9-ba54-b6f3dbf7b497', aId='', tId='', I, [2018-07-19T11:33:40.707111 #89586]  INFO -- :   Rendering gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_navbar.html.erb
+
+2018-07-19T09:33:40,728+0000 lvl='INFO', log='admin_tenants#new', th='http-nio-8080-exec-3', xff='', rId='02b869af-1b71-41e9-ba54-b6f3dbf7b497', aId='', tId='', I, [2018-07-19T11:33:40.727931 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_navbar.html.erb (20.1ms)
+
+2018-07-19T09:33:40,729+0000 lvl='INFO', log='admin_tenants#new', th='http-nio-8080-exec-3', xff='', rId='02b869af-1b71-41e9-ba54-b6f3dbf7b497', aId='', tId='', I, [2018-07-19T11:33:40.729521 #89586]  INFO -- :   Rendering gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_flash.html.erb
+
+2018-07-19T09:33:40,730+0000 lvl='INFO', log='admin_tenants#new', th='http-nio-8080-exec-3', xff='', rId='02b869af-1b71-41e9-ba54-b6f3dbf7b497', aId='', tId='', I, [2018-07-19T11:33:40.730601 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_flash.html.erb (0.5ms)
+
+2018-07-19T09:33:40,732+0000 lvl='INFO', log='admin_tenants#new', th='http-nio-8080-exec-3', xff='', rId='02b869af-1b71-41e9-ba54-b6f3dbf7b497', aId='', tId='', I, [2018-07-19T11:33:40.732076 #89586]  INFO -- :   Rendering gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_footer.html.erb
+
+2018-07-19T09:33:40,733+0000 lvl='INFO', log='admin_tenants#new', th='http-nio-8080-exec-3', xff='', rId='02b869af-1b71-41e9-ba54-b6f3dbf7b497', aId='', tId='', I, [2018-07-19T11:33:40.732870 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_footer.html.erb (0.2ms)
+
+2018-07-19T09:33:40,736+0000 lvl='INFO', log='', th='http-nio-8080-exec-3', xff='', rId='', aId='', tId='', I, [2018-07-19T11:33:40.735961 #89586]  INFO -- : Completed 200 OK in 124ms (Views: 89.2ms | ActiveRecord: 1.1ms)
+
+2018-07-19T09:33:41,833+0000 lvl='INFO', log='home#index', th='http-nio-8080-exec-10', xff='', rId='303b752e-9823-4399-8dc3-16a4672de467', aId='', tId='', I, [2018-07-19T11:33:41.833605 #89586]  INFO -- : Started GET "/kaui/main/available_engines.json" for 127.0.0.1 at 2018-07-19 11:33:41 +0200
+
+2018-07-19T09:33:41,865+0000 lvl='INFO', log='home#index', th='http-nio-8080-exec-10', xff='', rId='303b752e-9823-4399-8dc3-16a4672de467', aId='', tId='', I, [2018-07-19T11:33:41.865585 #89586]  INFO -- : Processing by MainController#available_engines as JSON
+
+2018-07-19T09:33:41,866+0000 lvl='INFO', log='home#index', th='http-nio-8080-exec-10', xff='', rId='303b752e-9823-4399-8dc3-16a4672de467', aId='', tId='', I, [2018-07-19T11:33:41.866559 #89586]  INFO -- :   Parameters: {"main"=>{}}
+
+2018-07-19T09:33:41,907+0000 lvl='INFO', log='main#available_engines', th='http-nio-8080-exec-10', xff='', rId='a0cd4778-92e2-4dbf-9152-c68895a72c05', aId='', tId='', I, [2018-07-19T11:33:41.906847 #89586]  INFO -- KillBillClient: Request method='GET', uri='http://127.0.0.1:8080/1.0/kb/security/subject'
+
+2018-07-19T09:33:41,921+0000 lvl='INFO', log='main#available_engines', th='http-nio-8080-exec-10', xff='', rId='a0cd4778-92e2-4dbf-9152-c68895a72c05', aId='', tId='', I, [2018-07-19T11:33:41.920911 #89586]  INFO -- KillBillClient: Response code='200', reason='OK', latency='12.8'
+
+2018-07-19T09:33:41,926+0000 lvl='INFO', log='main#available_engines', th='http-nio-8080-exec-10', xff='', rId='a0cd4778-92e2-4dbf-9152-c68895a72c05', aId='', tId='', I, [2018-07-19T11:33:41.925949 #89586]  INFO -- : Redirected to http://127.0.0.1:8080/kaui/tenants
+
+2018-07-19T09:33:41,926+0000 lvl='INFO', log='main#available_engines', th='http-nio-8080-exec-10', xff='', rId='a0cd4778-92e2-4dbf-9152-c68895a72c05', aId='', tId='', I, [2018-07-19T11:33:41.926526 #89586]  INFO -- : Filter chain halted as :check_for_redirect_to_tenant_screen rendered or redirected
+
+2018-07-19T09:33:41,927+0000 lvl='INFO', log='main#available_engines', th='http-nio-8080-exec-10', xff='', rId='a0cd4778-92e2-4dbf-9152-c68895a72c05', aId='', tId='', I, [2018-07-19T11:33:41.927234 #89586]  INFO -- : Completed 302 Found in 60ms (ActiveRecord: 1.0ms)
+
+2018-07-19T09:33:41,947+0000 lvl='INFO', log='', th='http-nio-8080-exec-8', xff='', rId='', aId='', tId='', I, [2018-07-19T11:33:41.947547 #89586]  INFO -- : Started GET "/kaui/tenants" for 127.0.0.1 at 2018-07-19 11:33:41 +0200
+
+2018-07-19T09:33:41,966+0000 lvl='INFO', log='', th='http-nio-8080-exec-8', xff='', rId='', aId='', tId='', I, [2018-07-19T11:33:41.966768 #89586]  INFO -- : Processing by Kaui::TenantsController#index as JSON
+
+2018-07-19T09:33:41,967+0000 lvl='INFO', log='', th='http-nio-8080-exec-8', xff='', rId='', aId='', tId='', I, [2018-07-19T11:33:41.967224 #89586]  INFO -- :   Parameters: {"tenant"=>{}}
+
+2018-07-19T09:33:41,985+0000 lvl='INFO', log='tenants#index', th='http-nio-8080-exec-8', xff='', rId='08795359-445c-4885-9183-351e19f7e619', aId='', tId='', I, [2018-07-19T11:33:41.984962 #89586]  INFO -- KillBillClient: Request method='GET', uri='http://127.0.0.1:8080/1.0/kb/security/subject'
+
+2018-07-19T09:33:41,997+0000 lvl='INFO', log='tenants#index', th='http-nio-8080-exec-8', xff='', rId='08795359-445c-4885-9183-351e19f7e619', aId='', tId='', I, [2018-07-19T11:33:41.997273 #89586]  INFO -- KillBillClient: Response code='200', reason='OK', latency='11.0'
+
+2018-07-19T09:33:42,030+0000 lvl='INFO', log='tenants#index', th='http-nio-8080-exec-8', xff='', rId='08795359-445c-4885-9183-351e19f7e619', aId='', tId='', I, [2018-07-19T11:33:42.030687 #89586]  INFO -- :   Rendering gems/gems/kaui-0.16.2/app/views/kaui/tenants/index.html.erb within kaui/layouts/kaui_application
+
+2018-07-19T09:33:42,059+0000 lvl='INFO', log='tenants#index', th='http-nio-8080-exec-8', xff='', rId='08795359-445c-4885-9183-351e19f7e619', aId='', tId='', I, [2018-07-19T11:33:42.059446 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/tenants/_form.html.erb (27.0ms)
+
+2018-07-19T09:33:42,060+0000 lvl='INFO', log='tenants#index', th='http-nio-8080-exec-8', xff='', rId='08795359-445c-4885-9183-351e19f7e619', aId='', tId='', I, [2018-07-19T11:33:42.060065 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/tenants/index.html.erb within kaui/layouts/kaui_application (28.8ms)
+
+2018-07-19T09:33:42,065+0000 lvl='INFO', log='tenants#index', th='http-nio-8080-exec-8', xff='', rId='08795359-445c-4885-9183-351e19f7e619', aId='', tId='', I, [2018-07-19T11:33:42.065755 #89586]  INFO -- :   Rendering gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_header.html.erb
+
+2018-07-19T09:33:42,073+0000 lvl='INFO', log='tenants#index', th='http-nio-8080-exec-8', xff='', rId='08795359-445c-4885-9183-351e19f7e619', aId='', tId='', I, [2018-07-19T11:33:42.072991 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_header.html.erb (6.6ms)
+
+2018-07-19T09:33:42,074+0000 lvl='INFO', log='tenants#index', th='http-nio-8080-exec-8', xff='', rId='08795359-445c-4885-9183-351e19f7e619', aId='', tId='', I, [2018-07-19T11:33:42.074641 #89586]  INFO -- :   Rendering gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_navbar.html.erb
+
+2018-07-19T09:33:42,088+0000 lvl='INFO', log='tenants#index', th='http-nio-8080-exec-8', xff='', rId='08795359-445c-4885-9183-351e19f7e619', aId='', tId='', I, [2018-07-19T11:33:42.088604 #89586]  INFO -- KillBillClient: Request method='GET', uri='http://127.0.0.1:8080/1.0/kb/security/permissions'
+
+2018-07-19T09:33:42,101+0000 lvl='INFO', log='tenants#index', th='http-nio-8080-exec-8', xff='', rId='08795359-445c-4885-9183-351e19f7e619', aId='', tId='', I, [2018-07-19T11:33:42.101501 #89586]  INFO -- KillBillClient: Response code='200', reason='OK', latency='11.0'
+
+2018-07-19T09:33:42,125+0000 lvl='INFO', log='tenants#index', th='http-nio-8080-exec-8', xff='', rId='08795359-445c-4885-9183-351e19f7e619', aId='', tId='', I, [2018-07-19T11:33:42.124755 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_navbar.html.erb (47.6ms)
+
+2018-07-19T09:33:42,126+0000 lvl='INFO', log='tenants#index', th='http-nio-8080-exec-8', xff='', rId='08795359-445c-4885-9183-351e19f7e619', aId='', tId='', I, [2018-07-19T11:33:42.126173 #89586]  INFO -- :   Rendering gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_flash.html.erb
+
+2018-07-19T09:33:42,127+0000 lvl='INFO', log='tenants#index', th='http-nio-8080-exec-8', xff='', rId='08795359-445c-4885-9183-351e19f7e619', aId='', tId='', I, [2018-07-19T11:33:42.127433 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_flash.html.erb (0.5ms)
+
+2018-07-19T09:33:42,128+0000 lvl='INFO', log='tenants#index', th='http-nio-8080-exec-8', xff='', rId='08795359-445c-4885-9183-351e19f7e619', aId='', tId='', I, [2018-07-19T11:33:42.128657 #89586]  INFO -- :   Rendering gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_footer.html.erb
+
+2018-07-19T09:33:42,129+0000 lvl='INFO', log='tenants#index', th='http-nio-8080-exec-8', xff='', rId='08795359-445c-4885-9183-351e19f7e619', aId='', tId='', I, [2018-07-19T11:33:42.129401 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_footer.html.erb (0.2ms)
+
+2018-07-19T09:33:42,130+0000 lvl='INFO', log='', th='http-nio-8080-exec-8', xff='', rId='', aId='', tId='', I, [2018-07-19T11:33:42.130788 #89586]  INFO -- : Completed 200 OK in 163ms (Views: 102.1ms | ActiveRecord: 7.8ms)
+
+2018-07-19T09:33:49,238+0000 lvl='INFO', log='', th='http-nio-8080-exec-5', xff='', rId='', aId='', tId='', I, [2018-07-19T11:33:49.238017 #89586]  INFO -- : Started POST "/kaui/admin_tenants" for 127.0.0.1 at 2018-07-19 11:33:49 +0200
+
+2018-07-19T09:33:49,248+0000 lvl='INFO', log='', th='http-nio-8080-exec-5', xff='', rId='', aId='', tId='', I, [2018-07-19T11:33:49.248576 #89586]  INFO -- : Processing by Kaui::AdminTenantsController#create as HTML
+
+2018-07-19T09:33:49,249+0000 lvl='INFO', log='', th='http-nio-8080-exec-5', xff='', rId='', aId='', tId='', I, [2018-07-19T11:33:49.249149 #89586]  INFO -- :   Parameters: {"utf8"=>"✓", "authenticity_token"=>"W61B54YeYO0IwXZuhVG/kZp0/6bcB1m5povYfyTOSSIOmOoOchQsFTD0EYwoG5agMc+IfLExfGHxN60sApb+nA==", "tenant"=>{"name"=>"cartwheel", "api_key"=>"cartwheel", "api_secret"=>"secret"}, "commit"=>"Save"}
+
+2018-07-19T09:33:49,286+0000 lvl='INFO', log='admin_tenants#create', th='http-nio-8080-exec-5', xff='', rId='886808c5-7e03-412e-aa01-7dd1e4df1380', aId='', tId='', I, [2018-07-19T11:33:49.286238 #89586]  INFO -- KillBillClient: Request method='GET', uri='http://127.0.0.1:8080/1.0/kb/security/subject'
+
+2018-07-19T09:33:49,301+0000 lvl='INFO', log='admin_tenants#create', th='http-nio-8080-exec-5', xff='', rId='886808c5-7e03-412e-aa01-7dd1e4df1380', aId='', tId='', I, [2018-07-19T11:33:49.300846 #89586]  INFO -- KillBillClient: Response code='200', reason='OK', latency='12.2'
+
+2018-07-19T09:33:49,330+0000 lvl='INFO', log='admin_tenants#create', th='http-nio-8080-exec-5', xff='', rId='886808c5-7e03-412e-aa01-7dd1e4df1380', aId='', tId='', I, [2018-07-19T11:33:49.329967 #89586]  INFO -- KillBillClient: Request method='GET', uri='http://127.0.0.1:8080/1.0/kb/tenants/?apiKey=cartwheel'
+
+2018-07-19T09:33:49,340+0000 lvl='INFO', log='admin_tenants#create', th='http-nio-8080-exec-5', xff='', rId='886808c5-7e03-412e-aa01-7dd1e4df1380', aId='', tId='', E, [2018-07-19T11:33:49.340533 #89586] ERROR -- KillBillClient: Response code='401', reason='Unauthorized', latency='9.4'
+
+2018-07-19T09:33:49,348+0000 lvl='INFO', log='admin_tenants#create', th='http-nio-8080-exec-5', xff='', rId='886808c5-7e03-412e-aa01-7dd1e4df1380', aId='', tId='', I, [2018-07-19T11:33:49.348168 #89586]  INFO -- KillBillClient: Request method='POST', uri='http://127.0.0.1:8080/1.0/kb/tenants?useGlobalDefault=false'
+
+2018-07-19T09:33:49,792+0000 lvl='INFO', log='admin_tenants#create', th='http-nio-8080-exec-5', xff='', rId='886808c5-7e03-412e-aa01-7dd1e4df1380', aId='', tId='', I, [2018-07-19T11:33:49.792362 #89586]  INFO -- KillBillClient: Response code='201', reason='Created', latency='443.0'
+
+2018-07-19T09:33:49,794+0000 lvl='INFO', log='admin_tenants#create', th='http-nio-8080-exec-5', xff='', rId='886808c5-7e03-412e-aa01-7dd1e4df1380', aId='', tId='', I, [2018-07-19T11:33:49.794529 #89586]  INFO -- KillBillClient: Request method='GET', uri='http://127.0.0.1:8080/1.0/kb/tenants/f3dacf1e-7d5f-4243-a20f-2451ee6a1fb9'
+
+2018-07-19T09:33:49,963+0000 lvl='INFO', log='admin_tenants#create', th='http-nio-8080-exec-5', xff='', rId='886808c5-7e03-412e-aa01-7dd1e4df1380', aId='', tId='', I, [2018-07-19T11:33:49.963256 #89586]  INFO -- KillBillClient: Response code='200', reason='OK', latency='167.7'
+
+2018-07-19T09:33:50,072+0000 lvl='INFO', log='admin_tenants#create', th='http-nio-8080-exec-5', xff='', rId='886808c5-7e03-412e-aa01-7dd1e4df1380', aId='', tId='', I, [2018-07-19T11:33:50.071986 #89586]  INFO -- : Redirected to http://127.0.0.1:8080/kaui/admin_tenants/18
+
+2018-07-19T09:33:50,073+0000 lvl='INFO', log='', th='http-nio-8080-exec-5', xff='', rId='', aId='', tId='', I, [2018-07-19T11:33:50.073122 #89586]  INFO -- : Completed 302 Found in 823ms (ActiveRecord: 16.0ms)
+
+2018-07-19T09:33:50,086+0000 lvl='INFO', log='', th='http-nio-8080-exec-8', xff='', rId='', aId='', tId='', I, [2018-07-19T11:33:50.085936 #89586]  INFO -- : Started GET "/kaui/admin_tenants/18" for 127.0.0.1 at 2018-07-19 11:33:50 +0200
+
+2018-07-19T09:33:50,093+0000 lvl='INFO', log='', th='http-nio-8080-exec-8', xff='', rId='', aId='', tId='', I, [2018-07-19T11:33:50.093679 #89586]  INFO -- : Processing by Kaui::AdminTenantsController#show as HTML
+
+2018-07-19T09:33:50,094+0000 lvl='INFO', log='', th='http-nio-8080-exec-8', xff='', rId='', aId='', tId='', I, [2018-07-19T11:33:50.094184 #89586]  INFO -- :   Parameters: {"id"=>"18"}
+
+2018-07-19T09:33:50,106+0000 lvl='INFO', log='admin_tenants#show', th='http-nio-8080-exec-8', xff='', rId='b6133650-8e85-40e4-abe2-32c750ea0fc4', aId='', tId='f3dacf1e-7d5f-4243-a20f-2451ee6a1fb9', I, [2018-07-19T11:33:50.105808 #89586]  INFO -- KillBillClient: Request method='GET', uri='http://127.0.0.1:8080/1.0/kb/security/subject'
+
+2018-07-19T09:33:50,117+0000 lvl='INFO', log='admin_tenants#show', th='http-nio-8080-exec-8', xff='', rId='b6133650-8e85-40e4-abe2-32c750ea0fc4', aId='', tId='f3dacf1e-7d5f-4243-a20f-2451ee6a1fb9', I, [2018-07-19T11:33:50.116760 #89586]  INFO -- KillBillClient: Response code='200', reason='OK', latency='9.6'
+
+2018-07-19T09:33:50,228+0000 lvl='INFO', log='', th='pool-2-thread-7', xff='', rId='', aId='', tId='', I, [2018-07-19T11:33:50.227872 #89586]  INFO -- KillBillClient: Request method='GET', uri='http://127.0.0.1:8080/1.0/kb/catalog'
+
+2018-07-19T09:33:50,229+0000 lvl='INFO', log='', th='pool-2-thread-8', xff='', rId='', aId='', tId='', I, [2018-07-19T11:33:50.229303 #89586]  INFO -- KillBillClient: Request method='GET', uri='http://127.0.0.1:8080/1.0/kb/catalog'
+
+2018-07-19T09:33:50,231+0000 lvl='INFO', log='', th='pool-2-thread-9', xff='', rId='', aId='', tId='', I, [2018-07-19T11:33:50.231069 #89586]  INFO -- KillBillClient: Request method='GET', uri='http://127.0.0.1:8080/1.0/kb/overdue'
+
+2018-07-19T09:33:50,231+0000 lvl='INFO', log='', th='pool-2-thread-10', xff='', rId='', aId='', tId='', I, [2018-07-19T11:33:50.231247 #89586]  INFO -- KillBillClient: Request method='GET', uri='http://127.0.0.1:8080/1.0/kb/overdue'
+
+2018-07-19T09:33:50,481+0000 lvl='INFO', log='', th='pool-2-thread-10', xff='', rId='', aId='', tId='', I, [2018-07-19T11:33:50.481568 #89586]  INFO -- KillBillClient: Response code='200', reason='OK', latency='248.9'
+
+2018-07-19T09:33:50,501+0000 lvl='INFO', log='', th='pool-2-thread-9', xff='', rId='', aId='', tId='', I, [2018-07-19T11:33:50.501423 #89586]  INFO -- KillBillClient: Response code='200', reason='OK', latency='269.2'
+
+2018-07-19T09:33:50,555+0000 lvl='INFO', log='', th='pool-2-thread-7', xff='', rId='', aId='', tId='', I, [2018-07-19T11:33:50.555442 #89586]  INFO -- KillBillClient: Response code='200', reason='OK', latency='326.2'
+
+2018-07-19T09:33:50,573+0000 lvl='INFO', log='', th='pool-2-thread-8', xff='', rId='', aId='', tId='', I, [2018-07-19T11:33:50.573140 #89586]  INFO -- KillBillClient: Response code='200', reason='OK', latency='342.5'
+
+2018-07-19T09:33:50,724+0000 lvl='INFO', log='', th='pool-2-thread-2', xff='', rId='', aId='', tId='', I, [2018-07-19T11:33:50.724122 #89586]  INFO -- KillBillClient: Request method='GET', uri='http://127.0.0.1:8080/1.0/kb/tenants/uploadPerTenantConfig/PLUGIN_CONFIG_/search'
+
+2018-07-19T09:33:50,952+0000 lvl='INFO', log='', th='pool-2-thread-2', xff='', rId='', aId='', tId='', I, [2018-07-19T11:33:50.951923 #89586]  INFO -- KillBillClient: Response code='200', reason='OK', latency='226.6'
+
+2018-07-19T09:33:51,170+0000 lvl='INFO', log='admin_tenants#show', th='http-nio-8080-exec-8', xff='', rId='b6133650-8e85-40e4-abe2-32c750ea0fc4', aId='', tId='f3dacf1e-7d5f-4243-a20f-2451ee6a1fb9', I, [2018-07-19T11:33:51.170515 #89586]  INFO -- :   Rendering gems/gems/kaui-0.16.2/app/views/kaui/admin_tenants/show.html.erb within kaui/layouts/kaui_application
+
+2018-07-19T09:33:51,172+0000 lvl='INFO', log='admin_tenants#show', th='http-nio-8080-exec-8', xff='', rId='b6133650-8e85-40e4-abe2-32c750ea0fc4', aId='', tId='f3dacf1e-7d5f-4243-a20f-2451ee6a1fb9', I, [2018-07-19T11:33:51.172532 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/admin_tenants/_tenant_details.html.erb (0.4ms)
+
+2018-07-19T09:33:51,189+0000 lvl='INFO', log='admin_tenants#show', th='http-nio-8080-exec-8', xff='', rId='b6133650-8e85-40e4-abe2-32c750ea0fc4', aId='', tId='f3dacf1e-7d5f-4243-a20f-2451ee6a1fb9', I, [2018-07-19T11:33:51.189572 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/admin_tenants/_useful_links.html.erb (15.4ms)
+
+2018-07-19T09:33:51,213+0000 lvl='INFO', log='admin_tenants#show', th='http-nio-8080-exec-8', xff='', rId='b6133650-8e85-40e4-abe2-32c750ea0fc4', aId='', tId='f3dacf1e-7d5f-4243-a20f-2451ee6a1fb9', I, [2018-07-19T11:33:51.213797 #89586]  INFO -- KillBillClient: Request method='GET', uri='http://127.0.0.1:8080/1.0/kb/security/permissions'
+
+2018-07-19T09:33:51,226+0000 lvl='INFO', log='admin_tenants#show', th='http-nio-8080-exec-8', xff='', rId='b6133650-8e85-40e4-abe2-32c750ea0fc4', aId='', tId='f3dacf1e-7d5f-4243-a20f-2451ee6a1fb9', I, [2018-07-19T11:33:51.226587 #89586]  INFO -- KillBillClient: Response code='200', reason='OK', latency='10.1'
+
+2018-07-19T09:33:51,236+0000 lvl='INFO', log='admin_tenants#show', th='http-nio-8080-exec-8', xff='', rId='b6133650-8e85-40e4-abe2-32c750ea0fc4', aId='', tId='f3dacf1e-7d5f-4243-a20f-2451ee6a1fb9', I, [2018-07-19T11:33:51.236562 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/admin_tenants/_show_catalog_simple.erb (42.2ms)
+
+2018-07-19T09:33:51,238+0000 lvl='INFO', log='admin_tenants#show', th='http-nio-8080-exec-8', xff='', rId='b6133650-8e85-40e4-abe2-32c750ea0fc4', aId='', tId='f3dacf1e-7d5f-4243-a20f-2451ee6a1fb9', I, [2018-07-19T11:33:51.238217 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/admin_tenants/_show_catalog_xml.erb (0.4ms)
+
+2018-07-19T09:33:51,239+0000 lvl='INFO', log='admin_tenants#show', th='http-nio-8080-exec-8', xff='', rId='b6133650-8e85-40e4-abe2-32c750ea0fc4', aId='', tId='f3dacf1e-7d5f-4243-a20f-2451ee6a1fb9', I, [2018-07-19T11:33:51.238969 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/admin_tenants/_show_catalog.erb (45.5ms)
+
+2018-07-19T09:33:51,249+0000 lvl='INFO', log='admin_tenants#show', th='http-nio-8080-exec-8', xff='', rId='b6133650-8e85-40e4-abe2-32c750ea0fc4', aId='', tId='f3dacf1e-7d5f-4243-a20f-2451ee6a1fb9', I, [2018-07-19T11:33:51.249483 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/admin_tenants/_show_overdue.erb (9.5ms)
+
+2018-07-19T09:33:51,255+0000 lvl='INFO', log='admin_tenants#show', th='http-nio-8080-exec-8', xff='', rId='b6133650-8e85-40e4-abe2-32c750ea0fc4', aId='', tId='f3dacf1e-7d5f-4243-a20f-2451ee6a1fb9', I, [2018-07-19T11:33:51.255482 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/admin_tenants/_form_invoice_template.erb (4.2ms)
+
+2018-07-19T09:33:51,261+0000 lvl='INFO', log='admin_tenants#show', th='http-nio-8080-exec-8', xff='', rId='b6133650-8e85-40e4-abe2-32c750ea0fc4', aId='', tId='f3dacf1e-7d5f-4243-a20f-2451ee6a1fb9', I, [2018-07-19T11:33:51.261751 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/admin_tenants/_form_invoice_translation.erb (4.9ms)
+
+2018-07-19T09:33:51,266+0000 lvl='INFO', log='admin_tenants#show', th='http-nio-8080-exec-8', xff='', rId='b6133650-8e85-40e4-abe2-32c750ea0fc4', aId='', tId='f3dacf1e-7d5f-4243-a20f-2451ee6a1fb9', I, [2018-07-19T11:33:51.266595 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/admin_tenants/_form_catalog_translation.erb (3.5ms)
+
+2018-07-19T09:33:51,272+0000 lvl='INFO', log='admin_tenants#show', th='http-nio-8080-exec-8', xff='', rId='b6133650-8e85-40e4-abe2-32c750ea0fc4', aId='', tId='f3dacf1e-7d5f-4243-a20f-2451ee6a1fb9', I, [2018-07-19T11:33:51.272197 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/admin_tenants/_form_plugin_config.erb (4.3ms)
+
+2018-07-19T09:33:51,274+0000 lvl='INFO', log='admin_tenants#show', th='http-nio-8080-exec-8', xff='', rId='b6133650-8e85-40e4-abe2-32c750ea0fc4', aId='', tId='f3dacf1e-7d5f-4243-a20f-2451ee6a1fb9', I, [2018-07-19T11:33:51.274118 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/admin_tenants/show.html.erb within kaui/layouts/kaui_application (103.0ms)
+
+2018-07-19T09:33:51,276+0000 lvl='INFO', log='admin_tenants#show', th='http-nio-8080-exec-8', xff='', rId='b6133650-8e85-40e4-abe2-32c750ea0fc4', aId='', tId='f3dacf1e-7d5f-4243-a20f-2451ee6a1fb9', I, [2018-07-19T11:33:51.276120 #89586]  INFO -- :   Rendering gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_header.html.erb
+
+2018-07-19T09:33:51,283+0000 lvl='INFO', log='admin_tenants#show', th='http-nio-8080-exec-8', xff='', rId='b6133650-8e85-40e4-abe2-32c750ea0fc4', aId='', tId='f3dacf1e-7d5f-4243-a20f-2451ee6a1fb9', I, [2018-07-19T11:33:51.283118 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_header.html.erb (6.5ms)
+
+2018-07-19T09:33:51,284+0000 lvl='INFO', log='admin_tenants#show', th='http-nio-8080-exec-8', xff='', rId='b6133650-8e85-40e4-abe2-32c750ea0fc4', aId='', tId='f3dacf1e-7d5f-4243-a20f-2451ee6a1fb9', I, [2018-07-19T11:33:51.283925 #89586]  INFO -- :   Rendering gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_navbar.html.erb
+
+2018-07-19T09:33:51,308+0000 lvl='INFO', log='admin_tenants#show', th='http-nio-8080-exec-8', xff='', rId='b6133650-8e85-40e4-abe2-32c750ea0fc4', aId='', tId='f3dacf1e-7d5f-4243-a20f-2451ee6a1fb9', I, [2018-07-19T11:33:51.308809 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_navbar.html.erb (24.4ms)
+
+2018-07-19T09:33:51,310+0000 lvl='INFO', log='admin_tenants#show', th='http-nio-8080-exec-8', xff='', rId='b6133650-8e85-40e4-abe2-32c750ea0fc4', aId='', tId='f3dacf1e-7d5f-4243-a20f-2451ee6a1fb9', I, [2018-07-19T11:33:51.310081 #89586]  INFO -- :   Rendering gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_flash.html.erb
+
+2018-07-19T09:33:51,311+0000 lvl='INFO', log='admin_tenants#show', th='http-nio-8080-exec-8', xff='', rId='b6133650-8e85-40e4-abe2-32c750ea0fc4', aId='', tId='f3dacf1e-7d5f-4243-a20f-2451ee6a1fb9', I, [2018-07-19T11:33:51.311304 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_flash.html.erb (0.6ms)
+
+2018-07-19T09:33:51,313+0000 lvl='INFO', log='admin_tenants#show', th='http-nio-8080-exec-8', xff='', rId='b6133650-8e85-40e4-abe2-32c750ea0fc4', aId='', tId='f3dacf1e-7d5f-4243-a20f-2451ee6a1fb9', I, [2018-07-19T11:33:51.313782 #89586]  INFO -- :   Rendering gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_footer.html.erb
+
+2018-07-19T09:33:51,314+0000 lvl='INFO', log='admin_tenants#show', th='http-nio-8080-exec-8', xff='', rId='b6133650-8e85-40e4-abe2-32c750ea0fc4', aId='', tId='f3dacf1e-7d5f-4243-a20f-2451ee6a1fb9', I, [2018-07-19T11:33:51.314682 #89586]  INFO -- :   Rendered gems/gems/kaui-0.16.2/app/views/kaui/layouts/kaui_footer.html.erb (0.3ms)
+
+2018-07-19T09:33:51,316+0000 lvl='INFO', log='', th='http-nio-8080-exec-8', xff='', rId='', aId='', tId='', I, [2018-07-19T11:33:51.316375 #89586]  INFO -- : Completed 200 OK in 1222ms (Views: 147.4ms | ActiveRecord: 9.9ms)
+
+2018-07-19T09:33:51,368+0000 lvl='INFO', log='main#available_engines', th='http-nio-8080-exec-6', xff='', rId='d460c74c-4885-464a-a596-77c752890c50', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:33:51.368181 #89586]  INFO -- : Started GET "/kaui/main/available_engines.json" for 127.0.0.1 at 2018-07-19 11:33:51 +0200
+
+2018-07-19T09:33:51,375+0000 lvl='INFO', log='main#available_engines', th='http-nio-8080-exec-6', xff='', rId='d460c74c-4885-464a-a596-77c752890c50', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:33:51.375388 #89586]  INFO -- : Processing by MainController#available_engines as JSON
+
+2018-07-19T09:33:51,375+0000 lvl='INFO', log='main#available_engines', th='http-nio-8080-exec-6', xff='', rId='d460c74c-4885-464a-a596-77c752890c50', aId='', tId='028f23b7-b900-4d93-aa47-5fc2817be4f3', I, [2018-07-19T11:33:51.375767 #89586]  INFO -- :   Parameters: {"main"=>{}}
+
+2018-07-19T09:33:51,403+0000 lvl='INFO', log='main#available_engines', th='http-nio-8080-exec-6', xff='', rId='0cb39f91-53a3-43fa-8545-c417db762206', aId='', tId='f3dacf1e-7d5f-4243-a20f-2451ee6a1fb9', I, [2018-07-19T11:33:51.403526 #89586]  INFO -- KillBillClient: Request method='GET', uri='http://127.0.0.1:8080/1.0/kb/security/subject'
+
+2018-07-19T09:33:51,414+0000 lvl='INFO', log='main#available_engines', th='http-nio-8080-exec-6', xff='', rId='0cb39f91-53a3-43fa-8545-c417db762206', aId='', tId='f3dacf1e-7d5f-4243-a20f-2451ee6a1fb9', I, [2018-07-19T11:33:51.414226 #89586]  INFO -- KillBillClient: Response code='200', reason='OK', latency='9.4'
+
+2018-07-19T09:33:51,443+0000 lvl='INFO', log='main#available_engines', th='http-nio-8080-exec-6', xff='', rId='0cb39f91-53a3-43fa-8545-c417db762206', aId='', tId='f3dacf1e-7d5f-4243-a20f-2451ee6a1fb9', I, [2018-07-19T11:33:51.443588 #89586]  INFO -- KillBillClient: Request method='GET', uri='http://127.0.0.1:8080/1.0/kb/nodesInfo'
+
+2018-07-19T09:33:51,587+0000 lvl='INFO', log='main#available_engines', th='http-nio-8080-exec-6', xff='', rId='0cb39f91-53a3-43fa-8545-c417db762206', aId='', tId='f3dacf1e-7d5f-4243-a20f-2451ee6a1fb9', I, [2018-07-19T11:33:51.587352 #89586]  INFO -- KillBillClient: Response code='200', reason='OK', latency='142.8'
+
+2018-07-19T09:33:51,593+0000 lvl='INFO', log='', th='http-nio-8080-exec-6', xff='', rId='', aId='', tId='', I, [2018-07-19T11:33:51.592874 #89586]  INFO -- : Completed 200 OK in 217ms (Views: 1.7ms | ActiveRecord: 4.7ms)
+

@@ -1,0 +1,17 @@
+<overdueConfig>
+   <accountOverdueStates>
+       <initialReevaluationInterval>
+           <unit>DAYS</unit><number>14</number>
+       </initialReevaluationInterval>
+       <state name="SUSPENDED">
+           <condition>
+               <timeSinceEarliestUnpaidInvoiceEqualsOrExceeds>
+                   <unit>DAYS</unit><number>14</number>
+               </timeSinceEarliestUnpaidInvoiceEqualsOrExceeds>
+           </condition>
+           <externalMessage>Reached SUSPENDED</externalMessage>
+           <blockChanges>true</blockChanges>
+           <disableEntitlementAndChangesBlocked>false</disableEntitlementAndChangesBlocked>
+       </state>
+   </accountOverdueStates>
+</overdueConfig>

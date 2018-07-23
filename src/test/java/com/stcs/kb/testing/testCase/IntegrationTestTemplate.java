@@ -21,6 +21,9 @@ import com.stcs.kb.testing.component.impl.RabbitComponent;
 import junit.framework.TestCase;
 
 public class IntegrationTestTemplate extends TestCase {
+	
+	String enviromentNetwork = "mynetwork" ;
+	
 	List<Component> testEnviroment ; 
 	
 	public IntegrationTestTemplate() {

@@ -29,7 +29,7 @@ public class KillBillDBComponent extends AbstractDockerComponent {
 	public KillBillDBComponent() {
 		this. dockerImage = "bill_it_db"; 
 		this.  port = 5432 ;
-		this.  name= " KB , BILLING DataBase Node " ;
+		this.  name= "dbnode " ;
 		
 	}
 
