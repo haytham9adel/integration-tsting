@@ -1,12 +1,6 @@
 package com.stcs.kb.testing.component.impl;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.concurrent.atomic.AtomicBoolean;
-
 import com.stcs.kb.client.RabbitConnection;
-import com.stcs.kb.testing.component.AbstractComponent;
 import com.stcs.kb.testing.component.AbstractDockerComponent;
 
 public class RabbitComponent extends AbstractDockerComponent  {
