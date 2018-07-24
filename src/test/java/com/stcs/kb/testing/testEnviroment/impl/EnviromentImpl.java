@@ -15,9 +15,10 @@ import com.stcs.kb.testing.testEnviroment.Component;
 import com.stcs.kb.testing.testEnviroment.Enviroment;
 
 public class EnviromentImpl implements Enviroment {
-	String enviromentNetwork = "mynetwork";
+	
+	private String enviromentNetwork = "mynetwork";
 
-	List<Component> testEnviroment;
+	private List<Component> testEnviroment;
 
 	public EnviromentImpl() {
 		testEnviroment = new ArrayList<Component>();
@@ -27,17 +28,15 @@ public class EnviromentImpl implements Enviroment {
 	public void initTheEnviroment() {
 		Component billingService =new BillingServiceComponent(enviromentNetwork); 
 		Component killBill = new KillBillComponent(enviromentNetwork);
-		killBill.getDepndantComponents().add(new KillBillDBComponent(enviromentNetwork));
-		killBill.getDepndantComponents().add(new RabbitComponent(enviromentNetwork));
-		billingService.getDepndantComponents().add(killBill);
+		
+		killBill.addDepndantComponent(new KillBillDBComponent(enviromentNetwork))
+				.addDepndantComponent(new RabbitComponent(enviromentNetwork));
+		
+		billingService.addDepndantComponent(killBill);
 		
 		testEnviroment.add(billingService);
 	}
 	
-
-	/* (non-Javadoc)
-	 * @see com.stcs.kb.testing.testEnviroment.Environment#startEnviroment()
-	 */
 	@Override
 	public boolean startEnviroment() throws Exception {
 
@@ -46,7 +45,7 @@ public class EnviromentImpl implements Enviroment {
 		});
 
 		for (Component comp : testEnviroment) {
-			if (!comp.isComponentUpAndRunning())
+			if (!comp.isUpAndRunning())
 				return false;
 		}
 		return true;
@@ -60,7 +59,7 @@ public class EnviromentImpl implements Enviroment {
 			comp.start();
 
 			await().atMost(1, TimeUnit.MINUTES).with().pollInterval(3, TimeUnit.SECONDS)
-					.until(comp::isComponentUpAndRunning);
+					.until(comp::isUpAndRunning);
 
 			System.out.println(comp.getName() + " has started at : " + new Date());
 
@@ -70,14 +69,12 @@ public class EnviromentImpl implements Enviroment {
 
 	}
 
-	/* (non-Javadoc)
-	 * @see com.stcs.kb.testing.testEnviroment.Environment#shutdownEnviroment()
-	 */
+
 	@Override
 	public void shutdownEnviroment() {
 		System.out.println("shutting down enviroment");
 
-		testEnviroment.parallelStream().filter(comp -> comp.isComponentUpAndRunning()).forEach(comp -> {
+		testEnviroment.parallelStream().filter(comp -> comp.isUpAndRunning()).forEach(comp -> {
 			System.out.println("try to shutdown : " + comp.getName());
 			comp.stop();
 		});

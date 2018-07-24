@@ -30,7 +30,7 @@ public class KillBillDBComponent extends AbstractDockerComponent {
 	}
 
 	@Override
-	public boolean isComponentUpAndRunning() {
+	public boolean isUpAndRunning() {
 		try {
 			DBI dbi = new DBI("jdbc:postgresql://localhost:" + port + "/" + dbNameKB, usernameKB, passwordKB);
 			Handle handle = dbi.open();

@@ -5,35 +5,26 @@ import java.io.InputStreamReader;
 
 public abstract class AbstractDockerComponent extends AbstractComponent {
 
-	protected String netwrokName  ;
-	
-	public AbstractDockerComponent(String netwrokName) {
-		this.netwrokName = netwrokName ;
+	protected String networkName;
+
+	public AbstractDockerComponent(String networkName) {
+		this.networkName = networkName;
 	}
-	
-	
+
 	@Override
-	public boolean start()  {
-		try { 
-		   Runtime rt = Runtime.getRuntime();
-		   String command = "docker run "
-		           +  ( (managmentPort==0)?"":" -p "+managmentPort +":"+managmentPort )
-				   + (" -p "+port +":"+port  )
-				   + " --name "+name
-				   + " -d --network "+netwrokName
-				   + " " + dockerImage  ;
-		    System.out.println("command > " +command);
-		    rt.exec( command );
-		    
-		}catch (Exception e) {
+	public boolean start() {
+		try {
+			new DockerImageBuilder().port(port).managmentPort(managmentPort).name(name).networkName(networkName)
+					.dockerImage(networkName).run();
+		} catch (Exception e) {
 			e.printStackTrace();
-			return false ;
+			return false;
 		}
 		return true;
 	}
 
 	@Override
-	public boolean stop()  {
+	public boolean stop() {
 		try { // | xargs -I {} docker kill {}
 			Runtime rt = Runtime.getRuntime();
 		    String[] cmd = { "/bin/sh", "-c", "docker ps -a | grep "+dockerImage+" | awk '{print $1 }' " };
@@ -44,17 +35,11 @@ public abstract class AbstractDockerComponent extends AbstractComponent {
 		    while ((s = stdInput.readLine()) != null) {
 		    	 rt.exec("docker rm -f "+s);
 			}
-		    
-		}catch (Exception e) {
-			e.printStackTrace();
-			return false ;
+
+		} catch (Exception e) {
+			return false;
 		}
 		return true;
 	}
-
-
-	
-
-	
 
 }

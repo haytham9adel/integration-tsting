@@ -1,3 +1,53 @@
+/*! USE killbill_plugins */; 
+
+/*! SET storage_engine=INNODB */;
+
+
+
+/* We cannot use timestamp in MySQL because of the implicit TimeZone conversions it does behind the scenes */
+ALTER DOMAIN datetime OWNER TO killbill ;
+/* TEXT in MySQL is smaller then MEDIUMTEXT */
+ALTER DOMAIN mediumtext OWNER TO killbill ;
+/* PostgreSQL uses BYTEA to manage all BLOB types */
+ALTER DOMAIN mediumblob OWNER TO killbill ;
+
+CREATE OR REPLACE LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION last_insert_id() RETURNS BIGINT AS $$
+    DECLARE
+        result BIGINT;
+    BEGIN
+        SELECT lastval() INTO result;
+        RETURN result;
+    EXCEPTION WHEN OTHERS THEN
+        SELECT NULL INTO result;
+        RETURN result;
+    END;
+$$ LANGUAGE plpgsql VOLATILE;
+
+CREATE OR REPLACE FUNCTION schema() RETURNS VARCHAR AS $$
+    DECLARE
+        result VARCHAR;
+    BEGIN
+        SELECT current_schema() INTO result;
+        RETURN result;
+    EXCEPTION WHEN OTHERS THEN
+        SELECT NULL INTO result;
+        RETURN result;
+    END;
+$$ LANGUAGE plpgsql IMMUTABLE;
+
+CREATE OR REPLACE FUNCTION hour(ts TIMESTAMP WITH TIME ZONE) RETURNS INTEGER AS $$
+    DECLARE
+        result INTEGER;
+    BEGIN
+        SELECT EXTRACT(HOUR FROM ts) INTO result;
+        RETURN result;
+    EXCEPTION WHEN OTHERS THEN
+        SELECT NULL INTO result;
+        RETURN result;
+    END;
+$$ LANGUAGE plpgsql IMMUTABLE;
 
 create table if not exists cartwheel_plans(
   id serial unique,

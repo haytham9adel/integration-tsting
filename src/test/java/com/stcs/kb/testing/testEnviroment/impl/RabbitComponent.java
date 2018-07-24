@@ -25,7 +25,7 @@ public class RabbitComponent extends AbstractDockerComponent  {
 	
 
 	@Override
-	public boolean isComponentUpAndRunning() {
+	public boolean isUpAndRunning() {
 		try { 
 		   RabbitConnection rabbitConnection = new RabbitConnection(url, username, password, vhost) ;
 		   boolean ok =  rabbitConnection.getConnection().isOpen() ;

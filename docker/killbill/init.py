@@ -2,7 +2,7 @@ import requests
 import json
 
 # Adapt this for your server
-BASE_URL = 'http://0.0.0.0:8080'
+BASE_URL = 'http://localhost:8080'
 ADMIN_USER = 'admin'
 ADMIN_PWD = 'password'
 auth = (ADMIN_USER, ADMIN_PWD)
@@ -10,6 +10,8 @@ auth = (ADMIN_USER, ADMIN_PWD)
 
 # create killbill API tenant
 url = BASE_URL + '/1.0/kb/tenants'
+
+print url 
 
 params = {
 'apiKey': 'cartwheel',

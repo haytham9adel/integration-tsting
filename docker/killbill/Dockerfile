@@ -1,7 +1,9 @@
 FROM tomcat:8
 
 # update and install needed packages
-RUN apt-get update -yy && apt-get install -yy nginx wget default-jdk unzip python-setuptools && easy_install pip && pip install httplib2 requests
+RUN apt-get update -yy && apt-get install -yy nginx wget default-jdk unzip python-setuptools && easy_install pip && pip install httplib2 requests 
+
+RUN apt-get  -qq -y install net-tools netcat
 
 RUN rm -rf /usr/local/tomcat/webapps/ROOT /usr/local/tomcat/webapps/examples /usr/local/tomcat/webapps/host-manager /usr/local/tomcat/webapps/manager /usr/local/tomcat/webapps/docs
 
@@ -52,4 +54,5 @@ EXPOSE 8080
 
 RUN rm -rf /tmp/* /var/lib/apt/lists/*
 
-CMD ["catalina.sh", "run"]
+CMD catalina.sh run & ((while ! echo exit | nc localhost 8080; do sleep 10; done) && /killbill/init.sh && while true; do sleep 10000; done )
+

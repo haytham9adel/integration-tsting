@@ -14,6 +14,8 @@ psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" <<-EOSQL
     GRANT ALL PRIVILEGES ON DATABASE killbill_plugins TO killbill;
 EOSQL
 
+psql -v ON_ERROR_STOP=1 --username killbill --dbname killbill_plugins -f /docker-entrypoint-initdb.d/03_kb_plugins_ddl.sql
+
 psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" <<-EOSQL
     CREATE USER billing_service WITH PASSWORD 'billing_service' SUPERUSER;
     CREATE DATABASE billing_service_db OWNER billing_service;
@@ -32,4 +34,3 @@ psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" <<-EOSQL
     GRANT ALL PRIVILEGES ON DATABASE camunda TO camunda;
 EOSQL
 
-psql -v ON_ERROR_STOP=1 --username killbill --dbname killbill -f /docker-entrypoint-initdb.d/03_kb_plugins_ddl.sql

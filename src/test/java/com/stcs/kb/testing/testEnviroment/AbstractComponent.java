@@ -3,6 +3,16 @@ package com.stcs.kb.testing.testEnviroment;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ * 
+ * An abstract class implements {@link com.stcs.kb.testing.testEnviroment.Component}, it is the base class
+ * of any component that will be used in integration testing
+ * 
+ * 
+ * @author Haytham.Adel
+ */
+
 public abstract class AbstractComponent implements Component {
      
 	protected int    port ;
@@ -13,25 +23,23 @@ public abstract class AbstractComponent implements Component {
 	
 	@Override
 	public List<Component> getDepndantComponents() {
-		// TODO Auto-generated method stub
 		return dependantComponent;
 	}
-	/* (non-Javadoc)
-	 * @see com.stcs.kb.testing.component.Component#start()
-	 */
+	
+	@Override
+	public Component addDepndantComponent(Component depndant) {
+		dependantComponent.add(depndant);
+		return this;
+	}
+
 	@Override
 	public abstract boolean start()    ;
-	/* (non-Javadoc)
-	 * @see com.stcs.kb.testing.component.Component#stop()
-	 */
+
 	@Override
 	public abstract boolean stop()   ;
-	/* (non-Javadoc)
-	 * @see com.stcs.kb.testing.component.Component#isComponentUpAndRunning()
-	 */
+
 	@Override
-	public abstract boolean isComponentUpAndRunning( )   ;
-	
+	public abstract boolean isUpAndRunning( )   ;
 	
 	public int getPort() {
 		return port;

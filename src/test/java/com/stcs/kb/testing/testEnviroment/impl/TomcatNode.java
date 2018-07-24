@@ -40,7 +40,7 @@ public class TomcatNode extends AbstractComponent {
 	}
 
 	@Override
-	public boolean isComponentUpAndRunning() {
+	public boolean isUpAndRunning() {
 		try {
 			KBBillingImpl cartwheelKB = new KBBillingImpl(Constants.KB_CARTWHEEL_KEY,
 					Constants.KB_CARTWHEEL_SECRET, 1000);
