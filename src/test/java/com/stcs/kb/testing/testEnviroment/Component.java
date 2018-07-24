@@ -1,10 +1,10 @@
-package com.stcs.kb.testing.component;
+package com.stcs.kb.testing.testEnviroment;
 
 import java.util.List;
 
 public interface Component {
 
-	 String getName() ;
+	String getName() ;
 	
 	boolean start();
 
@@ -12,5 +12,5 @@ public interface Component {
 
 	boolean isComponentUpAndRunning();
 
-	List<Component> getDepndantComponent();
+	List<Component> getDepndantComponents();
 }

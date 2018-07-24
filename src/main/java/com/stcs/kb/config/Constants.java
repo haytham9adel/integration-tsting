@@ -27,5 +27,6 @@ public interface Constants {
 	String CATALOG_UPLOAD_QUEUE = "billing_catalog_updated_queue";
 	String RABBIT_MANAGMENT_API = "http://localhost:15672/api/";
 	
-	
+	// billing services 
+	String BILLING_SERVICE_URL = "http://localhost:8070/" ;
 }

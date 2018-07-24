@@ -1,9 +1,9 @@
-package com.stcs.kb.testing.component.impl;
+package com.stcs.kb.testing.testEnviroment.impl;
 
 import org.skife.jdbi.v2.DBI;
 import org.skife.jdbi.v2.Handle;
 
-import com.stcs.kb.testing.component.AbstractDockerComponent;
+import com.stcs.kb.testing.testEnviroment.AbstractDockerComponent;
 
 public class KillBillDBComponent extends AbstractDockerComponent {
 
@@ -21,7 +21,8 @@ public class KillBillDBComponent extends AbstractDockerComponent {
 	private String usernameBilling = "billing_service";
 	private String passwordBilling = "billing_service";
 
-	public KillBillDBComponent() {
+	public KillBillDBComponent(String netwrokName) {
+		super(netwrokName);
 		this.dockerImage = "bill_it_db";
 		this.port = 5432;
 		this.name = "dbnode ";

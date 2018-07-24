@@ -1,10 +1,17 @@
-package com.stcs.kb.testing.component;
+package com.stcs.kb.testing.testEnviroment;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
 public abstract class AbstractDockerComponent extends AbstractComponent {
 
+	protected String netwrokName  ;
+	
+	public AbstractDockerComponent(String netwrokName) {
+		this.netwrokName = netwrokName ;
+	}
+	
+	
 	@Override
 	public boolean start()  {
 		try { 
@@ -12,6 +19,8 @@ public abstract class AbstractDockerComponent extends AbstractComponent {
 		   String command = "docker run "
 		           +  ( (managmentPort==0)?"":" -p "+managmentPort +":"+managmentPort )
 				   + (" -p "+port +":"+port  )
+				   + " --name "+name
+				   + " -d --network "+netwrokName
 				   + " " + dockerImage  ;
 		    System.out.println("command > " +command);
 		    rt.exec( command );
@@ -44,11 +53,7 @@ public abstract class AbstractDockerComponent extends AbstractComponent {
 	}
 
 
-	@Override
-	public boolean init() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	
 
 	
 

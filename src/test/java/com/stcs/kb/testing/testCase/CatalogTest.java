@@ -13,7 +13,7 @@ import org.skife.jdbi.v2.Handle;
 
 import com.stcs.kb.config.Constants;
 import com.stcs.kb.model.Response;
-import com.stcs.kb.service.impl.BillingServiceKBImpl;
+import com.stcs.kb.service.impl.KBBillingImpl;
 import com.stcs.kb.service.impl.BrockerServiceRabbitImpl;
 import com.stcs.kb.testing.Utils;
 
@@ -23,12 +23,12 @@ import junit.framework.TestCase;
 public class CatalogTest extends IntegrationTestTemplate {
 	
 	 BrockerServiceRabbitImpl rabbitMQClient;
-	 BillingServiceKBImpl cartwheelKB  ; 
+	 KBBillingImpl cartwheelKB  ; 
 	 
 	@Before
 	public void setUp() throws IOException {
 		rabbitMQClient = new BrockerServiceRabbitImpl();
-	    cartwheelKB    = new BillingServiceKBImpl(Constants.KB_CARTWHEEL_KEY, Constants.KB_CARTWHEEL_SECRET) ;
+	    cartwheelKB    = new KBBillingImpl(Constants.KB_CARTWHEEL_KEY, Constants.KB_CARTWHEEL_SECRET) ;
 	}
 	
 	@Test
@@ -36,7 +36,7 @@ public class CatalogTest extends IntegrationTestTemplate {
 		
 			boolean isStart = false; 
 			  try {
-				 isStart = startEnviroment() ;
+				 isStart = killbillEnviroment.startEnviroment() ;
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -71,7 +71,7 @@ public class CatalogTest extends IntegrationTestTemplate {
 				System.out.println("failed to start the envioment"); 
 			}
 			
-			shutdownEnviroment();
+			killbillEnviroment.shutdownEnviroment();
 
 
 	}

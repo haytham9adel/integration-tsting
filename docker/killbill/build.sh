@@ -1,1 +1,1 @@
-docker build -t kbnode .
+docker build -t killbill .

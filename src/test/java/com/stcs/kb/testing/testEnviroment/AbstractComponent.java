@@ -1,4 +1,4 @@
-package com.stcs.kb.testing.component;
+package com.stcs.kb.testing.testEnviroment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +12,7 @@ public abstract class AbstractComponent implements Component {
 	protected List<Component> dependantComponent = new ArrayList<>();
 	
 	@Override
-	public List<Component> getDepndantComponent() {
+	public List<Component> getDepndantComponents() {
 		// TODO Auto-generated method stub
 		return dependantComponent;
 	}
@@ -26,7 +26,6 @@ public abstract class AbstractComponent implements Component {
 	 */
 	@Override
 	public abstract boolean stop()   ;
-	public abstract boolean init()   ;	
 	/* (non-Javadoc)
 	 * @see com.stcs.kb.testing.component.Component#isComponentUpAndRunning()
 	 */

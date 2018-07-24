@@ -1,10 +1,10 @@
-package com.stcs.kb.testing.component.impl;
+package com.stcs.kb.testing.testEnviroment.impl;
 
 import com.stcs.kb.config.Constants;
-import com.stcs.kb.service.impl.BillingServiceKBImpl;
-import com.stcs.kb.testing.component.AbstractComponent;
+import com.stcs.kb.service.impl.KBBillingImpl;
+import com.stcs.kb.testing.testEnviroment.AbstractComponent;
 
-public class KillBillComponent extends AbstractComponent {
+public class TomcatNode extends AbstractComponent {
 
 	private String name = "kbnode ";
 	private String path = "/Users/haythamzamek/Documents/STC/billing/development/kb-18-tomcat/apache-tomcat-8.0.33/bin";
@@ -42,7 +42,7 @@ public class KillBillComponent extends AbstractComponent {
 	@Override
 	public boolean isComponentUpAndRunning() {
 		try {
-			BillingServiceKBImpl cartwheelKB = new BillingServiceKBImpl(Constants.KB_CARTWHEEL_KEY,
+			KBBillingImpl cartwheelKB = new KBBillingImpl(Constants.KB_CARTWHEEL_KEY,
 					Constants.KB_CARTWHEEL_SECRET, 1000);
 			cartwheelKB.cleanCache();
 		} catch (Exception e) {
@@ -50,11 +50,4 @@ public class KillBillComponent extends AbstractComponent {
 		}
 		return true;
 	}
-
-	@Override
-	public boolean init() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
 }

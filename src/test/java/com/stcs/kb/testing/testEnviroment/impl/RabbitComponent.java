@@ -1,7 +1,7 @@
-package com.stcs.kb.testing.component.impl;
+package com.stcs.kb.testing.testEnviroment.impl;
 
 import com.stcs.kb.client.RabbitConnection;
-import com.stcs.kb.testing.component.AbstractDockerComponent;
+import com.stcs.kb.testing.testEnviroment.AbstractDockerComponent;
 
 public class RabbitComponent extends AbstractDockerComponent  {
 	
@@ -12,7 +12,10 @@ public class RabbitComponent extends AbstractDockerComponent  {
 	private String password = "guest";
 	private String vhost = "/";
 	
-	public RabbitComponent() {
+	
+	public RabbitComponent(String netwrokName) {
+		super(netwrokName);
+		
 		this. dockerImage = "rabbit-integration1"; 
 		this. name = "brokernode" ;
 		this. port = 5672 ;

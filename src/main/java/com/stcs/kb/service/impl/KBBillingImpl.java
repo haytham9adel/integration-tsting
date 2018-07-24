@@ -18,7 +18,7 @@ import org.killbill.billing.invoice.api.DryRunType;
 import com.ning.http.client.Response;
 import com.stcs.kb.config.Constants;
 
-public class BillingServiceKBImpl {
+public class KBBillingImpl {
 	
 	KillBillHttpClient killBillHttpClient ;
     KillBillClient killBillClient ;
@@ -30,7 +30,7 @@ public class BillingServiceKBImpl {
 																.build();	
 	
 	
-	public BillingServiceKBImpl( String tenantKey , String tenantSecret  ) {
+	public KBBillingImpl( String tenantKey , String tenantSecret  ) {
 		 killBillHttpClient = new KillBillHttpClient ( Constants.KB_URL, Constants.KB_USERNAME , Constants.KB_PASSWORD , tenantKey ,tenantSecret
 				 ,  null,
                  null,
@@ -42,7 +42,7 @@ public class BillingServiceKBImpl {
 		 killBillClient   = new KillBillClient(killBillHttpClient);
 	}
 
-	public BillingServiceKBImpl( String tenantKey , String tenantSecret , Integer timeout ) {
+	public KBBillingImpl( String tenantKey , String tenantSecret , Integer timeout ) {
 		 killBillHttpClient = new KillBillHttpClient ( Constants.KB_URL, Constants.KB_USERNAME ,
 				 Constants.KB_PASSWORD , tenantKey ,tenantSecret,
 				null,
