@@ -105,7 +105,7 @@ public class KBBillingImpl {
 	   try {
 		killBillHttpClient.doDelete( "/1.0/kb/admin/cache", inputOptions);
 	} catch (KillBillClientException e) {
-		e.printStackTrace();
+		
 		throw new RuntimeException();
 	}
 

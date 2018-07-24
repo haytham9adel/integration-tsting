@@ -37,8 +37,8 @@ public class RabbitManagmentClient {
 				: json.getAsJsonObject("message_stats").get("publish").getAsLong();
 
 		data[1] = json.get("messages_ram").getAsLong();
-		System.out.println(">>no of pubplished : " + data[0]);
-		System.out.println(">>no of pubplished : " + data[1]);
+		// System.out.println(">>no of pubplished : " + data[0]);
+		// System.out.println(">>no of pubplished : " + data[1]);
 		return data;
 	}
 

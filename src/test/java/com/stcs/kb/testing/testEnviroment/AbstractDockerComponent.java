@@ -46,7 +46,6 @@ public abstract class AbstractDockerComponent extends AbstractComponent {
 			}
 		    
 		}catch (Exception e) {
-			e.printStackTrace();
 			return false ;
 		}
 		return true;

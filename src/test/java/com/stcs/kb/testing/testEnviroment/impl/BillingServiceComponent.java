@@ -5,7 +5,6 @@ import com.stcs.kb.testing.testEnviroment.AbstractDockerComponent;
 
 public class BillingServiceComponent extends AbstractDockerComponent{
 
-	
 	public BillingServiceComponent(String netwrokName) {
 		super(netwrokName);
 		// TODO Auto-generated constructor stub
@@ -18,8 +17,6 @@ public class BillingServiceComponent extends AbstractDockerComponent{
 	public boolean isComponentUpAndRunning() {
 		return BillingServicesApiClient.isConnected();
 	}
-
-	//bill_srv
 	
 	
 }

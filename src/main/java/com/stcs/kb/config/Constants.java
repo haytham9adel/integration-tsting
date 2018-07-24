@@ -16,6 +16,10 @@ public interface Constants {
 	String DB_USERNAME = "killbill";
 	String DB_PASSWORD = "killbill";
 
+	String DB_PLUGIN_URL ="jdbc:postgresql://127.0.0.1:5432/killbill_plugins" ;
+	String DB_PLUGIN_USERNAME = "killbill";
+	String DB_PLUGIN_PASSWORD = "killbill";
+	
 	// rabbit 
 	String RABBIT_URL = "localhost" ;
 	String RABBIT_USERNAME = "guest" ;
