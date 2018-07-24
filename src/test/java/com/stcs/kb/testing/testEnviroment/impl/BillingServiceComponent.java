@@ -9,7 +9,7 @@ public class BillingServiceComponent extends AbstractDockerComponent{
 	public BillingServiceComponent(String netwrokName) {
 		super(netwrokName);
 		// TODO Auto-generated constructor stub
-		name= "brokernode" ;
+		name= "billingsrvnode" ;
 		port = 8070 ;
 		dockerImage = "bill_srv" ;
 	}
