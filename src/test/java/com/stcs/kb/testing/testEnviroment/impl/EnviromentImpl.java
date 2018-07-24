@@ -58,7 +58,7 @@ public class EnviromentImpl implements Enviroment {
 			comp.getDepndantComponents().parallelStream().forEach(dedpendant -> StartComponentAndItsDependants(dedpendant));
 			comp.start();
 
-			await().atMost(1, TimeUnit.MINUTES).with().pollInterval(3, TimeUnit.SECONDS)
+			await().atMost(1, TimeUnit.MINUTES).with().pollInterval( 10  , TimeUnit.SECONDS)
 					.until(comp::isUpAndRunning);
 
 			System.out.println(comp.getName() + " has started at : " + new Date());
@@ -73,10 +73,20 @@ public class EnviromentImpl implements Enviroment {
 	@Override
 	public void shutdownEnviroment() {
 		System.out.println("shutting down enviroment");
-
-		testEnviroment.parallelStream().filter(comp -> comp.isUpAndRunning()).forEach(comp -> {
-			System.out.println("try to shutdown : " + comp.getName());
-			comp.stop();
+		
+		testEnviroment.parallelStream()
+		.forEach(comp -> {
+			closeComponentAndItsDependants(comp);
+		});
+	}
+	
+	public void closeComponentAndItsDependants(Component comp) {
+		System.out.println("try to shutdown : " + comp.getName());
+		
+		comp.stop();
+		comp.getDepndantComponents().parallelStream()
+		.forEach(dependant -> {
+			closeComponentAndItsDependants(dependant);
 		});
 	}
 
