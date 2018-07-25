@@ -17,7 +17,7 @@
 
 <catalog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="CatalogSchema.xsd ">
 
-    <effectiveDate>2018-07-02T01:00:00+00:00</effectiveDate>
+    <effectiveDate>2018-08-02T01:00:00+00:00</effectiveDate>
     <catalogName>STC</catalogName>
     <recurringBillingMode>IN_ADVANCE</recurringBillingMode>
     <currencies>

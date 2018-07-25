@@ -61,6 +61,10 @@ public class KBBillingImpl {
 		return catalogs.get(0) ;
 	}
 	
+	public int getCatalogPlansCount() throws KillBillClientException {
+		return killBillClient.getBasePlans(inputOptions).size() ;
+	}
+	
 	public double nextInvoice (String AccountId) throws RuntimeException {
 		final InvoiceDryRun dryRunArg = new InvoiceDryRun(DryRunType.TARGET_DATE
 				                       , null, null, null, null, null, null, null, null, null, null, null);
@@ -119,5 +123,9 @@ public class KBBillingImpl {
 	    }
 	}
 	
+//	public void refreshTenant() {
+//		killBillClient.create
+//	}
+//	
 	
 }
