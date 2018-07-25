@@ -70,8 +70,8 @@ public class CatalogTest extends IntegrationTestTemplate {
 			 
 			 //stage 3
 			 System.out.println(" STAGE 3 : check the KB API");
-			 ConcuencyUtil.pause(10);
-			 cartwheelKB.cleanCache();
+			// ConcuencyUtil.pause(10);
+			// cartwheelKB.cleanCache();
 			 int uploadedPlans =  cartwheelKB.getCatalogPlansCount();
 			 System.out.println(" RESULT >> latest Catalog Plans Count " + uploadedPlans );
 			 
