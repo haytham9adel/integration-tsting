@@ -2,7 +2,6 @@ package com.stcs.kb.testing.testEnviroment;
 
 import java.util.List;
 
-
 /**
  * 
  * An interface defines the methods should be found in any component to be used in integration testing
@@ -24,3 +23,4 @@ public interface Component {
 
 	List<Component> getDepndantComponents();
 }
+

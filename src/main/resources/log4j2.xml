@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<Configuration status="ERROR" shutdownHook="disable" monitorInterval="30">
+	<Properties>
+		<property name="logging.path">./integration-testing/log</property>
+	</Properties>
+	<Appenders>
+		<Console name="Console" target="SYSTEM_OUT" >
+			<PatternLayout pattern="%d{dd-MM-yyyy HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"	/>
+		</Console>
+		<RollingFile name="main" fileName="${logging.path}/app.log" filePattern="${logging.path}/$${date:yyyy-MM}/app-%d{yyyy-MM-dd-HH}-%i.log">
+			<PatternLayout pattern="%d{dd-MM-yyyy HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+			<Policies>
+				<TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+			</Policies>
+		</RollingFile>
+	</Appenders>
+	<Loggers>
+		<Root level="debug" additivity="false">
+			<AppenderRef ref="Console"/>
+			<AppenderRef ref="main"/>
+		</Root>
+	</Loggers>
+</Configuration>

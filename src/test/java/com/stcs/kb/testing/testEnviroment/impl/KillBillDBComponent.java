@@ -5,6 +5,9 @@ import org.skife.jdbi.v2.Handle;
 
 import com.stcs.kb.testing.testEnviroment.AbstractDockerComponent;
 
+import lombok.extern.log4j.Log4j2;
+
+@Log4j2
 public class KillBillDBComponent extends AbstractDockerComponent {
 
 	private String machine = "localhost";
@@ -36,7 +39,7 @@ public class KillBillDBComponent extends AbstractDockerComponent {
 			Handle handle = dbi.open();
 			return handle != null;
 		} catch (Exception e) {
-			System.out.println(name + "  dont running yet : " + e.getMessage());
+			log.info(name + " is not running yet : " + e.getMessage() );
 			return false;
 		}
 	}

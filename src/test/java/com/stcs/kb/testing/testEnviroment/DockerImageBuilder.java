@@ -1,7 +1,12 @@
 package com.stcs.kb.testing.testEnviroment;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 
+import lombok.extern.log4j.Log4j2;
+
+@Log4j2
 public class DockerImageBuilder {
 
 	private String name;
@@ -9,7 +14,6 @@ public class DockerImageBuilder {
 	private int managmentPort;
 	private String dockerImage;
 	private String networkName;
-	private Runtime runtime = Runtime.getRuntime();
 	private StringBuilder runCommandBuilder = new StringBuilder("docker run ");
 
 	public DockerImageBuilder name(final String name) {
@@ -37,14 +41,36 @@ public class DockerImageBuilder {
 		return this;
 	}
 
-	public void run() throws IOException {
+	public void start() throws IOException {
 		runCommandBuilder.append(" --name ").append(name).append(" -p ").append(port).append(":").append(port);
 		if (managmentPort != 0) {
 			runCommandBuilder.append(" -p ").append(managmentPort).append(":").append(managmentPort);
 		}
 		runCommandBuilder.append(" -d --network ").append(networkName).append(" ").append(dockerImage);
-		runtime.exec(runCommandBuilder.toString());
 
+		log.info("Starting docker image : {} with command {}", dockerImage, runCommandBuilder.toString());
+		ProcessBuilder builder = new ProcessBuilder(runCommandBuilder.toString());
+		builder.redirectErrorStream(true);
+		builder.start();
+
+	}
+
+	public void stop() throws IOException {
+		String[] cmd = { "/bin/sh", "-c", "docker ps -a | grep " + dockerImage + " | awk '{print $1 }' " };
+		log.info("find all docker containers for docker image : {} with command {}", dockerImage, cmd);
+		ProcessBuilder builder = new ProcessBuilder(cmd);
+		builder.redirectErrorStream(true);
+		Process process = builder.start();
+		BufferedReader stdInput = new BufferedReader(new InputStreamReader(process.getInputStream()));
+		String s = null;
+		while ((s = stdInput.readLine()) != null) {
+
+			log.info("stop and remove docker container : {}", s);
+
+			builder = new ProcessBuilder("docker rm -f " + s);
+			builder.start();
+
+		}
 	}
 
 }

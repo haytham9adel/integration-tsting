@@ -1,6 +1,5 @@
 package com.stcs.kb.service.impl;
 
-import java.util.Iterator;
 import java.util.List;
 
 import org.skife.jdbi.v2.DBI;

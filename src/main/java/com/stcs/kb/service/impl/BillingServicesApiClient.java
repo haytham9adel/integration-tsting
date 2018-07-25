@@ -3,17 +3,16 @@ package com.stcs.kb.service.impl;
 import java.io.IOException;
 
 import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
 import com.stcs.kb.config.Constants;
 import com.stcs.kb.service.BillingServiceApiService;
-import com.stcs.kb.service.RabbitManagmentApiService;
-import com.stcs.kb.util.BasicAuthInterceptor;
 
+import lombok.extern.log4j.Log4j2;
 import okhttp3.OkHttpClient;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+@Log4j2
 public class BillingServicesApiClient {
 	
 	public static BillingServiceApiService getService() {
@@ -32,7 +31,7 @@ public class BillingServicesApiClient {
 		try {
 			swaggerResponse = getService().getswagger().execute();
 		} catch (IOException e) {
-			System.out.println("error in calling billing service >" + e.getMessage());
+			log.info("error in calling billing service {}" , e.getMessage());
 			return false ;
 		}
 		

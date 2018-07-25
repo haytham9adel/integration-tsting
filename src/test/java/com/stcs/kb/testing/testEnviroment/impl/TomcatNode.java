@@ -4,9 +4,12 @@ import com.stcs.kb.config.Constants;
 import com.stcs.kb.service.impl.KBBillingImpl;
 import com.stcs.kb.testing.testEnviroment.AbstractComponent;
 
+import lombok.extern.log4j.Log4j2;
+
+
+@Log4j2
 public class TomcatNode extends AbstractComponent {
 
-	private String name = "kbnode ";
 	private String path = "/Users/haythamzamek/Documents/STC/billing/development/kb-18-tomcat/apache-tomcat-8.0.33/bin";
 	private String startCommand = "/startup.sh";
 	private String closeCommand = "/shutdown.sh";
@@ -16,10 +19,10 @@ public class TomcatNode extends AbstractComponent {
 		try {
 			ProcessBuilder builder = new ProcessBuilder(path + startCommand);
 			builder.redirectErrorStream(true);
-			System.out.println("command > " + path + startCommand);
+			log.info("Starting tomcat in path: {} ", path);
 			builder.start();
 		} catch (Exception e) {
-			e.printStackTrace();
+			log.error("Couldn't start tomcat in path: {} due to exception", path, e.getMessage());
 			return false;
 		}
 		return true;
@@ -30,10 +33,10 @@ public class TomcatNode extends AbstractComponent {
 		try {
 			ProcessBuilder builder = new ProcessBuilder(path + closeCommand);
 			builder.redirectErrorStream(true);
-			System.out.println("command > " + path + closeCommand);
-
+			log.info("Starting tomcat in path: {} ", path);
+			builder.start();
 		} catch (Exception e) {
-			e.printStackTrace();
+			log.error("Couldn't stop tomcat in path: {} due to exception", path, e);
 			return false;
 		}
 		return true;
