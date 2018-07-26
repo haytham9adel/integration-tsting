@@ -14,7 +14,7 @@ public class BillingServiceComponent extends AbstractDockerComponent{
 	}
 
 	@Override
-	public boolean isComponentUpAndRunning() {
+	public boolean isUpAndRunning() {
 		return BillingServicesApiClient.isConnected();
 	}
 	

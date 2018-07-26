@@ -1,4 +1,4 @@
-package com.stcs.kb.testing.testCase;
+package com.stcs.kb.migration;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -10,11 +10,11 @@ import org.junit.Test;
 import org.killbill.billing.client.KillBillClient;
 import org.killbill.billing.client.KillBillHttpClient;
 import org.killbill.billing.client.RequestOptions;
-import org.killbill.billing.client.model.Invoices;
+
 import junit.framework.TestCase;
 
 
-
+//TODO Haytham will move it to another project
 public class PriceChangeTest extends TestCase {
 
 	  KillBillHttpClient killBillHttpClient ;

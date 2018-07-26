@@ -1,7 +1,5 @@
 package com.stcs.kb.service.impl;
 
-import java.io.IOException;
-
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.stcs.kb.config.Constants;
@@ -37,8 +35,6 @@ public class RabbitManagmentClient {
 				: json.getAsJsonObject("message_stats").get("publish").getAsLong();
 
 		data[1] = json.get("messages_ram").getAsLong();
-		// System.out.println(">>no of pubplished : " + data[0]);
-		// System.out.println(">>no of pubplished : " + data[1]);
 		return data;
 	}
 

@@ -3,9 +3,10 @@ package com.stcs.kb.testing.testEnviroment.impl;
 import com.stcs.kb.client.RabbitConnection;
 import com.stcs.kb.testing.testEnviroment.AbstractDockerComponent;
 
+import lombok.extern.log4j.Log4j2;
+
+@Log4j2
 public class RabbitComponent extends AbstractDockerComponent  {
-	
-    // docker run -p 15672:15672 -p  5672:5672 rabbit-integration1
 
 	private String url = "localhost";
 	private String username  = "guest" ;
@@ -25,14 +26,16 @@ public class RabbitComponent extends AbstractDockerComponent  {
 	
 
 	@Override
-	public boolean isComponentUpAndRunning() {
+	public boolean isUpAndRunning() {
 		try { 
 		   RabbitConnection rabbitConnection = new RabbitConnection(url, username, password, vhost) ;
 		   boolean ok =  rabbitConnection.getConnection().isOpen() ;
-		   if(ok) rabbitConnection.getConnection().close();
+		   if(ok) {
+			   rabbitConnection.getConnection().close();
+		   }
 		   return ok ;
 		}catch (Exception e) {
-			System.out.println(name + "  dont running yet : " + e.getMessage() );
+			log.info(name + " is not running yet : " + e.getMessage() );
 			return false ;
 		}		
 	}

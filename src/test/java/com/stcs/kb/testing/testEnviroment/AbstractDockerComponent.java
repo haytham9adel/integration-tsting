@@ -1,59 +1,39 @@
 package com.stcs.kb.testing.testEnviroment;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
+import lombok.extern.log4j.Log4j2;
 
+@Log4j2
 public abstract class AbstractDockerComponent extends AbstractComponent {
 
-	protected String netwrokName  ;
-	
-	public AbstractDockerComponent(String netwrokName) {
-		this.netwrokName = netwrokName ;
+	protected String networkName;
+	private DockerImageBuilder dockerImageBuilder;
+
+	public AbstractDockerComponent(String networkName) {
+		this.networkName = networkName;
+		dockerImageBuilder = new DockerImageBuilder();
 	}
-	
-	
+
 	@Override
-	public boolean start()  {
+	public boolean start() {
+		try {
+			dockerImageBuilder.port(port).managmentPort(managmentPort).name(name).networkName(networkName)
+					.dockerImage(dockerImage).start();
+		} catch (Exception e) {
+			log.error("Couldn't start docker image : {} due to exception {}", dockerImage , e.getMessage());
+			return false;
+		}
+		return true;
+	}
+
+	@Override
+	public boolean stop() {
 		try { 
-		   Runtime rt = Runtime.getRuntime();
-		   String command = "docker run "
-		           +  ( (managmentPort==0)?"":" -p "+managmentPort +":"+managmentPort )
-				   + (" -p "+port +":"+port  )
-				   + " --name "+name
-				   + " -d --network "+netwrokName
-				   + " " + dockerImage  ;
-		    System.out.println("command > " +command);
-		    rt.exec( command );
-		    
-		}catch (Exception e) {
-			e.printStackTrace();
-			return false ;
+			dockerImageBuilder.stop();
+		} catch (Exception e) {
+			log.error("Couldn't stop docker image : {} due to exception {}", dockerImage , e.getMessage());
+			return false;
 		}
 		return true;
 	}
-
-	@Override
-	public boolean stop()  {
-		try { // | xargs -I {} docker kill {}
-			Runtime rt = Runtime.getRuntime();
-		    String[] cmd = { "/bin/sh", "-c", "docker ps -a | grep "+dockerImage+" | awk '{print $1 }' " };
-		    System.out.println("command > " +cmd);
-		    Process proc =  rt.exec(cmd );
-		    BufferedReader stdInput = new BufferedReader(new InputStreamReader(proc.getInputStream()));
-		    String s = null;
-		    while ((s = stdInput.readLine()) != null) {
-		    	 rt.exec("docker rm -f "+s);
-			}
-		    
-		}catch (Exception e) {
-			return false ;
-		}
-		return true;
-	}
-
-
-	
-
-	
 
 }

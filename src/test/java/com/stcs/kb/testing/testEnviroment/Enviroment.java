@@ -7,6 +7,4 @@ public interface Enviroment {
 	boolean startEnviroment() throws Exception;
 
 	void shutdownEnviroment();
-
-	
 }
