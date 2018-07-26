@@ -1,8 +1,11 @@
 package com.stcs.kb.testing.testEnviroment.impl;
 
+import com.stcs.kb.config.Constants;
+import com.stcs.kb.service.impl.KBBillingImpl;
 import com.stcs.kb.testing.testEnviroment.AbstractComponent;
 
 import lombok.extern.log4j.Log4j2;
+
 
 @Log4j2
 public class TomcatNode extends AbstractComponent {
@@ -42,9 +45,9 @@ public class TomcatNode extends AbstractComponent {
 	@Override
 	public boolean isUpAndRunning() {
 		try {
-			ProcessBuilder builder = new ProcessBuilder(
-					"while ! echo exit | nc localhost" + port + "; do sleep 10; done");
-			builder.start();
+			KBBillingImpl cartwheelKB = new KBBillingImpl(Constants.KB_CARTWHEEL_KEY,
+					Constants.KB_CARTWHEEL_SECRET, 1000);
+			cartwheelKB.cleanCache();
 		} catch (Exception e) {
 			return false;
 		}

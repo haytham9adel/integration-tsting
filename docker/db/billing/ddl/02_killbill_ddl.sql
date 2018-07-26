@@ -1,0 +1,1057 @@
+/* We cannot use timestamp in MySQL because of the implicit TimeZone conversions it does behind the scenes */
+CREATE DOMAIN datetime AS timestamp without time zone;
+/* TEXT in MySQL is smaller then MEDIUMTEXT */
+CREATE DOMAIN mediumtext AS text;
+/* PostgreSQL uses BYTEA to manage all BLOB types */
+CREATE DOMAIN mediumblob AS bytea;
+
+CREATE OR REPLACE LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION last_insert_id() RETURNS BIGINT AS $$
+    DECLARE
+        result BIGINT;
+    BEGIN
+        SELECT lastval() INTO result;
+        RETURN result;
+    EXCEPTION WHEN OTHERS THEN
+        SELECT NULL INTO result;
+        RETURN result;
+    END;
+$$ LANGUAGE plpgsql VOLATILE;
+
+CREATE OR REPLACE FUNCTION schema() RETURNS VARCHAR AS $$
+    DECLARE
+        result VARCHAR;
+    BEGIN
+        SELECT current_schema() INTO result;
+        RETURN result;
+    EXCEPTION WHEN OTHERS THEN
+        SELECT NULL INTO result;
+        RETURN result;
+    END;
+$$ LANGUAGE plpgsql IMMUTABLE;
+
+CREATE OR REPLACE FUNCTION hour(ts TIMESTAMP WITH TIME ZONE) RETURNS INTEGER AS $$
+    DECLARE
+        result INTEGER;
+    BEGIN
+        SELECT EXTRACT(HOUR FROM ts) INTO result;
+        RETURN result;
+    EXCEPTION WHEN OTHERS THEN
+        SELECT NULL INTO result;
+        RETURN result;
+    END;
+$$ LANGUAGE plpgsql IMMUTABLE;
+
+/*! USE killbill */;
+
+/*! SET storage_engine=INNODB */;
+
+CREATE TABLE accounts (
+    record_id serial unique,
+    id varchar(36) NOT NULL,
+    external_key varchar(128) NULL,
+    email varchar(128) DEFAULT NULL,
+    name varchar(100) DEFAULT NULL,
+    first_name_length int DEFAULT NULL,
+    currency varchar(3) DEFAULT NULL,
+    billing_cycle_day_local int DEFAULT NULL,
+    payment_method_id varchar(36) DEFAULT NULL,
+    time_zone varchar(50) NOT NULL,
+    locale varchar(5) DEFAULT NULL,
+    address1 varchar(100) DEFAULT NULL,
+    address2 varchar(100) DEFAULT NULL,
+    company_name varchar(50) DEFAULT NULL,
+    city varchar(50) DEFAULT NULL,
+    state_or_province varchar(50) DEFAULT NULL,
+    country varchar(50) DEFAULT NULL,
+    postal_code varchar(16) DEFAULT NULL,
+    phone varchar(25) DEFAULT NULL,
+    migrated boolean default false,
+    is_notified_for_invoices boolean NOT NULL,
+    created_date datetime NOT NULL,
+    created_by varchar(50) NOT NULL,
+    updated_date datetime DEFAULT NULL,
+    updated_by varchar(50) DEFAULT NULL,
+    tenant_record_id bigint /*! unsigned */ not null default 0,
+    PRIMARY KEY(record_id)
+) /*! CHARACTER SET utf8 COLLATE utf8_bin */;
+CREATE UNIQUE INDEX accounts_id ON accounts(id);
+CREATE UNIQUE INDEX accounts_external_key ON accounts(external_key, tenant_record_id);
+CREATE INDEX accounts_tenant_record_id ON accounts(tenant_record_id);
+
+CREATE TABLE account_history (
+    record_id serial unique,
+    id varchar(36) NOT NULL,
+    target_record_id bigint /*! unsigned */ not null,
+    external_key varchar(128) NULL,
+    email varchar(128) DEFAULT NULL,
+    name varchar(100) DEFAULT NULL,
+    first_name_length int DEFAULT NULL,
+    currency varchar(3) DEFAULT NULL,
+    billing_cycle_day_local int DEFAULT NULL,
+    payment_method_id varchar(36) DEFAULT NULL,
+    time_zone varchar(50) NOT NULL,
+    locale varchar(5) DEFAULT NULL,
+    address1 varchar(100) DEFAULT NULL,
+    address2 varchar(100) DEFAULT NULL,
+    company_name varchar(50) DEFAULT NULL,
+    city varchar(50) DEFAULT NULL,
+    state_or_province varchar(50) DEFAULT NULL,
+    country varchar(50) DEFAULT NULL,
+    postal_code varchar(16) DEFAULT NULL,
+    phone varchar(25) DEFAULT NULL,
+    migrated boolean default false,
+    is_notified_for_invoices boolean NOT NULL,
+    change_type varchar(6) NOT NULL,
+    created_by varchar(50) NOT NULL,
+    created_date datetime NOT NULL,
+    updated_by varchar(50) NOT NULL,
+    updated_date datetime NOT NULL,
+    tenant_record_id bigint /*! unsigned */ not null default 0,
+    PRIMARY KEY(record_id)
+) /*! CHARACTER SET utf8 COLLATE utf8_bin */;
+CREATE INDEX account_history_target_record_id ON account_history(target_record_id);
+CREATE INDEX account_history_tenant_record_id ON account_history(tenant_record_id);
+
+CREATE TABLE account_emails (
+    record_id serial unique,
+    id varchar(36) NOT NULL,
+    account_id varchar(36) NOT NULL,
+    email varchar(128) NOT NULL,
+    is_active boolean default true,
+    created_by varchar(50) NOT NULL,
+    created_date datetime NOT NULL,
+    updated_by varchar(50) NOT NULL,
+    updated_date datetime NOT NULL,
+    account_record_id bigint /*! unsigned */ not null,
+    tenant_record_id bigint /*! unsigned */ not null default 0,
+    PRIMARY KEY(record_id)
+) /*! CHARACTER SET utf8 COLLATE utf8_bin */;
+CREATE UNIQUE INDEX account_email_id ON account_emails(id);
+CREATE INDEX account_email_account_id_email ON account_emails(account_id, email);
+CREATE INDEX account_emails_tenant_account_record_id ON account_emails(tenant_record_id, account_record_id);
+
+CREATE TABLE account_email_history (
+    record_id serial unique,
+    id varchar(36) NOT NULL,
+    target_record_id bigint /*! unsigned */ not null,
+    account_id varchar(36) NOT NULL,
+    email varchar(128) NOT NULL,
+    is_active boolean default true,
+    change_type varchar(6) NOT NULL,
+    created_by varchar(50) NOT NULL,
+    created_date datetime NOT NULL,
+    updated_by varchar(50) NOT NULL,
+    updated_date datetime NOT NULL,
+    account_record_id bigint /*! unsigned */ not null,
+    tenant_record_id bigint /*! unsigned */ not null default 0,
+    PRIMARY KEY(record_id)
+) /*! CHARACTER SET utf8 COLLATE utf8_bin */;
+CREATE INDEX account_email_target_record_id ON account_email_history(target_record_id);
+CREATE INDEX account_email_history_tenant_account_record_id ON account_email_history(tenant_record_id, account_record_id);
+
+/*! SET storage_engine=INNODB */;
+
+CREATE TABLE bus_ext_events (
+    record_id serial unique,
+    class_name varchar(128) NOT NULL,
+    event_json varchar(2048) NOT NULL,
+    user_token varchar(36),
+    created_date datetime NOT NULL,
+    creating_owner varchar(50) NOT NULL,
+    processing_owner varchar(50) DEFAULT NULL,
+    processing_available_date datetime DEFAULT NULL,
+    processing_state varchar(14) DEFAULT 'AVAILABLE',
+    error_count int /*! unsigned */ DEFAULT 0,
+    /* Note: account_record_id can be NULL (e.g. TagDefinition events) */
+    search_key1 bigint /*! unsigned */ default null,
+    search_key2 bigint /*! unsigned */ not null default 0,
+    PRIMARY KEY(record_id)
+) /*! CHARACTER SET utf8 COLLATE utf8_bin */;
+CREATE INDEX idx_bus_ext_where ON bus_ext_events (processing_state, processing_owner, processing_available_date);
+CREATE INDEX bus_ext_events_tenant_account_record_id ON bus_ext_events(search_key2, search_key1);
+
+CREATE TABLE bus_ext_events_history (
+    record_id serial unique,
+    class_name varchar(128) NOT NULL,
+    event_json varchar(2048) NOT NULL,
+    user_token varchar(36),
+    created_date datetime NOT NULL,
+    creating_owner varchar(50) NOT NULL,
+    processing_owner varchar(50) DEFAULT NULL,
+    processing_available_date datetime DEFAULT NULL,
+    processing_state varchar(14) DEFAULT 'AVAILABLE',
+    error_count int /*! unsigned */ DEFAULT 0,
+    /* Note: account_record_id can be NULL (e.g. TagDefinition events) */
+    search_key1 bigint /*! unsigned */ default null,
+    search_key2 bigint /*! unsigned */ not null default 0,
+    PRIMARY KEY(record_id)
+) /*! CHARACTER SET utf8 COLLATE utf8_bin */;
+
+/*! SET storage_engine=INNODB */;
+
+CREATE TABLE catalog_override_plan_definition (
+    record_id serial unique,
+    parent_plan_name varchar(255) NOT NULL,
+    effective_date datetime NOT NULL,
+    is_active boolean default true,
+    created_date datetime NOT NULL,
+    created_by varchar(50) NOT NULL,
+    tenant_record_id bigint /*! unsigned */ not null default 0,
+    PRIMARY KEY(record_id)
+) /*! CHARACTER SET utf8 COLLATE utf8_bin */;
+CREATE INDEX catalog_override_plan_definition_tenant_record_id ON catalog_override_plan_definition(tenant_record_id);
+
+
+CREATE TABLE catalog_override_phase_definition (
+    record_id serial unique,
+    parent_phase_name varchar(255) NOT NULL,
+    currency varchar(3) NOT NULL,
+    fixed_price numeric(17,9) NULL,
+    recurring_price numeric(17,9) NULL,
+    effective_date datetime NOT NULL,
+    created_date datetime NOT NULL,
+    created_by varchar(50) NOT NULL,
+    tenant_record_id bigint /*! unsigned */ not null default 0,
+    PRIMARY KEY(record_id)
+) /*! CHARACTER SET utf8 COLLATE utf8_bin */;
+CREATE INDEX catalog_override_phase_definition_idx ON catalog_override_phase_definition(tenant_record_id, parent_phase_name, currency);
+
+CREATE TABLE catalog_override_plan_phase (
+    record_id serial unique,
+    phase_number smallint /*! unsigned */ NOT NULL,
+    phase_def_record_id bigint /*! unsigned */ not null,
+    target_plan_def_record_id bigint /*! unsigned */ not null,
+    created_date datetime NOT NULL,
+    created_by varchar(50) NOT NULL,
+    tenant_record_id bigint /*! unsigned */ not null default 0,
+    PRIMARY KEY(record_id)
+) /*! CHARACTER SET utf8 COLLATE utf8_bin */;
+CREATE INDEX catalog_override_plan_phase_idx ON catalog_override_plan_phase(tenant_record_id, phase_number, phase_def_record_id);
+
+/*! SET storage_engine=INNODB */;
+
+CREATE TABLE subscription_events (
+    record_id serial unique,
+    id varchar(36) NOT NULL,
+    event_type varchar(9) NOT NULL,
+    user_type varchar(25) DEFAULT NULL,
+    requested_date datetime NOT NULL,
+    effective_date datetime NOT NULL,
+    subscription_id varchar(36) NOT NULL,
+    plan_name varchar(255) DEFAULT NULL,
+    phase_name varchar(255) DEFAULT NULL,
+    price_list_name varchar(255) DEFAULT NULL,
+    current_version int DEFAULT 1,
+    is_active boolean default true,
+    created_by varchar(50) NOT NULL,
+    created_date datetime NOT NULL,
+    updated_by varchar(50) NOT NULL,
+    updated_date datetime NOT NULL,
+    account_record_id bigint /*! unsigned */ not null,
+    tenant_record_id bigint /*! unsigned */ not null default 0,
+    PRIMARY KEY(record_id)
+) /*! CHARACTER SET utf8 COLLATE utf8_bin */;
+CREATE UNIQUE INDEX subscription_events_id ON subscription_events(id);
+CREATE INDEX idx_ent_1 ON subscription_events(subscription_id, is_active, effective_date);
+CREATE INDEX idx_ent_2 ON subscription_events(subscription_id, effective_date, created_date, requested_date,id);
+CREATE INDEX subscription_events_tenant_account_record_id ON subscription_events(tenant_record_id, account_record_id);
+
+CREATE TABLE subscriptions (
+    record_id serial unique,
+    id varchar(36) NOT NULL,
+    bundle_id varchar(36) NOT NULL,
+    category varchar(32) NOT NULL,
+    start_date datetime NOT NULL,
+    bundle_start_date datetime NOT NULL,
+    active_version int DEFAULT 1,
+    charged_through_date datetime DEFAULT NULL,
+    created_by varchar(50) NOT NULL,
+    created_date datetime NOT NULL,
+    updated_by varchar(50) NOT NULL,
+    updated_date datetime NOT NULL,
+    account_record_id bigint /*! unsigned */ not null,
+    tenant_record_id bigint /*! unsigned */ not null default 0,
+    PRIMARY KEY(record_id)
+) /*! CHARACTER SET utf8 COLLATE utf8_bin */;
+CREATE UNIQUE INDEX subscriptions_id ON subscriptions(id);
+CREATE INDEX subscriptions_bundle_id ON subscriptions(bundle_id);
+CREATE INDEX subscriptions_tenant_account_record_id ON subscriptions(tenant_record_id, account_record_id);
+
+CREATE TABLE bundles (
+    record_id serial unique,
+    id varchar(36) NOT NULL,
+    external_key varchar(64) NOT NULL,
+    account_id varchar(36) NOT NULL,
+    last_sys_update_date datetime,
+    original_created_date datetime NOT NULL,
+    created_by varchar(50) NOT NULL,
+    created_date datetime NOT NULL,
+    updated_by varchar(50) NOT NULL,
+    updated_date datetime NOT NULL,
+    account_record_id bigint /*! unsigned */ not null,
+    tenant_record_id bigint /*! unsigned */ not null default 0,
+    PRIMARY KEY(record_id)
+) /*! CHARACTER SET utf8 COLLATE utf8_bin */;
+CREATE UNIQUE INDEX bundles_id ON bundles(id);
+CREATE INDEX bundles_key ON bundles(external_key);
+CREATE INDEX bundles_account ON bundles(account_id);
+CREATE INDEX bundles_tenant_account_record_id ON bundles(tenant_record_id, account_record_id);
+
+
+/*! SET storage_engine=INNODB */;
+
+CREATE TABLE blocking_states (
+    record_id serial unique,
+    id varchar(36) NOT NULL,
+    blockable_id varchar(36) NOT NULL,
+    type varchar(20) NOT NULL,
+    state varchar(50) NOT NULL,
+    service varchar(20) NOT NULL,
+    block_change bool NOT NULL,
+    block_entitlement bool NOT NULL,
+    block_billing bool NOT NULL,
+    effective_date datetime NOT NULL,
+    is_active boolean default true,
+    created_date datetime NOT NULL,
+    created_by varchar(50) NOT NULL,
+    updated_date datetime DEFAULT NULL,
+    updated_by varchar(50) DEFAULT NULL,
+    account_record_id bigint /*! unsigned */ not null,
+    tenant_record_id bigint /*! unsigned */ not null default 0,
+    PRIMARY KEY(record_id)
+) /*! CHARACTER SET utf8 COLLATE utf8_bin */;
+CREATE INDEX blocking_states_id ON blocking_states(blockable_id);
+CREATE INDEX blocking_states_tenant_account_record_id ON blocking_states(tenant_record_id, account_record_id);
+
+/*! SET storage_engine=INNODB */;
+
+CREATE TABLE invoice_items (
+    record_id serial unique,
+    id varchar(36) NOT NULL,
+    type varchar(24) NOT NULL,
+    invoice_id varchar(36) NOT NULL,
+    account_id varchar(36) NOT NULL,
+    bundle_id varchar(36),
+    subscription_id varchar(36),
+    description varchar(255),
+    plan_name varchar(255),
+    phase_name varchar(255),
+    usage_name varchar(255),
+    start_date date NOT NULL,
+    end_date date,
+    amount numeric(17,9) NOT NULL,
+    rate numeric(17,9) NULL,
+    currency varchar(3) NOT NULL,
+    linked_item_id varchar(36),
+    created_by varchar(50) NOT NULL,
+    created_date datetime NOT NULL,
+    account_record_id bigint /*! unsigned */ not null,
+    tenant_record_id bigint /*! unsigned */ not null default 0,
+    PRIMARY KEY(record_id)
+) /*! CHARACTER SET utf8 COLLATE utf8_bin */;
+CREATE UNIQUE INDEX invoice_items_id ON invoice_items(id);
+CREATE INDEX invoice_items_subscription_id ON invoice_items(subscription_id ASC);
+CREATE INDEX invoice_items_invoice_id ON invoice_items(invoice_id ASC);
+CREATE INDEX invoice_items_account_id ON invoice_items(account_id ASC);
+CREATE INDEX invoice_items_linked_item_id ON invoice_items(linked_item_id ASC);
+CREATE INDEX invoice_items_tenant_account_record_id ON invoice_items(tenant_record_id, account_record_id);
+
+CREATE TABLE invoices (
+    record_id serial unique,
+    id varchar(36) NOT NULL,
+    account_id varchar(36) NOT NULL,
+    invoice_date date NOT NULL,
+    target_date date NOT NULL,
+    currency varchar(3) NOT NULL,
+    migrated bool NOT NULL,
+    created_by varchar(50) NOT NULL,
+    created_date datetime NOT NULL,
+    account_record_id bigint /*! unsigned */ not null,
+    tenant_record_id bigint /*! unsigned */ not null default 0,
+    PRIMARY KEY(record_id)
+) /*! CHARACTER SET utf8 COLLATE utf8_bin */;
+CREATE UNIQUE INDEX invoices_id ON invoices(id);
+CREATE INDEX invoices_account_target ON invoices(account_id ASC, target_date);
+CREATE INDEX invoices_tenant_account_record_id ON invoices(tenant_record_id, account_record_id);
+
+CREATE TABLE invoice_payments (
+    record_id serial unique,
+    id varchar(36) NOT NULL,
+    type varchar(24) NOT NULL,
+    invoice_id varchar(36) NOT NULL,
+    payment_id varchar(36),
+    payment_date datetime NOT NULL,
+    amount numeric(17,9) NOT NULL,
+    currency varchar(3) NOT NULL,
+    processed_currency varchar(3) NOT NULL,
+    payment_cookie_id varchar(255) DEFAULT NULL,
+    linked_invoice_payment_id varchar(36) DEFAULT NULL,
+    success bool DEFAULT true,
+    created_by varchar(50) NOT NULL,
+    created_date datetime NOT NULL,
+    account_record_id bigint /*! unsigned */ not null,
+    tenant_record_id bigint /*! unsigned */ not null default 0,
+    PRIMARY KEY(record_id)
+) /*! CHARACTER SET utf8 COLLATE utf8_bin */;
+CREATE UNIQUE INDEX invoice_payments_id ON invoice_payments(id);
+CREATE UNIQUE INDEX idx_invoice_payments ON invoice_payments(payment_id, type);
+CREATE INDEX invoice_payments_invoice_id ON invoice_payments(invoice_id);
+CREATE INDEX invoice_payments_reversals ON invoice_payments(linked_invoice_payment_id);
+CREATE INDEX invoice_payments_tenant_account_record_id ON invoice_payments(tenant_record_id, account_record_id);
+
+/*! SET storage_engine=INNODB */;
+
+CREATE TABLE payment_attempts (
+    record_id serial unique,
+    id varchar(36) NOT NULL,
+    account_id varchar(36) NOT NULL,
+    payment_method_id varchar(36) DEFAULT NULL,
+    payment_external_key varchar(128) NOT NULL,
+    transaction_id varchar(36),
+    transaction_external_key varchar(128) NOT NULL,
+    transaction_type varchar(32) NOT NULL,
+    state_name varchar(32) NOT NULL,
+    amount numeric(17,9),
+    currency varchar(3),
+    plugin_name varchar(1024) NOT NULL,
+    plugin_properties mediumblob,
+    created_by varchar(50) NOT NULL,
+    created_date datetime NOT NULL,
+    updated_by varchar(50) NOT NULL,
+    updated_date datetime NOT NULL,
+    account_record_id bigint /*! unsigned */ not null,
+    tenant_record_id bigint /*! unsigned */ not null default 0,
+    PRIMARY KEY (record_id)
+) /*! CHARACTER SET utf8 COLLATE utf8_bin */;
+CREATE UNIQUE INDEX payment_attempts_id ON payment_attempts(id);
+CREATE INDEX payment_attempts_payment ON payment_attempts(transaction_id);
+CREATE INDEX payment_attempts_payment_key ON payment_attempts(payment_external_key);
+CREATE INDEX payment_attempts_payment_state ON payment_attempts(state_name);
+CREATE INDEX payment_attempts_payment_transaction_key ON payment_attempts(transaction_external_key);
+CREATE INDEX payment_attempts_tenant_account_record_id ON payment_attempts(tenant_record_id, account_record_id);
+
+CREATE TABLE payment_attempt_history (
+    record_id serial unique,
+    id varchar(36) NOT NULL,
+    target_record_id bigint /*! unsigned */ not null,
+    account_id varchar(36) NOT NULL,
+    payment_method_id varchar(36) DEFAULT NULL,
+    payment_external_key varchar(128) NOT NULL,
+    transaction_id varchar(36),
+    transaction_external_key varchar(128) NOT NULL,
+    transaction_type varchar(32) NOT NULL,
+    state_name varchar(32) NOT NULL,
+    amount numeric(17,9),
+    currency varchar(3),
+    plugin_name varchar(1024) NOT NULL,
+    plugin_properties mediumblob,
+    change_type varchar(6) NOT NULL,
+    created_by varchar(50) NOT NULL,
+    created_date datetime NOT NULL,
+    updated_by varchar(50) NOT NULL,
+    updated_date datetime NOT NULL,
+    account_record_id bigint /*! unsigned */ not null,
+    tenant_record_id bigint /*! unsigned */ not null default 0,
+    PRIMARY KEY(record_id)
+) /*! CHARACTER SET utf8 COLLATE utf8_bin */;
+CREATE INDEX payment_attempt_history_target_record_id ON payment_attempt_history(target_record_id);
+CREATE INDEX payment_attempt_history_tenant_account_record_id ON payment_attempt_history(tenant_record_id, account_record_id);
+
+CREATE TABLE payment_methods (
+    record_id serial unique,
+    id varchar(36) NOT NULL,
+    external_key varchar(255) NOT NULL,
+    account_id varchar(36) NOT NULL,
+    plugin_name varchar(50) NOT NULL,
+    is_active boolean default true,
+    created_by varchar(50) NOT NULL,
+    created_date datetime NOT NULL,
+    updated_by varchar(50) NOT NULL,
+    updated_date datetime NOT NULL,
+    account_record_id bigint /*! unsigned */ not null,
+    tenant_record_id bigint /*! unsigned */ not null default 0,
+    PRIMARY KEY (record_id)
+) /*! CHARACTER SET utf8 COLLATE utf8_bin */;
+CREATE UNIQUE INDEX payment_methods_id ON payment_methods(id);
+CREATE UNIQUE INDEX payment_methods_external_key ON payment_methods(external_key, tenant_record_id);
+CREATE INDEX payment_methods_plugin_name ON payment_methods(plugin_name);
+CREATE INDEX payment_methods_active_accnt ON payment_methods(is_active, account_id);
+CREATE INDEX payment_methods_tenant_account_record_id ON payment_methods(tenant_record_id, account_record_id);
+
+CREATE TABLE payment_method_history (
+    record_id serial unique,
+    id varchar(36) NOT NULL,
+    external_key varchar(255) NOT NULL,
+    target_record_id bigint /*! unsigned */ not null,
+    account_id varchar(36) NOT NULL,
+    plugin_name varchar(50) NOT NULL,
+    is_active boolean default true,
+    change_type varchar(6) NOT NULL,
+    created_by varchar(50) NOT NULL,
+    created_date datetime NOT NULL,
+    updated_by varchar(50) NOT NULL,
+    updated_date datetime NOT NULL,
+    account_record_id bigint /*! unsigned */ not null,
+    tenant_record_id bigint /*! unsigned */ not null default 0,
+    PRIMARY KEY(record_id)
+) /*! CHARACTER SET utf8 COLLATE utf8_bin */;
+CREATE INDEX payment_method_history_target_record_id ON payment_method_history(target_record_id);
+CREATE INDEX payment_method_history_tenant_account_record_id ON payment_method_history(tenant_record_id, account_record_id);
+
+
+CREATE TABLE payments (
+    record_id serial unique,
+    id varchar(36) NOT NULL,
+    account_id varchar(36) NOT NULL,
+    payment_method_id varchar(36) NOT NULL,
+    external_key varchar(255) NOT NULL,
+    state_name varchar(64) DEFAULT NULL,
+    last_success_state_name varchar(64) DEFAULT NULL,
+    created_by varchar(50) NOT NULL,
+    created_date datetime NOT NULL,
+    updated_by varchar(50) NOT NULL,
+    updated_date datetime NOT NULL,
+    account_record_id bigint /*! unsigned */ not null,
+    tenant_record_id bigint /*! unsigned */ not null default 0,
+    PRIMARY KEY (record_id)
+) /*! CHARACTER SET utf8 COLLATE utf8_bin */;
+CREATE UNIQUE INDEX payments_id ON payments(id);
+CREATE UNIQUE INDEX payments_key ON payments(external_key, tenant_record_id);
+CREATE INDEX payments_accnt ON payments(account_id);
+CREATE INDEX payments_tenant_account_record_id ON payments(tenant_record_id, account_record_id);
+
+
+CREATE TABLE payment_history (
+    record_id serial unique,
+    id varchar(36) NOT NULL,
+    target_record_id bigint /*! unsigned */ not null,
+    account_id varchar(36) NOT NULL,
+    payment_method_id varchar(36) NOT NULL,
+    external_key varchar(255) NOT NULL,
+    state_name varchar(64) DEFAULT NULL,
+    last_success_state_name varchar(64) DEFAULT NULL,
+    change_type varchar(6) NOT NULL,
+    created_by varchar(50) NOT NULL,
+    created_date datetime NOT NULL,
+    updated_by varchar(50) NOT NULL,
+    updated_date datetime NOT NULL,
+    account_record_id bigint /*! unsigned */ not null,
+    tenant_record_id bigint /*! unsigned */ not null default 0,
+    PRIMARY KEY(record_id)
+) /*! CHARACTER SET utf8 COLLATE utf8_bin */;
+CREATE INDEX payment_history_target_record_id ON payment_history(target_record_id);
+CREATE INDEX payment_history_tenant_account_record_id ON payment_history(tenant_record_id, account_record_id);
+
+
+CREATE TABLE payment_transactions (
+    record_id serial unique,
+    id varchar(36) NOT NULL,
+    attempt_id varchar(36) DEFAULT NULL,
+    transaction_external_key varchar(255) NOT NULL,
+    transaction_type varchar(32) NOT NULL,
+    effective_date datetime NOT NULL,
+    transaction_status varchar(50) NOT NULL,
+    amount numeric(17,9),
+    currency varchar(3),
+    processed_amount numeric(17,9),
+    processed_currency varchar(3),
+    payment_id varchar(36) NOT NULL,
+    gateway_error_code varchar(32),
+    gateway_error_msg varchar(256),
+    created_by varchar(50) NOT NULL,
+    created_date datetime NOT NULL,
+    updated_by varchar(50) NOT NULL,
+    updated_date datetime NOT NULL,
+    account_record_id bigint /*! unsigned */ not null,
+    tenant_record_id bigint /*! unsigned */ not null default 0,
+    PRIMARY KEY (record_id)
+) /*! CHARACTER SET utf8 COLLATE utf8_bin */;
+CREATE UNIQUE INDEX transactions_id ON payment_transactions(id);
+CREATE INDEX transactions_payment_id ON payment_transactions(payment_id);
+CREATE INDEX transactions_key ON payment_transactions(transaction_external_key);
+CREATE INDEX transactions_status ON payment_transactions(transaction_status);
+CREATE INDEX transactions_tenant_account_record_id ON payment_transactions(tenant_record_id, account_record_id);
+
+CREATE TABLE payment_transaction_history (
+    record_id serial unique,
+    id varchar(36) NOT NULL,
+    attempt_id varchar(36) DEFAULT NULL,
+    transaction_external_key varchar(255) NOT NULL,
+    target_record_id bigint /*! unsigned */ not null,
+    transaction_type varchar(32) NOT NULL,
+    effective_date datetime NOT NULL,
+    transaction_status varchar(50) NOT NULL,
+    amount numeric(17,9),
+    currency varchar(3),
+    processed_amount numeric(17,9),
+    processed_currency varchar(3),
+    payment_id varchar(36) NOT NULL,
+    gateway_error_code varchar(32),
+    gateway_error_msg varchar(256),
+    change_type varchar(6) NOT NULL,
+    created_by varchar(50) NOT NULL,
+    created_date datetime NOT NULL,
+    updated_by varchar(50) NOT NULL,
+    updated_date datetime NOT NULL,
+    account_record_id bigint /*! unsigned */ not null,
+    tenant_record_id bigint /*! unsigned */ not null default 0,
+    PRIMARY KEY (record_id)
+) /*! CHARACTER SET utf8 COLLATE utf8_bin */;
+CREATE INDEX transaction_history_target_record_id ON payment_transaction_history(target_record_id);
+CREATE INDEX transaction_history_tenant_account_record_id ON payment_transaction_history(tenant_record_id, account_record_id);
+
+
+/*  PaymentControlPlugin lives  here until this becomes a first class citizen plugin */
+CREATE TABLE _invoice_payment_control_plugin_auto_pay_off (
+    record_id serial unique,
+    attempt_id varchar(36) NOT NULL,
+    payment_external_key varchar(255) NOT NULL,
+    transaction_external_key varchar(255) NOT NULL,
+    account_id varchar(36) NOT NULL,
+    plugin_name varchar(50) NOT NULL,
+    payment_id varchar(36),
+    payment_method_id varchar(36) NOT NULL,
+    amount numeric(17,9),
+    currency varchar(3),
+    is_active boolean default true,
+    created_by varchar(50) NOT NULL,
+    created_date datetime NOT NULL,
+    PRIMARY KEY (record_id)
+) /*! CHARACTER SET utf8 COLLATE utf8_bin */;
+CREATE INDEX _invoice_payment_control_plugin_auto_pay_off_account ON _invoice_payment_control_plugin_auto_pay_off(account_id);
+
+/*! SET storage_engine=INNODB */;
+
+CREATE TABLE rolled_up_usage (
+    record_id serial unique,
+    id varchar(36) NOT NULL,
+    subscription_id varchar(36) NOT NULL,
+    unit_type varchar(255) NOT NULL,
+    record_date date NOT NULL,
+    amount bigint NOT NULL,
+    created_by varchar(50) NOT NULL,
+    created_date datetime NOT NULL,
+    account_record_id bigint /*! unsigned */ not null,
+    tenant_record_id bigint /*! unsigned */ not null default 0,
+    PRIMARY KEY(record_id)
+) /*! CHARACTER SET utf8 COLLATE utf8_bin */;
+CREATE UNIQUE INDEX rolled_up_usage_id ON rolled_up_usage(id);
+CREATE INDEX rolled_up_usage_subscription_id ON rolled_up_usage(subscription_id ASC);
+CREATE INDEX rolled_up_usage_tenant_account_record_id ON rolled_up_usage(tenant_record_id, account_record_id);
+CREATE INDEX rolled_up_usage_account_record_id ON rolled_up_usage(account_record_id);
+
+/*! SET storage_engine=INNODB */;
+
+CREATE TABLE custom_fields (
+    record_id serial unique,
+    id varchar(36) NOT NULL,
+    object_id varchar(36) NOT NULL,
+    object_type varchar(30) NOT NULL,
+    is_active boolean default true,
+    field_name varchar(30) NOT NULL,
+    field_value varchar(255),
+    created_by varchar(50) NOT NULL,
+    created_date datetime NOT NULL,
+    updated_by varchar(50) DEFAULT NULL,
+    updated_date datetime DEFAULT NULL,
+    account_record_id bigint /*! unsigned */ not null,
+    tenant_record_id bigint /*! unsigned */ not null default 0,
+    PRIMARY KEY(record_id)
+) /*! CHARACTER SET utf8 COLLATE utf8_bin */;
+CREATE UNIQUE INDEX custom_fields_id ON custom_fields(id);
+CREATE INDEX custom_fields_object_id_object_type ON custom_fields(object_id, object_type);
+CREATE INDEX custom_fields_tenant_account_record_id ON custom_fields(tenant_record_id, account_record_id);
+
+CREATE TABLE custom_field_history (
+    record_id serial unique,
+    id varchar(36) NOT NULL,
+    target_record_id bigint /*! unsigned */ not null,
+    object_id varchar(36) NOT NULL,
+    object_type varchar(30) NOT NULL,
+    is_active boolean default true,
+    field_name varchar(30),
+    field_value varchar(255),
+    change_type varchar(6) NOT NULL,
+    created_by varchar(50) NOT NULL,
+    created_date datetime NOT NULL,
+    updated_by varchar(50) NOT NULL,
+    updated_date datetime NOT NULL,
+    account_record_id bigint /*! unsigned */ not null,
+    tenant_record_id bigint /*! unsigned */ not null default 0,
+    PRIMARY KEY(record_id)
+) /*! CHARACTER SET utf8 COLLATE utf8_bin */;
+CREATE INDEX custom_field_history_target_record_id ON custom_field_history(target_record_id);
+CREATE INDEX custom_field_history_object_id_object_type ON custom_fields(object_id, object_type);
+CREATE INDEX custom_field_history_tenant_account_record_id ON custom_field_history(tenant_record_id, account_record_id);
+
+CREATE TABLE tag_definitions (
+    record_id serial unique,
+    id varchar(36) NOT NULL,
+    name varchar(20) NOT NULL,
+    description varchar(200) NOT NULL,
+    is_active boolean default true,
+    created_by varchar(50) NOT NULL,
+    created_date datetime NOT NULL,
+    updated_by varchar(50) NOT NULL,
+    updated_date datetime NOT NULL,
+    tenant_record_id bigint /*! unsigned */ not null default 0,
+    PRIMARY KEY(record_id)
+) /*! CHARACTER SET utf8 COLLATE utf8_bin */;
+CREATE UNIQUE INDEX tag_definitions_id ON tag_definitions(id);
+CREATE INDEX tag_definitions_tenant_record_id ON tag_definitions(tenant_record_id);
+
+CREATE TABLE tag_definition_history (
+    record_id serial unique,
+    id varchar(36) NOT NULL,
+    target_record_id bigint /*! unsigned */ not null,
+    name varchar(30) NOT NULL,
+    description varchar(200),
+    is_active boolean default true,
+    change_type varchar(6) NOT NULL,
+    created_by varchar(50) NOT NULL,
+    created_date datetime NOT NULL,
+    updated_by varchar(50) NOT NULL,
+    updated_date datetime NOT NULL,
+    /* Note: there is no account_record_id to populate */
+    account_record_id bigint /*! unsigned */ default null,
+    tenant_record_id bigint /*! unsigned */ not null default 0,
+    PRIMARY KEY(record_id)
+) /*! CHARACTER SET utf8 COLLATE utf8_bin */;
+CREATE INDEX tag_definition_history_id ON tag_definition_history(id);
+CREATE INDEX tag_definition_history_target_record_id ON tag_definition_history(target_record_id);
+CREATE INDEX tag_definition_history_name ON tag_definition_history(name);
+CREATE INDEX tag_definition_history_tenant_record_id ON tag_definition_history(tenant_record_id);
+
+CREATE TABLE tags (
+    record_id serial unique,
+    id varchar(36) NOT NULL,
+    tag_definition_id varchar(36) NOT NULL,
+    object_id varchar(36) NOT NULL,
+    object_type varchar(30) NOT NULL,
+    is_active boolean default true,
+    created_by varchar(50) NOT NULL,
+    created_date datetime NOT NULL,
+    updated_by varchar(50) NOT NULL,
+    updated_date datetime NOT NULL,
+    account_record_id bigint /*! unsigned */ not null,
+    tenant_record_id bigint /*! unsigned */ not null default 0,
+    PRIMARY KEY(record_id)
+) /*! CHARACTER SET utf8 COLLATE utf8_bin */;
+CREATE UNIQUE INDEX tags_id ON tags(id);
+CREATE INDEX tags_by_object ON tags(object_id);
+CREATE INDEX tags_tenant_account_record_id ON tags(tenant_record_id, account_record_id);
+
+CREATE TABLE tag_history (
+    record_id serial unique,
+    id varchar(36) NOT NULL,
+    target_record_id bigint /*! unsigned */ not null,
+    object_id varchar(36) NOT NULL,
+    object_type varchar(30) NOT NULL,
+    tag_definition_id varchar(36) NOT NULL,
+    is_active boolean default true,
+    change_type varchar(6) NOT NULL,
+    created_by varchar(50) NOT NULL,
+    created_date datetime NOT NULL,
+    updated_by varchar(50) NOT NULL,
+    updated_date datetime NOT NULL,
+    account_record_id bigint /*! unsigned */ not null,
+    tenant_record_id bigint /*! unsigned */ not null default 0,
+    PRIMARY KEY(record_id)
+) /*! CHARACTER SET utf8 COLLATE utf8_bin */;
+CREATE INDEX tag_history_target_record_id ON tag_history(target_record_id);
+CREATE INDEX tag_history_by_object ON tags(object_id);
+CREATE INDEX tag_history_tenant_account_record_id ON tag_history(tenant_record_id, account_record_id);
+
+CREATE TABLE audit_log (
+    record_id serial unique,
+    id varchar(36) NOT NULL,
+    target_record_id bigint /*! unsigned */ not null,
+    table_name varchar(50) NOT NULL,
+    change_type varchar(6) NOT NULL,
+    created_date datetime NOT NULL,
+    created_by varchar(50) NOT NULL,
+    reason_code varchar(255) DEFAULT NULL,
+    comments varchar(255) DEFAULT NULL,
+    user_token varchar(36),
+    /* Note: can be NULL (e.g. tenant_kvs audits) */
+    account_record_id bigint /*! unsigned */ default null,
+    tenant_record_id bigint /*! unsigned */ not null default 0,
+    PRIMARY KEY(record_id)
+) /*! CHARACTER SET utf8 COLLATE utf8_bin */;
+CREATE INDEX audit_log_fetch_target_record_id ON audit_log(table_name, target_record_id);
+CREATE INDEX audit_log_user_name ON audit_log(created_by);
+CREATE INDEX audit_log_tenant_account_record_id ON audit_log(tenant_record_id, account_record_id);
+CREATE INDEX audit_log_via_history ON audit_log(target_record_id, table_name, tenant_record_id);
+
+
+
+CREATE TABLE notifications (
+    record_id serial unique,
+    class_name varchar(256) NOT NULL,
+    event_json varchar(2048) NOT NULL,
+    user_token varchar(36),
+    created_date datetime NOT NULL,
+    creating_owner varchar(50) NOT NULL,
+    processing_owner varchar(50) DEFAULT NULL,
+    processing_available_date datetime DEFAULT NULL,
+    processing_state varchar(14) DEFAULT 'AVAILABLE',
+    error_count int /*! unsigned */ DEFAULT 0,
+    search_key1 bigint /*! unsigned */ not null,
+    search_key2 bigint /*! unsigned */ not null default 0,
+    queue_name varchar(64) NOT NULL,
+    effective_date datetime NOT NULL,
+    future_user_token varchar(36),
+    PRIMARY KEY(record_id)
+) /*! CHARACTER SET utf8 COLLATE utf8_bin */;
+CREATE INDEX idx_comp_where ON notifications (effective_date, processing_state, processing_owner, processing_available_date);
+CREATE INDEX idx_update ON notifications (processing_state, processing_owner, processing_available_date);
+CREATE INDEX idx_get_ready ON notifications (effective_date, created_date);
+CREATE INDEX notifications_tenant_account_record_id ON notifications(search_key2, search_key1);
+
+CREATE TABLE notifications_history (
+    record_id serial unique,
+    class_name varchar(256) NOT NULL,
+    event_json varchar(2048) NOT NULL,
+    user_token varchar(36),
+    created_date datetime NOT NULL,
+    creating_owner varchar(50) NOT NULL,
+    processing_owner varchar(50) DEFAULT NULL,
+    processing_available_date datetime DEFAULT NULL,
+    processing_state varchar(14) DEFAULT 'AVAILABLE',
+    error_count int /*! unsigned */ DEFAULT 0,
+    search_key1 bigint /*! unsigned */ not null,
+    search_key2 bigint /*! unsigned */ not null default 0,
+    queue_name varchar(64) NOT NULL,
+    effective_date datetime NOT NULL,
+    future_user_token varchar(36),
+    PRIMARY KEY(record_id)
+) /*! CHARACTER SET utf8 COLLATE utf8_bin */;
+
+CREATE TABLE bus_events (
+    record_id serial unique,
+    class_name varchar(128) NOT NULL,
+    event_json varchar(2048) NOT NULL,
+    user_token varchar(36),
+    created_date datetime NOT NULL,
+    creating_owner varchar(50) NOT NULL,
+    processing_owner varchar(50) DEFAULT NULL,
+    processing_available_date datetime DEFAULT NULL,
+    processing_state varchar(14) DEFAULT 'AVAILABLE',
+    error_count int /*! unsigned */ DEFAULT 0,
+    /* Note: account_record_id can be NULL (e.g. TagDefinition events) */
+    search_key1 bigint /*! unsigned */ default null,
+    search_key2 bigint /*! unsigned */ not null default 0,
+    PRIMARY KEY(record_id)
+) /*! CHARACTER SET utf8 COLLATE utf8_bin */;
+CREATE INDEX idx_bus_where ON bus_events (processing_state, processing_owner, processing_available_date);
+CREATE INDEX bus_events_tenant_account_record_id ON bus_events(search_key2, search_key1);
+
+CREATE TABLE bus_events_history (
+    record_id serial unique,
+    class_name varchar(128) NOT NULL,
+    event_json varchar(2048) NOT NULL,
+    user_token varchar(36),
+    created_date datetime NOT NULL,
+    creating_owner varchar(50) NOT NULL,
+    processing_owner varchar(50) DEFAULT NULL,
+    processing_available_date datetime DEFAULT NULL,
+    processing_state varchar(14) DEFAULT 'AVAILABLE',
+    error_count int /*! unsigned */ DEFAULT 0,
+    /* Note: account_record_id can be NULL (e.g. TagDefinition events) */
+    search_key1 bigint /*! unsigned */ default null,
+    search_key2 bigint /*! unsigned */ not null default 0,
+    PRIMARY KEY(record_id)
+) /*! CHARACTER SET utf8 COLLATE utf8_bin */;
+
+create table sessions (
+  record_id serial unique
+, start_timestamp datetime not null
+, last_access_time datetime default null
+, timeout int
+, host varchar(100) default null
+, session_data mediumblob default null
+, primary key(record_id)
+) /*! CHARACTER SET utf8 COLLATE utf8_bin */;
+
+
+CREATE TABLE users (
+    record_id serial unique,
+    username varchar(128) NULL,
+    password varchar(128) NULL,
+    password_salt varchar(128) NULL,
+    is_active boolean default true,
+    created_date datetime NOT NULL,
+    created_by varchar(50) NOT NULL,
+    updated_date datetime DEFAULT NULL,
+    updated_by varchar(50) DEFAULT NULL,
+    PRIMARY KEY(record_id)
+) /*! CHARACTER SET utf8 COLLATE utf8_bin */;
+CREATE INDEX users_username ON users(username);
+
+
+CREATE TABLE user_roles (
+    record_id serial unique,
+    username varchar(128) NULL,
+    role_name varchar(128) NULL,
+    is_active boolean default true,
+    created_date datetime NOT NULL,
+    created_by varchar(50) NOT NULL,
+    updated_date datetime DEFAULT NULL,
+    updated_by varchar(50) DEFAULT NULL,
+    PRIMARY KEY(record_id)
+) /*! CHARACTER SET utf8 COLLATE utf8_bin */;
+CREATE INDEX user_roles_idx ON user_roles(username, role_name);
+
+
+CREATE TABLE roles_permissions (
+    record_id serial unique,
+    role_name varchar(128) NULL,
+    permission varchar(128) NULL,
+    is_active boolean default true,
+    created_date datetime NOT NULL,
+    created_by varchar(50) NOT NULL,
+    updated_date datetime DEFAULT NULL,
+    updated_by varchar(50) DEFAULT NULL,
+    PRIMARY KEY(record_id)
+) /*! CHARACTER SET utf8 COLLATE utf8_bin */;
+CREATE INDEX roles_permissions_idx ON roles_permissions(role_name, permission);
+
+
+CREATE TABLE node_infos (
+    record_id serial unique,
+    node_name varchar(50) NOT NULL,
+    boot_date datetime NOT NULL,
+    updated_date datetime DEFAULT NULL,
+    node_info text NOT NULL,
+    is_active boolean default true,
+    PRIMARY KEY(record_id)
+) /*! CHARACTER SET utf8 COLLATE utf8_bin */;
+CREATE UNIQUE INDEX node_name_idx ON node_infos(node_name);
+
+
+CREATE TABLE service_broadcasts (
+    record_id serial unique,
+    service_name varchar(50) NOT NULL,
+    type varchar(64) NOT NULL,
+    event text NOT NULL,
+    created_date datetime NOT NULL,
+    created_by varchar(50) NOT NULL,
+    PRIMARY KEY(record_id)
+) /*! CHARACTER SET utf8 COLLATE utf8_bin */;
+
+/*! SET storage_engine=INNODB */;
+
+CREATE TABLE tenants (
+    record_id serial unique,
+    id varchar(36) NOT NULL,
+    external_key varchar(128) NULL,
+    api_key varchar(128) NULL,
+    api_secret varchar(128) NULL,
+    api_salt varchar(128) NULL,
+    created_date datetime NOT NULL,
+    created_by varchar(50) NOT NULL,
+    updated_date datetime DEFAULT NULL,
+    updated_by varchar(50) DEFAULT NULL,
+    PRIMARY KEY(record_id)
+) /*! CHARACTER SET utf8 COLLATE utf8_bin */;
+CREATE UNIQUE INDEX tenants_id ON tenants(id);
+CREATE UNIQUE INDEX tenants_api_key ON tenants(api_key);
+
+
+CREATE TABLE tenant_kvs (
+   record_id serial unique,
+   id varchar(36) NOT NULL,
+   tenant_record_id bigint /*! unsigned */ not null default 0,
+   tenant_key varchar(255) NOT NULL,
+   tenant_value mediumtext NOT NULL,
+   is_active boolean default true,
+   created_date datetime NOT NULL,
+   created_by varchar(50) NOT NULL,
+   updated_date datetime DEFAULT NULL,
+   updated_by varchar(50) DEFAULT NULL,
+   PRIMARY KEY(record_id)
+) /*! CHARACTER SET utf8 COLLATE utf8_bin */;
+CREATE INDEX tenant_kvs_key ON tenant_kvs(tenant_key);
+
+
+CREATE TABLE tenant_broadcasts (
+   record_id serial unique,
+   id varchar(36) NOT NULL,
+   /* Note: can be NULL in case of delete */
+   target_record_id bigint /*! unsigned */ default null,
+   target_table_name varchar(50) NOT NULL,
+   tenant_record_id bigint /*! unsigned */ not null default 0,
+   type varchar(64) NOT NULL,
+   user_token varchar(36),
+   created_date datetime NOT NULL,
+   created_by varchar(50) NOT NULL,
+   updated_date datetime DEFAULT NULL,
+   updated_by varchar(50) DEFAULT NULL,
+   PRIMARY KEY(record_id)
+) /*! CHARACTER SET utf8 COLLATE utf8_bin */;
+CREATE INDEX tenant_broadcasts_key ON tenant_broadcasts(tenant_record_id);
+/* Upgrading killbill version */
+alter table accounts add column notes varchar(4096) DEFAULT NULL;
+alter table account_history add column notes varchar(4096) DEFAULT NULL;drop index idx_invoice_payments;
+alter table subscriptions drop column active_version;
+alter table subscriptions add column migrated bool NOT NULL default FALSE;
+alter table subscription_events drop column requested_date;
+alter table subscription_events drop column current_version;
+alter table subscription_events alter column event_type type varchar(15);
+alter table subscription_events add column billing_cycle_day_local int DEFAULT NULL;
+alter table rolled_up_usage add column tracking_id varchar(128) NOT NULL DEFAULT md5(random()::text || clock_timestamp()::text)::uuid;
+CREATE INDEX rolled_up_usage_tracking_id_subscription_id_tenant_record_id ON rolled_up_usage(tracking_id, subscription_id, tenant_record_id);
+alter table rolled_up_usage alter column subscription_id type varchar(36);
+alter table rolled_up_usage alter column unit_type type varchar(255);
+alter table accounts alter column external_key type varchar(255);
+alter table account_history alter column external_key type varchar(255);
+alter table tenants alter column external_key type varchar(255);
+alter table bundles alter column external_key type varchar(255);
+alter table payment_attempts alter column payment_external_key type varchar(255);
+alter table payment_attempts alter column transaction_external_key type varchar(255);
+alter table payment_attempt_history alter column payment_external_key type varchar(255);
+alter table payment_attempt_history alter column transaction_external_key type varchar(255);
+alter table invoice_items alter column plan_name type varchar(255);
+alter table invoice_items alter column phase_name type varchar(255);
+alter table invoice_items alter column usage_name type varchar(255);
+alter table sessions add column id varchar(36);
+update sessions set id = record_id;
+alter table sessions alter column id set not null;
+create unique index sessions_id on sessions(id);
+alter table subscription_events alter column plan_name type varchar(255);
+alter table subscription_events alter column phase_name type varchar(255);
+update invoice_items set type = 'CREDIT_ADJ' where type = 'REFUND_ADJ';
+CREATE TABLE invoice_parent_children (
+    record_id serial unique,
+    id varchar(36) NOT NULL,
+    parent_invoice_id varchar(36) NOT NULL,
+    child_invoice_id varchar(36) NOT NULL,
+    child_account_id varchar(36) NOT NULL,
+    created_by varchar(50) NOT NULL,
+    created_date datetime NOT NULL,
+    account_record_id bigint /*! unsigned */ not null,
+    tenant_record_id bigint /*! unsigned */ not null default 0,
+    PRIMARY KEY(record_id)
+) /*! CHARACTER SET utf8 COLLATE utf8_bin */;
+CREATE UNIQUE INDEX invoice_parent_children_id ON invoice_parent_children(id);
+CREATE INDEX invoice_parent_children_invoice_id ON invoice_parent_children(parent_invoice_id);
+CREATE INDEX invoice_parent_children_tenant_account_record_id ON invoice_parent_children(tenant_record_id, account_record_id);
+
+
+alter table invoice_items add column child_account_id varchar(36);
+alter table invoice_items alter column start_date type date;
+
+alter table invoices add column  parent_invoice bool NOT NULL DEFAULT FALSE;
+alter table invoices alter column target_date type date;
+
+drop index invoices_account_target;
+create index invoices_account on invoices(account_id asc);
+alter table accounts add column parent_account_id varchar(36) DEFAULT NULL;
+alter table accounts add column is_payment_delegated_to_parent boolean DEFAULT FALSE;
+
+alter table account_history add column parent_account_id varchar(36) DEFAULT NULL;
+alter table account_history add column is_payment_delegated_to_parent boolean DEFAULT FALSE;
+alter table invoices add column status varchar(15) NOT NULL DEFAULT 'COMMITTED';
+update invoices set status = 'COMMITTED';

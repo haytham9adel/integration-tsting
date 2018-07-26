@@ -42,16 +42,16 @@ public class DockerImageBuilder {
 	}
 
 	public void start() throws IOException {
-		runCommandBuilder.append("--name ").append(name).append(" -p ").append(port).append(":").append(port);
+		runCommandBuilder.append(" --name ").append(name).append(" -p ").append(port).append(":").append(port);
 		if (managmentPort != 0) {
 			runCommandBuilder.append(" -p ").append(managmentPort).append(":").append(managmentPort);
 		}
 		runCommandBuilder.append(" -d --network ").append(networkName).append(" ").append(dockerImage);
 
 		log.info("Starting docker image : {} with command {}", dockerImage, runCommandBuilder.toString());
-	    Runtime.getRuntime().exec(runCommandBuilder.toString());
-/*		builder.redirectErrorStream(true);
-		builder.start();*/
+		ProcessBuilder builder = new ProcessBuilder(runCommandBuilder.toString());
+		builder.redirectErrorStream(true);
+		builder.start();
 
 	}
 
