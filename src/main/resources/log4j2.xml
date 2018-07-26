@@ -2,7 +2,7 @@
 <!DOCTYPE xml>
 <Configuration status="ERROR" shutdownHook="disable" monitorInterval="30">
 	<Properties>
-		<property name="logging.path">./integration-testing/log</property>
+		<property name="logging.path">./logs</property>
 	</Properties>
 	<Appenders>
 		<Console name="Console" target="SYSTEM_OUT" >
