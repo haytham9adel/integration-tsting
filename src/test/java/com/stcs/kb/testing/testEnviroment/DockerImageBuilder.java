@@ -49,28 +49,28 @@ public class DockerImageBuilder {
 		runCommandBuilder.append(" -d --network ").append(networkName).append(" ").append(dockerImage);
 
 		log.info("Starting docker image : {} with command {}", dockerImage, runCommandBuilder.toString());
-		ProcessBuilder builder = new ProcessBuilder(runCommandBuilder.toString());
-		builder.redirectErrorStream(true);
-		builder.start();
+		Runtime.getRuntime().exec(runCommandBuilder.toString());
 
 	}
 
-	public void stop() throws IOException {
-		String[] cmd = { "/bin/sh", "-c", "docker ps -a | grep " + dockerImage + " | awk '{print $1 }' " };
-		log.info("find all docker containers for docker image : {} with command {}", dockerImage, cmd);
-		ProcessBuilder builder = new ProcessBuilder(cmd);
-		builder.redirectErrorStream(true);
-		Process process = builder.start();
-		BufferedReader stdInput = new BufferedReader(new InputStreamReader(process.getInputStream()));
-		String s = null;
-		while ((s = stdInput.readLine()) != null) {
-
-			log.info("stop and remove docker container : {}", s);
-
-			builder = new ProcessBuilder("docker rm -f " + s);
-			builder.start();
-
+	public boolean stop()  {
+		try { 
+			Runtime rt = Runtime.getRuntime();
+		    String[] cmd = { "/bin/sh", "-c", "docker ps -a | grep "+dockerImage+" | awk '{print $1 }' " };
+		    System.out.println("command > " +cmd);
+		    Process proc =  rt.exec(cmd );
+		    BufferedReader stdInput = new BufferedReader(new InputStreamReader(proc.getInputStream()));
+		    String s = null;
+		    while ((s = stdInput.readLine()) != null) {
+		    	 rt.exec("docker rm -f "+s);
+			}
+		    
+		}catch (Exception e) {
+			e.printStackTrace();
+			return false ;
 		}
+		return true;
 	}
+
 
 }

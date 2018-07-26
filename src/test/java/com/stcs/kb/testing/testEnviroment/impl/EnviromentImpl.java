@@ -58,7 +58,7 @@ public class EnviromentImpl implements Enviroment {
 			comp.getDepndantComponents().parallelStream().forEach(dedpendant -> StartComponentAndItsDependants(dedpendant));
 			comp.start();
 
-			await().atMost(1, TimeUnit.MINUTES).with().pollInterval( 10  , TimeUnit.SECONDS)
+			await().atMost(3, TimeUnit.MINUTES).with().pollInterval( 10  , TimeUnit.SECONDS)
 					.until(comp::isUpAndRunning);
 
 			System.out.println(comp.getName() + " has started at : " + new Date());

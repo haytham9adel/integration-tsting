@@ -5,8 +5,6 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.Map;
 
-import org.joda.time.DateTime;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.skife.jdbi.v2.DBI;
@@ -15,23 +13,26 @@ import org.skife.jdbi.v2.Query;
 
 import com.stcs.kb.config.Constants;
 import com.stcs.kb.model.Response;
-import com.stcs.kb.service.impl.KBBillingImpl;
 import com.stcs.kb.service.impl.BrockerServiceRabbitImpl;
+import com.stcs.kb.service.impl.KBBillingImpl;
 import com.stcs.kb.testing.Utils;
-import com.stcs.kb.util.ConcuencyUtil;
+import com.stcs.kb.testing.testEnviroment.Enviroment;
+import com.stcs.kb.testing.testEnviroment.impl.EnviromentImpl;
 
 import junit.framework.TestCase;
 
 
-public class CatalogTest extends IntegrationTestTemplate {
+public class CatalogTest extends TestCase {
 	
 	 BrockerServiceRabbitImpl rabbitMQClient;
 	 KBBillingImpl cartwheelKB  ; 
+	 Enviroment killbillEnviroment;
 	 
 	@Before
 	public void setUp() throws IOException {
 		rabbitMQClient = new BrockerServiceRabbitImpl();
 	    cartwheelKB    = new KBBillingImpl(Constants.KB_CARTWHEEL_KEY, Constants.KB_CARTWHEEL_SECRET) ;
+	    killbillEnviroment = new EnviromentImpl();
 	}
 	
 	@Test
