@@ -18,6 +18,7 @@ import com.stcs.kb.model.Response;
 import com.stcs.kb.service.impl.KBBillingImpl;
 import com.stcs.kb.service.impl.BrockerServiceRabbitImpl;
 import com.stcs.kb.testing.Utils;
+import com.stcs.kb.util.ConcuencyUtil;
 
 import junit.framework.TestCase;
 
@@ -50,9 +51,7 @@ public class CatalogTest extends IntegrationTestTemplate {
 	
 		     File   catalogJsonFile = new File(getClass().getClassLoader().getResource("catalog.json").getFile());
 			 String catalogJsonString = Utils.readFile(catalogJsonFile.getCanonicalPath(), Charset.forName("utf8")) ;
-			 String dateStrInJson =  Utils.getDateFromCatalogJson(catalogJsonString, "effective_date") ; //TODO REMOVE
-			 System.out.println(" STAGE 0 : input [0] : " + catalogJsonString +" with date : " + dateStrInJson);
-
+			 
 			 //start 
 			 Response responseFromRabbit =  rabbitMQClient.sendCatalogUpdate(catalogJsonString) ;
 			 
@@ -67,12 +66,16 @@ public class CatalogTest extends IntegrationTestTemplate {
 			 Handle handle = dbi.open();
 			 Query<Map<String, Object>> data = handle.createQuery("SELECT COUNT(*) AS CNT FROM cartwheel_plans") ;
 			 System.out.println(" count of added plans >>"+ data.first().get("CNT"));
-
+			 assertTrue(Integer.parseInt( data.first().get("CNT").toString() )  == 862 ); 
 			 
 			 //stage 3
 			 System.out.println(" STAGE 3 : check the KB API");
-			 DateTime timestamp =  cartwheelKB.getEffectiveDate() ;
-			 System.out.println(" RESULT >> latest updated date " + timestamp +" while in json :"+dateStrInJson);
+			// ConcuencyUtil.pause(10);
+			// cartwheelKB.cleanCache();
+			 //int uploadedPlans =  cartwheelKB.getCatalogPlansCount();
+/*			 System.out.println(" RESULT >> latest Catalog Plans Count " + uploadedPlans );
+			 
+			 assertEquals(706, uploadedPlans);*/
 			 
 			}else {
 				System.out.println("failed to start the envioment"); 
